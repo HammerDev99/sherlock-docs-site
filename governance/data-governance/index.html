@@ -1,0 +1,4167 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Sistema de procesamiento de documentos legales — Documentacion tecnica y gobernanza">
+      
+      
+      
+        <link rel="canonical" href="https://docs-sherlock.sprintjudicial.com/governance/data-governance/">
+      
+      
+        <link rel="prev" href="../politica-datos/">
+      
+      
+        <link rel="next" href="../../project-status/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>Gobernanza de Datos - Sherlock-docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <!-- Umami Analytics (self-hosted) -->
+  <script defer src="https://analytics.sprintjudicial.com/script.js"
+          data-website-id="">
+  </script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#politica-de-gobernanza-de-datos-sherlock-docs-v10" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Sherlock-docs" class="md-header__button md-logo" aria-label="Sherlock-docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sherlock-docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Gobernanza de Datos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartir" aria-label="Compartir" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hammerdev99/sherlock-docs" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hammerdev99/sherlock-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../user-guide/manual/" class="md-tabs__link">
+          
+  
+  
+  Guia de Usuario
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../technical/architecture/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../technical/code-conventions/" class="md-tabs__link">
+          
+  
+  
+  Desarrollo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../evaluacion-impacto/" class="md-tabs__link">
+          
+  
+  
+  Gobernanza IA
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../project-status/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Estado del Proyecto
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Sherlock-docs" class="md-nav__button md-logo" aria-label="Sherlock-docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Sherlock-docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hammerdev99/sherlock-docs" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hammerdev99/sherlock-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia de Usuario
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guia de Usuario
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/manual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manual Completo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI (21 Comandos)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitectura
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vista General
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/01_system_context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contexto del Sistema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/02_architecture_layers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capas de Arquitectura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/03_processing_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline de Procesamiento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/04_duplicate_detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deteccion de Duplicados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/05_class_diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagrama de Clases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/06_component_diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagrama de Componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/07_database_schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema de Base de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/08_gui_navigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navegacion GUI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/09_ner_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline NER
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desarrollo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Desarrollo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/code-conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convenciones de Codigo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/antipatterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antipatrones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gobernanza IA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Gobernanza IA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evaluacion-impacto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evaluacion de Impacto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../etica-ia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Marco Etico IA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../politica-datos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Politica de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gobernanza de Datos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gobernanza de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-proposito-y-alcance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Proposito y Alcance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Proposito y Alcance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-proposito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Proposito
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-alcance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Alcance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-exclusiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Exclusiones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-clasificacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Clasificacion de Datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Clasificacion de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-datos-publicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Datos publicos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-datos-privados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Datos privados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-datos-sensibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Datos sensibles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mapa-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Mapa de Datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Mapa de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-base-de-datos-principal-datadatabasesherlockdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Base de datos principal — data/database/sherlock.db
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Base de datos principal — data/database/sherlock.db">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-detalle-de-documents-33-columnas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1 Detalle de documents (33 columnas)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-configuracion-de-la-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.2 Configuracion de la base de datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-cache-datacache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Cache — data/cache/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-archivos-temporales-datauploads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Archivos temporales — data/uploads/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-logs-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Logs — logs/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-tabla-audit_events-gob-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Tabla audit_events (GOB-06)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-roles-y-responsabilidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Roles y Responsabilidades
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Roles y Responsabilidades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-responsable-del-tratamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Responsable del tratamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-encargado-del-tratamiento-operadores-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Encargado del tratamiento — Operadores del sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-oficial-de-proteccion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Oficial de proteccion de datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-administrador-de-ti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Administrador de TI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-matriz-raci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Matriz RACI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ciclo-de-vida-del-dato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Ciclo de Vida del Dato
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Ciclo de Vida del Dato">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-diagrama-de-flujo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Diagrama de flujo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-detalle-por-etapa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Detalle por etapa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 Detalle por etapa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etapa-1-ingreso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 1: Ingreso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapa-2-procesamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 2: Procesamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapa-3-validacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 3: Validacion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapa-4-almacenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 4: Almacenamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapa-5-consulta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 5: Consulta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapa-6-eliminacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 6: Eliminacion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-politica-de-retencion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Politica de Retencion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Politica de Retencion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-documentos-judiciales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Documentos judiciales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-datos-de-auditoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Datos de auditoria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-datos-temporales-y-derivados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Datos temporales y derivados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Backups
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-procedimiento-de-eliminacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Procedimiento de Eliminacion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Procedimiento de Eliminacion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-eliminacion-de-documentos-individuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Eliminacion de documentos individuales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-eliminacion-masiva-purga-por-fecha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Eliminacion masiva (purga por fecha)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-eliminacion-de-archivos-temporales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Eliminacion de archivos temporales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-eliminacion-segura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Eliminacion segura
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-controles-de-acceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Controles de Acceso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Controles de Acceso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-autenticacion-gob-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Autenticacion (GOB-05)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-autorizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Autorizacion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-controles-tecnicos-implementados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Controles tecnicos implementados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-controles-organizativos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Controles organizativos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-respuesta-ante-incidentes-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Respuesta ante Incidentes de Datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Respuesta ante Incidentes de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-tipos-de-incidentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Tipos de incidentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-protocolo-de-respuesta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Protocolo de respuesta
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-metricas-y-monitoreo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Metricas y Monitoreo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Metricas y Monitoreo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-indicadores-de-gobernanza-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Indicadores de gobernanza de datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-herramientas-de-monitoreo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Herramientas de monitoreo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-documentos-relacionados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Documentos Relacionados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-aprobaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Aprobaciones
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estado del Proyecto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-proposito-y-alcance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Proposito y Alcance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Proposito y Alcance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-proposito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Proposito
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-alcance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Alcance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-exclusiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Exclusiones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-clasificacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Clasificacion de Datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Clasificacion de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-datos-publicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Datos publicos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-datos-privados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Datos privados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-datos-sensibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Datos sensibles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mapa-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Mapa de Datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Mapa de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-base-de-datos-principal-datadatabasesherlockdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Base de datos principal — data/database/sherlock.db
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Base de datos principal — data/database/sherlock.db">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-detalle-de-documents-33-columnas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1 Detalle de documents (33 columnas)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-configuracion-de-la-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.2 Configuracion de la base de datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-cache-datacache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Cache — data/cache/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-archivos-temporales-datauploads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Archivos temporales — data/uploads/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-logs-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Logs — logs/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-tabla-audit_events-gob-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Tabla audit_events (GOB-06)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-roles-y-responsabilidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Roles y Responsabilidades
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Roles y Responsabilidades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-responsable-del-tratamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Responsable del tratamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-encargado-del-tratamiento-operadores-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Encargado del tratamiento — Operadores del sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-oficial-de-proteccion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Oficial de proteccion de datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-administrador-de-ti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Administrador de TI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-matriz-raci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Matriz RACI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ciclo-de-vida-del-dato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Ciclo de Vida del Dato
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Ciclo de Vida del Dato">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-diagrama-de-flujo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Diagrama de flujo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-detalle-por-etapa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Detalle por etapa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 Detalle por etapa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etapa-1-ingreso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 1: Ingreso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapa-2-procesamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 2: Procesamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapa-3-validacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 3: Validacion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapa-4-almacenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 4: Almacenamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapa-5-consulta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 5: Consulta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapa-6-eliminacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapa 6: Eliminacion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-politica-de-retencion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Politica de Retencion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Politica de Retencion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-documentos-judiciales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Documentos judiciales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-datos-de-auditoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Datos de auditoria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-datos-temporales-y-derivados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Datos temporales y derivados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Backups
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-procedimiento-de-eliminacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Procedimiento de Eliminacion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Procedimiento de Eliminacion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-eliminacion-de-documentos-individuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Eliminacion de documentos individuales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-eliminacion-masiva-purga-por-fecha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Eliminacion masiva (purga por fecha)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-eliminacion-de-archivos-temporales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Eliminacion de archivos temporales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-eliminacion-segura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Eliminacion segura
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-controles-de-acceso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Controles de Acceso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Controles de Acceso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-autenticacion-gob-05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Autenticacion (GOB-05)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-autorizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Autorizacion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-controles-tecnicos-implementados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Controles tecnicos implementados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-controles-organizativos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Controles organizativos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-respuesta-ante-incidentes-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Respuesta ante Incidentes de Datos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Respuesta ante Incidentes de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-tipos-de-incidentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Tipos de incidentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-protocolo-de-respuesta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Protocolo de respuesta
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-metricas-y-monitoreo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Metricas y Monitoreo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Metricas y Monitoreo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-indicadores-de-gobernanza-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Indicadores de gobernanza de datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-herramientas-de-monitoreo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Herramientas de monitoreo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-documentos-relacionados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Documentos Relacionados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-aprobaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Aprobaciones
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="politica-de-gobernanza-de-datos-sherlock-docs-v10">Politica de Gobernanza de Datos — Sherlock-docs v1.0<a class="headerlink" href="#politica-de-gobernanza-de-datos-sherlock-docs-v10" title="Permanent link">&para;</a></h1>
+<p><strong>Sistema</strong>: Sherlock-docs v1.0
+<strong>Entidad</strong>: Centro de Servicios Judiciales de Bello, Antioquia
+<strong>Marco normativo</strong>: Ley 1581 de 2012, Decreto 1377 de 2013, CONPES 3975, Acuerdo PCSJA24-12243
+<strong>Fecha</strong>: 2026-03-06
+<strong>Version</strong>: 1.0 (Borrador tecnico — requiere revision juridica)
+<strong>Referencia interna</strong>: GOB-09</p>
+<hr />
+<h2 id="1-proposito-y-alcance">1. Proposito y Alcance<a class="headerlink" href="#1-proposito-y-alcance" title="Permanent link">&para;</a></h2>
+<h3 id="11-proposito">1.1 Proposito<a class="headerlink" href="#11-proposito" title="Permanent link">&para;</a></h3>
+<p>Esta politica establece las directrices para la gestion integral de los datos dentro del sistema Sherlock-docs, garantizando su calidad, integridad, disponibilidad, trazabilidad y proteccion a lo largo de todo su ciclo de vida.</p>
+<p>El objetivo es asegurar que los datos personales y judiciales tratados por el sistema cumplan con:</p>
+<ul>
+<li><strong>Ley 1581 de 2012</strong> (Habeas Data): Principios de finalidad, libertad, veracidad, transparencia, acceso restringido, seguridad y confidencialidad</li>
+<li><strong>CONPES 3975</strong> (Politica Nacional de IA): Gobernanza de datos en sistemas con componentes de inteligencia artificial</li>
+<li><strong>Acuerdo PCSJA24-12243</strong>: Lineamientos del Consejo Superior de la Judicatura para uso de herramientas IA en la Rama Judicial</li>
+</ul>
+<h3 id="12-alcance">1.2 Alcance<a class="headerlink" href="#12-alcance" title="Permanent link">&para;</a></h3>
+<p>Esta politica aplica a:</p>
+<ul>
+<li>Todos los datos procesados, almacenados y consultados por Sherlock-docs</li>
+<li>Todos los componentes del sistema: OCR, NER, deteccion de duplicados, base de datos, cache, logs y auditoria</li>
+<li>Todos los operadores y funcionarios del CSJ Bello que interactuan con el sistema</li>
+<li>Todo el ciclo de vida del dato: desde el ingreso del documento hasta su eliminacion</li>
+</ul>
+<h3 id="13-exclusiones">1.3 Exclusiones<a class="headerlink" href="#13-exclusiones" title="Permanent link">&para;</a></h3>
+<p>No aplica a datos gestionados fuera del sistema (archivos fisicos, otros sistemas judiciales, correo electronico institucional).</p>
+<hr />
+<h2 id="2-clasificacion-de-datos">2. Clasificacion de Datos<a class="headerlink" href="#2-clasificacion-de-datos" title="Permanent link">&para;</a></h2>
+<h3 id="21-datos-publicos">2.1 Datos publicos<a class="headerlink" href="#21-datos-publicos" title="Permanent link">&para;</a></h3>
+<p>Datos de libre acceso cuya divulgacion no compromete derechos fundamentales.</p>
+<table>
+<thead>
+<tr>
+<th>Dato</th>
+<th>Ejemplo</th>
+<th>Fuente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Radicado</td>
+<td><code>2026-00123</code></td>
+<td>Documento / Acta de reparto</td>
+</tr>
+<tr>
+<td>Juzgado</td>
+<td><code>Juzgado Primero Civil Municipal de Bello</code></td>
+<td>Documento / Acta de reparto</td>
+</tr>
+<tr>
+<td>Tipo de proceso</td>
+<td><code>tutela</code>, <code>habeas_corpus</code>, <code>desacato</code></td>
+<td>Clasificacion del sistema</td>
+</tr>
+<tr>
+<td>Numero de acta</td>
+<td><code>001-2026</code></td>
+<td>Acta de reparto</td>
+</tr>
+<tr>
+<td>Estado del documento</td>
+<td><code>pending</code>, <code>processed</code>, <code>validated</code></td>
+<td>Sistema</td>
+</tr>
+<tr>
+<td>Fecha de radicacion</td>
+<td><code>2026-03-06</code></td>
+<td>Documento</td>
+</tr>
+<tr>
+<td>Metadatos de procesamiento</td>
+<td>Tiempos OCR/NER, motor utilizado, confianza</td>
+<td>Sistema</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-datos-privados">2.2 Datos privados<a class="headerlink" href="#22-datos-privados" title="Permanent link">&para;</a></h3>
+<p>Datos personales cuyo tratamiento requiere base legal (funcion publica judicial) y medidas de proteccion.</p>
+<table>
+<thead>
+<tr>
+<th>Dato</th>
+<th>Ejemplo</th>
+<th>Base legal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nombre demandante</td>
+<td><code>Juan Perez Lopez</code></td>
+<td>Funcion publica judicial</td>
+</tr>
+<tr>
+<td>Nombre demandado</td>
+<td><code>EPS Salud Total</code></td>
+<td>Funcion publica judicial</td>
+</tr>
+<tr>
+<td>Cedula (CC/CE/NIT)</td>
+<td><code>1.234.567.890</code></td>
+<td>Funcion publica judicial</td>
+</tr>
+<tr>
+<td>Correo electronico</td>
+<td><code>usuario@correo.com</code></td>
+<td>Funcion publica judicial</td>
+</tr>
+<tr>
+<td>Direccion demandante</td>
+<td><code>Calle 50 #45-12, Bello</code></td>
+<td>Funcion publica judicial</td>
+</tr>
+<tr>
+<td>Direccion demandado</td>
+<td><code>Carrera 70 #20-30, Medellin</code></td>
+<td>Funcion publica judicial</td>
+</tr>
+<tr>
+<td>Coordenada / Secuencia anterior</td>
+<td>Referencia interna CSJ</td>
+<td>Funcion publica judicial</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-datos-sensibles">2.3 Datos sensibles<a class="headerlink" href="#23-datos-sensibles" title="Permanent link">&para;</a></h3>
+<p>Datos que pueden revelar aspectos intimos del titular y cuyo tratamiento inadecuado puede generar discriminacion (Art. 5, Ley 1581/2012).</p>
+<table>
+<thead>
+<tr>
+<th>Dato</th>
+<th>Riesgo</th>
+<th>Mitigacion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contenido completo de la tutela (campo <code>content</code>)</td>
+<td>Puede incluir datos de salud, religion, orientacion sexual, situacion economica, discapacidad</td>
+<td>Procesamiento 100% local, sin APIs externas, acceso restringido</td>
+</tr>
+<tr>
+<td>Hechos narrados por el accionante</td>
+<td>Informacion medica, diagnosticos, tratamientos</td>
+<td>Almacenamiento en servidor local, cifrado en transito (HTTPS)</td>
+</tr>
+<tr>
+<td>Pretensiones</td>
+<td>Pueden revelar condiciones de vulnerabilidad</td>
+<td>Logs sin contenido sensible, auditoria de accesos (GOB-06)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Nota</strong>: El tratamiento de datos sensibles se justifica en el ejercicio de la funcion publica judicial (Art. 6, Ley 1581/2012). No se requiere autorizacion explicita del titular cuando el tratamiento obedece a una finalidad historica, estadistica o cientifica, o cuando se trata de datos publicos por mandato legal.</p>
+</blockquote>
+<hr />
+<h2 id="3-mapa-de-datos">3. Mapa de Datos<a class="headerlink" href="#3-mapa-de-datos" title="Permanent link">&para;</a></h2>
+<h3 id="31-base-de-datos-principal-datadatabasesherlockdb">3.1 Base de datos principal — <code>data/database/sherlock.db</code><a class="headerlink" href="#31-base-de-datos-principal-datadatabasesherlockdb" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tabla</th>
+<th>Columnas</th>
+<th>Tipo de datos</th>
+<th>Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>documents</code></td>
+<td>33 columnas</td>
+<td>Publicos + Privados + Sensibles</td>
+<td>Tabla principal: metadatos, entidades NER, texto OCR, flags de secciones</td>
+</tr>
+<tr>
+<td><code>corrections</code></td>
+<td>6 columnas</td>
+<td>Privados</td>
+<td>Historial de correcciones: campo, valor original, valor corregido, responsable, fecha</td>
+</tr>
+<tr>
+<td><code>processing_stats</code></td>
+<td>12 columnas</td>
+<td>Publicos</td>
+<td>Metricas de rendimiento: tiempos OCR/NER/dedup, versiones modelo (GOB-07)</td>
+</tr>
+<tr>
+<td><code>audit_events</code></td>
+<td>8 columnas</td>
+<td>Publicos</td>
+<td>Eventos de auditoria: usuario, accion, recurso, detalles, IP, fecha (GOB-06)</td>
+</tr>
+<tr>
+<td><code>logs</code></td>
+<td>13 columnas</td>
+<td>Publicos</td>
+<td>Logs de aplicacion: nivel, modulo, mensaje, excepcion, timestamps</td>
+</tr>
+<tr>
+<td><code>documents_fts</code></td>
+<td>9 campos indexados</td>
+<td>Publicos + Privados</td>
+<td>Indice FTS5 para busqueda de texto completo (virtual table)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="311-detalle-de-documents-33-columnas">3.1.1 Detalle de <code>documents</code> (33 columnas)<a class="headerlink" href="#311-detalle-de-documents-33-columnas" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Categoria</th>
+<th>Columnas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identificacion</td>
+<td><code>id</code>, <code>file_path</code>, <code>file_name</code>, <code>file_hash</code>, <code>file_size_bytes</code></td>
+</tr>
+<tr>
+<td>Clasificacion</td>
+<td><code>document_type</code>, <code>status</code>, <code>is_manual_entry</code></td>
+</tr>
+<tr>
+<td>Contenido sensible</td>
+<td><code>content</code> (texto OCR completo)</td>
+</tr>
+<tr>
+<td>Entidades NER (privados)</td>
+<td><code>demandante</code>, <code>demandado</code>, <code>cedula</code>, <code>correo</code>, <code>direccion_demandante</code>, <code>direccion_demandado</code></td>
+</tr>
+<tr>
+<td>Datos procesales (publicos)</td>
+<td><code>radicado</code>, <code>juzgado</code>, <code>fecha_documento</code>, <code>numero_acta</code>, <code>hora_radicacion</code></td>
+</tr>
+<tr>
+<td>Formato CSJ</td>
+<td><code>secuencia_anterior</code>, <code>coordenada</code></td>
+</tr>
+<tr>
+<td>Deteccion</td>
+<td><code>has_provisional_measure</code>, <code>provisional_keywords</code>, <code>has_hechos</code>, <code>has_pretensiones</code></td>
+</tr>
+<tr>
+<td>Metadatos</td>
+<td><code>observaciones</code>, <code>etiquetas</code>, <code>imported_at</code>, <code>processing_cancelled_at</code></td>
+</tr>
+<tr>
+<td>Timestamps</td>
+<td><code>created_at</code>, <code>updated_at</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="312-configuracion-de-la-base-de-datos">3.1.2 Configuracion de la base de datos<a class="headerlink" href="#312-configuracion-de-la-base-de-datos" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Parametro</th>
+<th>Valor</th>
+<th>Justificacion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Motor</td>
+<td>SQLite 3.x</td>
+<td>Despliegue local sin servidor externo</td>
+</tr>
+<tr>
+<td>Modo journal</td>
+<td>WAL (Write-Ahead Logging)</td>
+<td>Mejor rendimiento de lectura concurrente</td>
+</tr>
+<tr>
+<td>Foreign keys</td>
+<td>Habilitadas</td>
+<td>Integridad referencial entre tablas</td>
+</tr>
+<tr>
+<td>Indices</td>
+<td>15 indices (11 en documents + 4 en audit_events)</td>
+<td>Consultas eficientes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-cache-datacache">3.2 Cache — <code>data/cache/</code><a class="headerlink" href="#32-cache-datacache" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Contenido</th>
+<th>Tipo de datos</th>
+<th>Persistencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tfidf_vectorizer.pkl</code></td>
+<td>Modelo TF-IDF entrenado</td>
+<td>Derivado (no personal)</td>
+<td>Rebuild automatico cuando &gt;10% docs nuevos</td>
+</tr>
+<tr>
+<td><code>tfidf_matrix.npz</code></td>
+<td>Matriz TF-IDF de documentos indexados</td>
+<td>Derivado (vectores numericos)</td>
+<td>Incremental (<code>transform</code> + <code>vstack</code>)</td>
+</tr>
+<tr>
+<td><code>minhash_index.pkl</code></td>
+<td>Firmas MinHash para dedup rapido</td>
+<td>Derivado (hashes)</td>
+<td>Persistente, rebuild con vectorizer</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Nota de seguridad</strong>: Los archivos de cache contienen representaciones numericas derivadas del texto. No es posible reconstruir el texto original a partir de estos vectores, pero un atacante con acceso podria usarlos para calcular similitudes. El acceso al directorio <code>data/</code> debe estar restringido.</p>
+</blockquote>
+<h3 id="33-archivos-temporales-datauploads">3.3 Archivos temporales — <code>data/uploads/</code><a class="headerlink" href="#33-archivos-temporales-datauploads" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contenido</th>
+<th>Tipo de datos</th>
+<th>Persistencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PDFs subidos pendientes de procesamiento</td>
+<td>Sensibles (documento original)</td>
+<td>Eliminados tras procesamiento o cancelacion (HAL-01)</td>
+</tr>
+<tr>
+<td>Archivos de acta de reparto</td>
+<td>Publicos</td>
+<td>Eliminados tras extraccion de datos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34-logs-logs">3.4 Logs — <code>logs/</code><a class="headerlink" href="#34-logs-logs" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Contenido</th>
+<th>Tipo de datos</th>
+<th>Retencion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sherlock_docs.log</code></td>
+<td>Logs de aplicacion (INFO+)</td>
+<td>Publicos (no contiene datos personales)</td>
+<td>30 dias, rotacion automatica</td>
+</tr>
+<tr>
+<td>Tabla <code>logs</code> en BD</td>
+<td>Logs de aplicacion (INFO+)</td>
+<td>Publicos</td>
+<td>Misma retencion que BD</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Politica de logging</strong>: Los logs registran operaciones y errores del sistema, <strong>nunca</strong> el contenido de los documentos ni datos personales de los titulares. Los campos registrados son: timestamp, nivel, modulo, funcion, linea, mensaje tecnico, excepcion.</p>
+</blockquote>
+<h3 id="35-tabla-audit_events-gob-06">3.5 Tabla <code>audit_events</code> (GOB-06)<a class="headerlink" href="#35-tabla-audit_events-gob-06" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Accion registrada</th>
+<th>Datos capturados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>document.process</code></td>
+<td>ID documento, motor OCR, tiempo</td>
+</tr>
+<tr>
+<td><code>document.validate</code></td>
+<td>ID documento, campos corregidos</td>
+</tr>
+<tr>
+<td><code>document.search</code></td>
+<td>Criterios de busqueda (sin resultados)</td>
+</tr>
+<tr>
+<td><code>document.export</code></td>
+<td>Rango de fechas, cantidad exportada</td>
+</tr>
+<tr>
+<td><code>document.delete</code></td>
+<td>ID documento</td>
+</tr>
+<tr>
+<td><code>user.login</code> / <code>user.logout</code></td>
+<td>ID usuario, IP</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-roles-y-responsabilidades">4. Roles y Responsabilidades<a class="headerlink" href="#4-roles-y-responsabilidades" title="Permanent link">&para;</a></h2>
+<h3 id="41-responsable-del-tratamiento">4.1 Responsable del tratamiento<a class="headerlink" href="#41-responsable-del-tratamiento" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Entidad</strong></td>
+<td>Centro de Servicios Judiciales de Bello, Antioquia</td>
+</tr>
+<tr>
+<td><strong>Tipo</strong></td>
+<td>Persona juridica de derecho publico</td>
+</tr>
+<tr>
+<td><strong>Responsabilidad</strong></td>
+<td>Define las finalidades y medios del tratamiento de datos personales en el sistema</td>
+</tr>
+<tr>
+<td><strong>Obligaciones</strong></td>
+<td>Garantizar los derechos ARCO, implementar medidas de seguridad, atender reclamos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-encargado-del-tratamiento-operadores-del-sistema">4.2 Encargado del tratamiento — Operadores del sistema<a class="headerlink" href="#42-encargado-del-tratamiento-operadores-del-sistema" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Responsabilidad</th>
+<th>Acciones permitidas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Operador de registro</strong></td>
+<td>Procesar y validar documentos recibidos</td>
+<td>Subir PDFs, ejecutar OCR/NER, corregir entidades, aprobar registro</td>
+</tr>
+<tr>
+<td><strong>Operador de consulta</strong></td>
+<td>Buscar y consultar documentos registrados</td>
+<td>Busqueda por radicado/cedula/nombre, ver detalle, exportar Excel</td>
+</tr>
+<tr>
+<td><strong>Coordinador CSJ</strong></td>
+<td>Supervision operativa y administrativa</td>
+<td>Todas las anteriores + revision de estadisticas + gestion de usuarios</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Principio de minimo privilegio</strong>: Cada operador debe tener acceso unicamente a las funcionalidades necesarias para su labor. La implementacion tecnica de roles esta prevista en GOB-05 (autenticacion con streamlit-authenticator y bcrypt).</p>
+</blockquote>
+<h3 id="43-oficial-de-proteccion-de-datos">4.3 Oficial de proteccion de datos<a class="headerlink" href="#43-oficial-de-proteccion-de-datos" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Designacion</strong></td>
+<td>[Pendiente — a designar por el CSJ Bello]</td>
+</tr>
+<tr>
+<td><strong>Funciones</strong></td>
+<td>Supervisar cumplimiento de la politica, atender solicitudes de titulares, realizar auditorias periodicas, reportar incidentes</td>
+</tr>
+<tr>
+<td><strong>Reporte</strong></td>
+<td>Directamente al Coordinador del CSJ Bello</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Recomendacion</strong>: Conforme al Art. 23 de la Ley 1581/2012, se recomienda designar formalmente un oficial de proteccion de datos que supervise el cumplimiento de esta politica.</p>
+</blockquote>
+<h3 id="44-administrador-de-ti">4.4 Administrador de TI<a class="headerlink" href="#44-administrador-de-ti" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Responsabilidad</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Infraestructura</td>
+<td>Mantenimiento del servidor VPS, Docker, backups</td>
+</tr>
+<tr>
+<td>Seguridad</td>
+<td>Actualizaciones de SO, certificados HTTPS, firewall</td>
+</tr>
+<tr>
+<td>Monitoreo</td>
+<td>Revision de logs, espacio en disco, disponibilidad</td>
+</tr>
+<tr>
+<td>Acceso</td>
+<td>Gestion de credenciales de despliegue (GHCR, EasyPanel)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="45-matriz-raci">4.5 Matriz RACI<a class="headerlink" href="#45-matriz-raci" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Actividad</th>
+<th style="text-align: center;">Coordinador CSJ</th>
+<th style="text-align: center;">Operador</th>
+<th style="text-align: center;">Oficial PDP</th>
+<th style="text-align: center;">Admin TI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Definir politicas de datos</td>
+<td style="text-align: center;"><strong>R/A</strong></td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">I</td>
+</tr>
+<tr>
+<td>Procesar documentos</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;"><strong>R</strong></td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td>Validar entidades NER</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;"><strong>R</strong></td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td>Atender solicitudes ARCO</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;"><strong>R</strong></td>
+<td style="text-align: center;">I</td>
+</tr>
+<tr>
+<td>Realizar backups</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"><strong>R/A</strong></td>
+</tr>
+<tr>
+<td>Auditar uso del sistema</td>
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;"><strong>R/A</strong></td>
+<td style="text-align: center;">C</td>
+</tr>
+<tr>
+<td>Gestionar incidentes de seguridad</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;"><strong>R</strong></td>
+<td style="text-align: center;"><strong>R</strong></td>
+</tr>
+<tr>
+<td>Mantener infraestructura</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;"><strong>R/A</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>R = Responsable, A = Aprueba, C = Consultado, I = Informado</em></p>
+<hr />
+<h2 id="5-ciclo-de-vida-del-dato">5. Ciclo de Vida del Dato<a class="headerlink" href="#5-ciclo-de-vida-del-dato" title="Permanent link">&para;</a></h2>
+<h3 id="51-diagrama-de-flujo">5.1 Diagrama de flujo<a class="headerlink" href="#51-diagrama-de-flujo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Ingreso          Procesamiento       Validacion        Almacenamiento     Consulta          Eliminacion
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  |                   |                  |                   |                |                  |
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  v                   v                  v                   v                v                  v
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>[PDF subido]  -&gt; [OCR + NER]     -&gt; [Operador         -&gt; [BD SQLite      -&gt; [Busqueda       -&gt; [Segun TRD
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a> o Excel          Extraccion         revisa y            + FTS5             por radicado,      Rama Judicial]
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a> importado]       automatica         corrige             + Cache TF-IDF]    cedula, nombre]
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>                                     entidades]
+</span></code></pre></div>
+<h3 id="52-detalle-por-etapa">5.2 Detalle por etapa<a class="headerlink" href="#52-detalle-por-etapa" title="Permanent link">&para;</a></h3>
+<h4 id="etapa-1-ingreso">Etapa 1: Ingreso<a class="headerlink" href="#etapa-1-ingreso" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fuentes</strong></td>
+<td>Carga de PDF (upload), importacion desde Excel, registro manual</td>
+</tr>
+<tr>
+<td><strong>Validaciones</strong></td>
+<td>Tipo de archivo (.pdf, .xlsx), tamano maximo, hash SHA-256 para unicidad</td>
+</tr>
+<tr>
+<td><strong>Almacenamiento temporal</strong></td>
+<td><code>data/uploads/</code> — eliminado tras procesamiento o cancelacion</td>
+</tr>
+<tr>
+<td><strong>Auditoria</strong></td>
+<td>Evento <code>document.upload</code> registrado en <code>audit_events</code></td>
+</tr>
+<tr>
+<td><strong>Gate pre-OCR</strong></td>
+<td>Deteccion de duplicados exactos por hash SHA-256 + file_size antes de OCR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="etapa-2-procesamiento">Etapa 2: Procesamiento<a class="headerlink" href="#etapa-2-procesamiento" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OCR</strong></td>
+<td>Tesseract (primario) o PaddleOCR (documentos degradados), hibrido PDF nativo + OCR</td>
+</tr>
+<tr>
+<td><strong>NER</strong></td>
+<td>Ensemble de 5 extractores (Marker, SpaCy, Regex, Address, Contact) + 4 validadores</td>
+</tr>
+<tr>
+<td><strong>Deteccion</strong></td>
+<td>Medida provisional, secciones (hechos, pretensiones), duplicados (MinHash + TF-IDF + Entity)</td>
+</tr>
+<tr>
+<td><strong>Datos generados</strong></td>
+<td>Texto OCR (<code>content</code>), entidades extraidas, flags de deteccion, metricas de rendimiento</td>
+</tr>
+<tr>
+<td><strong>Auditoria</strong></td>
+<td>Evento <code>document.process</code> con metricas de tiempo y motor utilizado</td>
+</tr>
+<tr>
+<td><strong>Trazabilidad modelo</strong></td>
+<td>Version SpaCy, motor OCR y configuracion dedup registrados en <code>processing_stats</code> (GOB-07)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="etapa-3-validacion">Etapa 3: Validacion<a class="headerlink" href="#etapa-3-validacion" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Responsable</strong></td>
+<td>Operador humano (nivel de autonomia IA: nulo)</td>
+</tr>
+<tr>
+<td><strong>Acciones</strong></td>
+<td>Revisar y corregir entidades NER, asignar radicado y juzgado (campos manuales)</td>
+</tr>
+<tr>
+<td><strong>Trazabilidad</strong></td>
+<td>Cada correccion registrada en tabla <code>corrections</code> (valor original, corregido, fecha)</td>
+</tr>
+<tr>
+<td><strong>Auditoria</strong></td>
+<td>Evento <code>document.validate</code> con campos modificados</td>
+</tr>
+<tr>
+<td><strong>Aviso IA</strong></td>
+<td>Banner "Datos asistidos por IA — verificar antes de guardar" (GOB-01)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="etapa-4-almacenamiento">Etapa 4: Almacenamiento<a class="headerlink" href="#etapa-4-almacenamiento" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Persistencia</strong></td>
+<td>SQLite WAL mode, foreign keys habilitadas</td>
+</tr>
+<tr>
+<td><strong>Indexacion</strong></td>
+<td>FTS5 para busqueda full-text (9 campos), indices B-tree (hash, status, tipo, radicado, cedula, correo)</td>
+</tr>
+<tr>
+<td><strong>Cache</strong></td>
+<td>TF-IDF incremental para deteccion de duplicados</td>
+</tr>
+<tr>
+<td><strong>Integridad</strong></td>
+<td>Hash SHA-256 por documento, ON DELETE CASCADE en correcciones y stats</td>
+</tr>
+<tr>
+<td><strong>Backup</strong></td>
+<td>Segun politica de la entidad (responsabilidad Admin TI)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="etapa-5-consulta">Etapa 5: Consulta<a class="headerlink" href="#etapa-5-consulta" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Metodos</strong></td>
+<td>Busqueda por radicado, cedula, nombre, texto libre (FTS5), filtros combinados</td>
+</tr>
+<tr>
+<td><strong>Exportacion</strong></td>
+<td>Excel (.xlsx) con filtro por rango de fechas</td>
+</tr>
+<tr>
+<td><strong>Historial</strong></td>
+<td>Consulta de documentos previos del mismo accionante (cedula, correo, nombre)</td>
+</tr>
+<tr>
+<td><strong>Auditoria</strong></td>
+<td>Evento <code>document.search</code> y <code>document.export</code> registrados</td>
+</tr>
+</tbody>
+</table>
+<h4 id="etapa-6-eliminacion">Etapa 6: Eliminacion<a class="headerlink" href="#etapa-6-eliminacion" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Criterio</strong></td>
+<td>Segun Tablas de Retencion Documental (TRD) de la Rama Judicial</td>
+</tr>
+<tr>
+<td><strong>Procedimiento</strong></td>
+<td>Ver seccion 7 de este documento</td>
+</tr>
+<tr>
+<td><strong>Auditoria</strong></td>
+<td>Evento <code>document.delete</code> registrado con ID del documento</td>
+</tr>
+<tr>
+<td><strong>Cascada</strong></td>
+<td>ON DELETE CASCADE elimina correcciones y stats asociadas</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-politica-de-retencion">6. Politica de Retencion<a class="headerlink" href="#6-politica-de-retencion" title="Permanent link">&para;</a></h2>
+<h3 id="61-documentos-judiciales">6.1 Documentos judiciales<a class="headerlink" href="#61-documentos-judiciales" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tipo de dato</th>
+<th>Ubicacion</th>
+<th>Retencion</th>
+<th>Fundamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Documentos procesados (tabla <code>documents</code>)</td>
+<td>BD SQLite</td>
+<td>Segun TRD de la Rama Judicial</td>
+<td>Acuerdo PSAA06-3547 y actualizaciones</td>
+</tr>
+<tr>
+<td>Correcciones (tabla <code>corrections</code>)</td>
+<td>BD SQLite</td>
+<td>Misma retencion que el documento asociado</td>
+<td>Trazabilidad de cambios</td>
+</tr>
+<tr>
+<td>Metricas de procesamiento (<code>processing_stats</code>)</td>
+<td>BD SQLite</td>
+<td>Misma retencion que el documento asociado</td>
+<td>Auditoria de rendimiento</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Nota</strong>: Las Tablas de Retencion Documental (TRD) de la Rama Judicial definen plazos especificos por serie documental. El CSJ Bello debe consultar las TRD vigentes para determinar los plazos aplicables a cada tipo de documento. Tipicamente, los expedientes de tutela se conservan entre 5 y 20 anos segun la serie.</p>
+</blockquote>
+<h3 id="62-datos-de-auditoria">6.2 Datos de auditoria<a class="headerlink" href="#62-datos-de-auditoria" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tipo de dato</th>
+<th>Ubicacion</th>
+<th>Retencion</th>
+<th>Fundamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eventos de auditoria (<code>audit_events</code>)</td>
+<td>BD SQLite</td>
+<td>Minimo 2 anos</td>
+<td>PCSJA24-12243 Art.12, buenas practicas</td>
+</tr>
+<tr>
+<td>Logs de aplicacion (tabla <code>logs</code>)</td>
+<td>BD SQLite</td>
+<td>1 ano</td>
+<td>Soporte tecnico y debugging</td>
+</tr>
+<tr>
+<td>Logs de aplicacion (archivo)</td>
+<td><code>logs/sherlock_docs.log</code></td>
+<td>30 dias con rotacion automatica</td>
+<td>Espacio en disco, suficiente para diagnostico</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-datos-temporales-y-derivados">6.3 Datos temporales y derivados<a class="headerlink" href="#63-datos-temporales-y-derivados" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tipo de dato</th>
+<th>Ubicacion</th>
+<th>Retencion</th>
+<th>Mecanismo de limpieza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PDFs subidos pendientes</td>
+<td><code>data/uploads/</code></td>
+<td>Hasta procesamiento o cancelacion</td>
+<td><code>safe_delete_temp()</code> automatico (HAL-01)</td>
+</tr>
+<tr>
+<td>Actas de reparto temporales</td>
+<td><code>data/uploads/</code></td>
+<td>Hasta extraccion de datos</td>
+<td>Limpieza en <code>validate.py</code> y <code>manual_entry.py</code></td>
+</tr>
+<tr>
+<td>Cache TF-IDF</td>
+<td><code>data/cache/</code></td>
+<td>Indefinida (se reconstruye automaticamente)</td>
+<td>Rebuild cuando &gt;10% docs nuevos</td>
+</tr>
+<tr>
+<td>Cache MinHash</td>
+<td><code>data/cache/</code></td>
+<td>Indefinida (se reconstruye automaticamente)</td>
+<td>Rebuild con vectorizer</td>
+</tr>
+</tbody>
+</table>
+<h3 id="64-backups">6.4 Backups<a class="headerlink" href="#64-backups" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Directriz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frecuencia</td>
+<td>Segun politica del area de TI del CSJ Bello</td>
+</tr>
+<tr>
+<td>Medio</td>
+<td>Almacenamiento local de la entidad (no cloud externo)</td>
+</tr>
+<tr>
+<td>Retencion de backups</td>
+<td>Segun TRD de la Rama Judicial</td>
+</tr>
+<tr>
+<td>Responsable</td>
+<td>Administrador de TI</td>
+</tr>
+<tr>
+<td>Cifrado</td>
+<td>Recomendado para medios extraibles</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-procedimiento-de-eliminacion">7. Procedimiento de Eliminacion<a class="headerlink" href="#7-procedimiento-de-eliminacion" title="Permanent link">&para;</a></h2>
+<h3 id="71-eliminacion-de-documentos-individuales">7.1 Eliminacion de documentos individuales<a class="headerlink" href="#71-eliminacion-de-documentos-individuales" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Solicitud</strong>: El Coordinador del CSJ autoriza la eliminacion conforme a las TRD</li>
+<li><strong>Verificacion</strong>: Confirmar que el plazo de retencion ha sido cumplido</li>
+<li><strong>Ejecucion</strong>: Eliminar el registro de la tabla <code>documents</code></li>
+<li><strong>Cascada automatica</strong>: Las tablas <code>corrections</code> y <code>processing_stats</code> se eliminan automaticamente (ON DELETE CASCADE)</li>
+<li><strong>FTS5</strong>: Los triggers de la base de datos actualizan automaticamente el indice de busqueda</li>
+<li><strong>Auditoria</strong>: El evento <code>document.delete</code> queda registrado en <code>audit_events</code></li>
+<li><strong>Cache</strong>: Se reconstruye el indice TF-IDF en el siguiente ciclo de deteccion de duplicados</li>
+</ol>
+<h3 id="72-eliminacion-masiva-purga-por-fecha">7.2 Eliminacion masiva (purga por fecha)<a class="headerlink" href="#72-eliminacion-masiva-purga-por-fecha" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Autorizacion</strong>: Requiere aprobacion escrita del Coordinador del CSJ y del Oficial de Proteccion de Datos</li>
+<li><strong>Backup previo</strong>: Realizar copia de seguridad completa de la base de datos antes de la purga</li>
+<li><strong>Ejecucion</strong>: Eliminar documentos cuya <code>created_at</code> exceda el plazo de retencion aplicable</li>
+<li><strong>Verificacion</strong>: Confirmar la eliminacion y la integridad de los datos restantes</li>
+<li><strong>Rebuild cache</strong>: Reconstruir indices TF-IDF y MinHash tras la purga</li>
+<li><strong>Acta</strong>: Documentar la purga en acta firmada con fecha, rango eliminado y cantidad de registros</li>
+</ol>
+<h3 id="73-eliminacion-de-archivos-temporales">7.3 Eliminacion de archivos temporales<a class="headerlink" href="#73-eliminacion-de-archivos-temporales" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Escenario</th>
+<th>Mecanismo</th>
+<th style="text-align: center;">Automatico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PDF procesado exitosamente</td>
+<td><code>safe_delete_temp()</code> tras pipeline</td>
+<td style="text-align: center;">Si</td>
+</tr>
+<tr>
+<td>Procesamiento cancelado</td>
+<td><code>safe_delete_temp()</code> en cancelacion</td>
+<td style="text-align: center;">Si</td>
+</tr>
+<tr>
+<td>Acta de reparto procesada</td>
+<td>Limpieza en paginas validate/manual_entry</td>
+<td style="text-align: center;">Si</td>
+</tr>
+<tr>
+<td>Archivos huerfanos en <code>data/uploads/</code></td>
+<td>Revision periodica manual</td>
+<td style="text-align: center;">No</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Recomendacion</strong>: Implementar una tarea programada (cron) que elimine archivos en <code>data/uploads/</code> con mas de 24 horas de antiguedad.</p>
+</blockquote>
+<h3 id="74-eliminacion-segura">7.4 Eliminacion segura<a class="headerlink" href="#74-eliminacion-segura" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Los archivos eliminados por <code>safe_delete_temp()</code> utilizan <code>os.remove()</code> (eliminacion logica del sistema operativo)</li>
+<li>Para eliminacion segura de medios fisicos (disco duro del servidor), aplicar procedimientos de borrado seguro conforme a la politica del area de TI</li>
+<li>La base de datos SQLite utiliza el comando <code>VACUUM</code> para recuperar espacio tras eliminaciones masivas</li>
+</ul>
+<hr />
+<h2 id="8-controles-de-acceso">8. Controles de Acceso<a class="headerlink" href="#8-controles-de-acceso" title="Permanent link">&para;</a></h2>
+<h3 id="81-autenticacion-gob-05">8.1 Autenticacion (GOB-05)<a class="headerlink" href="#81-autenticacion-gob-05" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Estado</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mecanismo</td>
+<td>Planificado</td>
+<td>streamlit-authenticator con bcrypt</td>
+</tr>
+<tr>
+<td>Almacenamiento de credenciales</td>
+<td>Planificado</td>
+<td>Hash bcrypt en configuracion local</td>
+</tr>
+<tr>
+<td>Sesiones</td>
+<td>Planificado</td>
+<td>Token de sesion con expiracion configurable</td>
+</tr>
+<tr>
+<td>Intentos fallidos</td>
+<td>Planificado</td>
+<td>Bloqueo temporal tras N intentos</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Estado actual</strong>: La autenticacion (GOB-05) esta en proceso de implementacion. Mientras tanto, el acceso al sistema se restringe mediante controles de red (acceso solo desde la red interna del CSJ o VPN institucional).</p>
+</blockquote>
+<h3 id="82-autorizacion">8.2 Autorizacion<a class="headerlink" href="#82-autorizacion" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>Permisos</th>
+<th>Usuarios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Operador</strong></td>
+<td>Subir, procesar, validar, buscar, exportar</td>
+<td>Funcionarios de registro</td>
+</tr>
+<tr>
+<td><strong>Coordinador</strong></td>
+<td>Todo lo anterior + estadisticas + gestion de configuracion</td>
+<td>Coordinador CSJ</td>
+</tr>
+<tr>
+<td><strong>Administrador</strong></td>
+<td>Todo lo anterior + gestion de usuarios + acceso a logs</td>
+<td>Area de TI</td>
+</tr>
+</tbody>
+</table>
+<h3 id="83-controles-tecnicos-implementados">8.3 Controles tecnicos implementados<a class="headerlink" href="#83-controles-tecnicos-implementados" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Descripcion</th>
+<th>Referencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proteccion SQL injection</td>
+<td>Whitelist de campos validos, parametros preparados</td>
+<td>SEC-06</td>
+</tr>
+<tr>
+<td>Proteccion XSS</td>
+<td>HTML escape en todas las salidas de la GUI</td>
+<td>SEC-07</td>
+</tr>
+<tr>
+<td>Docker non-root</td>
+<td>Contenedor ejecuta como usuario sin privilegios (UID 1000)</td>
+<td>SEC-15</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>Certificado TLS via EasyPanel/Let's Encrypt</td>
+<td>Infraestructura</td>
+</tr>
+<tr>
+<td>WAL mode</td>
+<td>Previene corrupcion por accesos concurrentes</td>
+<td>BD</td>
+</tr>
+<tr>
+<td>Foreign keys</td>
+<td>Integridad referencial entre tablas</td>
+<td>BD</td>
+</tr>
+<tr>
+<td>Validacion de inputs</td>
+<td>Sanitizacion de cedula, validacion de fechas, tipos de archivo</td>
+<td>SEC-08, IMP-01, IMP-02</td>
+</tr>
+</tbody>
+</table>
+<h3 id="84-controles-organizativos">8.4 Controles organizativos<a class="headerlink" href="#84-controles-organizativos" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Responsable</th>
+<th>Frecuencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revision de logs del sistema</td>
+<td>Administrador de TI</td>
+<td>Semanal</td>
+</tr>
+<tr>
+<td>Revision de eventos de auditoria</td>
+<td>Oficial de Proteccion de Datos</td>
+<td>Mensual</td>
+</tr>
+<tr>
+<td>Cambio de credenciales</td>
+<td>Coordinador CSJ</td>
+<td>Trimestral</td>
+</tr>
+<tr>
+<td>Revision de politicas</td>
+<td>Oficial de Proteccion de Datos</td>
+<td>Anual</td>
+</tr>
+<tr>
+<td>Capacitacion a operadores</td>
+<td>Coordinador CSJ</td>
+<td>Al ingreso + anual</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-respuesta-ante-incidentes-de-datos">9. Respuesta ante Incidentes de Datos<a class="headerlink" href="#9-respuesta-ante-incidentes-de-datos" title="Permanent link">&para;</a></h2>
+<h3 id="91-tipos-de-incidentes">9.1 Tipos de incidentes<a class="headerlink" href="#91-tipos-de-incidentes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Ejemplo</th>
+<th>Severidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Acceso no autorizado</td>
+<td>Login con credenciales comprometidas</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Perdida de datos</td>
+<td>Corrupcion de la base de datos sin backup reciente</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Fuga de datos</td>
+<td>Acceso externo al servidor por vulnerabilidad</td>
+<td>Critica</td>
+</tr>
+<tr>
+<td>Alteracion indebida</td>
+<td>Modificacion de entidades sin autorizacion</td>
+<td>Media</td>
+</tr>
+<tr>
+<td>Indisponibilidad</td>
+<td>Servidor caido por mas de 4 horas</td>
+<td>Media</td>
+</tr>
+</tbody>
+</table>
+<h3 id="92-protocolo-de-respuesta">9.2 Protocolo de respuesta<a class="headerlink" href="#92-protocolo-de-respuesta" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Deteccion</strong>: Identificar el incidente via logs, auditoria o reporte de usuario</li>
+<li><strong>Contencion</strong>: Aislar el componente afectado (suspender acceso si es necesario)</li>
+<li><strong>Evaluacion</strong>: Determinar alcance, datos afectados y numero de titulares impactados</li>
+<li><strong>Notificacion</strong>: Informar al Coordinador del CSJ, al Oficial de Proteccion de Datos y, si aplica, a la SIC (Art. 17, Ley 1581/2012)</li>
+<li><strong>Remediacion</strong>: Aplicar correccion, restaurar backup si es necesario</li>
+<li><strong>Documentacion</strong>: Registrar el incidente, causas, acciones tomadas y lecciones aprendidas</li>
+</ol>
+<hr />
+<h2 id="10-metricas-y-monitoreo">10. Metricas y Monitoreo<a class="headerlink" href="#10-metricas-y-monitoreo" title="Permanent link">&para;</a></h2>
+<h3 id="101-indicadores-de-gobernanza-de-datos">10.1 Indicadores de gobernanza de datos<a class="headerlink" href="#101-indicadores-de-gobernanza-de-datos" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Meta</th>
+<th>Frecuencia de medicion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Documentos sin validar (status <code>processed</code>)</td>
+<td>&lt; 5% del total</td>
+<td>Semanal</td>
+</tr>
+<tr>
+<td>Tasa de correcciones NER</td>
+<td>Tendencia decreciente</td>
+<td>Mensual</td>
+</tr>
+<tr>
+<td>Eventos de auditoria registrados vs operaciones</td>
+<td>100%</td>
+<td>Mensual</td>
+</tr>
+<tr>
+<td>Archivos temporales huerfanos</td>
+<td>0</td>
+<td>Semanal</td>
+</tr>
+<tr>
+<td>Espacio en disco utilizado</td>
+<td>&lt; 80% capacidad</td>
+<td>Semanal</td>
+</tr>
+<tr>
+<td>Tiempo desde ultimo backup</td>
+<td>&lt; 24 horas</td>
+<td>Diario</td>
+</tr>
+</tbody>
+</table>
+<h3 id="102-herramientas-de-monitoreo">10.2 Herramientas de monitoreo<a class="headerlink" href="#102-herramientas-de-monitoreo" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pagina de Estadisticas (GUI)</td>
+<td>Volumenes, tiempos promedio, distribucion por tipo</td>
+</tr>
+<tr>
+<td>Tabla <code>audit_events</code></td>
+<td>Trazabilidad de acciones</td>
+</tr>
+<tr>
+<td>Tabla <code>processing_stats</code></td>
+<td>Rendimiento del pipeline por documento</td>
+</tr>
+<tr>
+<td>Logs rotativos</td>
+<td>Diagnostico tecnico</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-documentos-relacionados">11. Documentos Relacionados<a class="headerlink" href="#11-documentos-relacionados" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Referencia</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Politica de Tratamiento de Datos Personales</td>
+<td><code>docs/governance/POLITICA_TRATAMIENTO_DATOS.md</code></td>
+<td>Derechos ARCO, finalidades, medidas de seguridad</td>
+</tr>
+<tr>
+<td>Evaluacion de Impacto IA</td>
+<td><code>docs/governance/EVALUACION_IMPACTO_IA.md</code></td>
+<td>Analisis de riesgos del sistema de IA</td>
+</tr>
+<tr>
+<td>Ficha Tecnica (Model Card)</td>
+<td><code>docs/governance/MODEL_CARD.md</code></td>
+<td>Especificaciones de los modelos de IA</td>
+</tr>
+<tr>
+<td>Plan de Pruebas Manuales</td>
+<td><code>planning_15_.../01_PLAN_PRUEBAS_MANUALES.md</code></td>
+<td>Procedimientos de prueba de seguridad</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-aprobaciones">12. Aprobaciones<a class="headerlink" href="#12-aprobaciones" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Nombre</th>
+<th>Firma</th>
+<th>Fecha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coordinador CSJ Bello</td>
+<td><strong><em>_</em></strong><strong><em>_</em></strong>___</td>
+<td><strong><em>_</em></strong></td>
+<td><strong><em>_</em></strong></td>
+</tr>
+<tr>
+<td>Oficial de Proteccion de Datos</td>
+<td><strong><em>_</em></strong><strong><em>_</em></strong>___</td>
+<td><strong><em>_</em></strong></td>
+<td><strong><em>_</em></strong></td>
+</tr>
+<tr>
+<td>Administrador de TI</td>
+<td><strong><em>_</em></strong><strong><em>_</em></strong>___</td>
+<td><strong><em>_</em></strong></td>
+<td><strong><em>_</em></strong></td>
+</tr>
+<tr>
+<td>Area Juridica CSJ</td>
+<td><strong><em>_</em></strong><strong><em>_</em></strong>___</td>
+<td><strong><em>_</em></strong></td>
+<td><strong><em>_</em></strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Este documento es un borrador tecnico preparado por el equipo de desarrollo. Debe ser revisado, completado y aprobado por el area juridica del Centro de Servicios Judiciales de Bello antes de su aplicacion.</em></p>
+<p><em>Referencias: Ley 1581 de 2012, Decreto 1377 de 2013, CONPES 3975, Acuerdo PCSJA24-12243</em>
+<em>Version: 1.0 (Borrador) — 2026-03-06</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2026 CSJ Bello &mdash; Sherlock-docs v1.0
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/hammerdev99/sherlock-docs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

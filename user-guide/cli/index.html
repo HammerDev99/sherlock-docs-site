@@ -1,0 +1,3741 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Sistema de procesamiento de documentos legales — Documentacion tecnica y gobernanza">
+      
+      
+      
+        <link rel="canonical" href="https://docs-sherlock.sprintjudicial.com/user-guide/cli/">
+      
+      
+        <link rel="prev" href="../manual/">
+      
+      
+        <link rel="next" href="../../technical/architecture/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>CLI (21 Comandos) - Sherlock-docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <!-- Umami Analytics (self-hosted) -->
+  <script defer src="https://analytics.sprintjudicial.com/script.js"
+          data-website-id="">
+  </script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#manual-de-uso-sherlock-cli" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Sherlock-docs" class="md-header__button md-logo" aria-label="Sherlock-docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sherlock-docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CLI (21 Comandos)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartir" aria-label="Compartir" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hammerdev99/sherlock-docs" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hammerdev99/sherlock-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../manual/" class="md-tabs__link">
+          
+  
+  
+  Guia de Usuario
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../technical/architecture/" class="md-tabs__link">
+          
+  
+  
+  Arquitectura
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../technical/code-conventions/" class="md-tabs__link">
+          
+  
+  
+  Desarrollo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../governance/evaluacion-impacto/" class="md-tabs__link">
+          
+  
+  
+  Gobernanza IA
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../project-status/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Estado del Proyecto
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Sherlock-docs" class="md-nav__button md-logo" aria-label="Sherlock-docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Sherlock-docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hammerdev99/sherlock-docs" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hammerdev99/sherlock-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guia de Usuario
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guia de Usuario
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manual Completo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI (21 Comandos)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI (21 Comandos)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opciones-globales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opciones Globales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subcomandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subcomandos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Subcomandos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-listar-documentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        list — Listar documentos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-ver-detalle-de-un-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get — Ver detalle de un documento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-busqueda-full-text-fts5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        search — Búsqueda full-text (FTS5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-eliminar-un-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        delete — Eliminar un documento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-batch-eliminacion-masiva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        delete-batch — Eliminación masiva
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-actualizar-un-campo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        update — Actualizar un campo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-importar-desde-excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        import — Importar desde Excel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-exportar-a-excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        export — Exportar a Excel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stats-estadisticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stats — Estadísticas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count-contar-documentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        count — Contar documentos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find-buscar-por-correo-o-accionante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        find — Buscar por correo o accionante
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corrections-ver-correcciones-de-un-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        corrections — Ver correcciones de un documento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-stats-estadisticas-de-correcciones-ner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        correction-stats — Estadísticas de correcciones NER
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stats-daily-estadisticas-diarias-de-procesamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stats-daily — Estadísticas diarias de procesamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-metricas-de-procesamiento-de-un-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        metrics — Métricas de procesamiento de un documento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-status-actualizar-estado-de-un-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        update-status — Actualizar estado de un documento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health-verificar-estado-de-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        health — Verificar estado de servicios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extract-acta-extraer-datos-de-acta-de-reparto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        extract-acta — Extraer datos de acta de reparto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-procesar-documento-pdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        process — Procesar documento PDF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audit-report-reporte-de-auditoria-gob-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        audit-report — Reporte de auditoría (GOB-11)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flujos-de-trabajo-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flujos de Trabajo Comunes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flujos de Trabajo Comunes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limpiar-una-importacion-fallida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limpiar una importación fallida
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificar-un-documento-especifico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificar un documento específico
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corregir-datos-de-un-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Corregir datos de un documento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procesar-un-documento-nuevo-desde-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procesar un documento nuevo desde terminal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extraer-datos-de-acta-de-reparto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extraer datos de acta de reparto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitorear-precision-de-ner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitorear precisión de NER
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificar-salud-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificar salud del sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buscar-documentos-de-un-accionante-recurrente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buscar documentos de un accionante recurrente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exportar-para-reporte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exportar para reporte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auditar-actividad-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auditar actividad del sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usar-con-otra-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usar con otra base de datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigos-de-salida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Códigos de Salida
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia-rapida-21-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referencia Rápida — 21 Comandos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapeo-cli-futuro-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapeo CLI → Futuro API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notas-tecnicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notas Técnicas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitectura
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Arquitectura
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vista General
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/01_system_context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contexto del Sistema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/02_architecture_layers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capas de Arquitectura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/03_processing_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline de Procesamiento
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/04_duplicate_detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deteccion de Duplicados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/05_class_diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagrama de Clases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/06_component_diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagrama de Componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/07_database_schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema de Base de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/08_gui_navigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navegacion GUI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../diagrams/09_ner_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline NER
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desarrollo
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Desarrollo
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/code-conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convenciones de Codigo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../technical/antipatterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Antipatrones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gobernanza IA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Gobernanza IA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/evaluacion-impacto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evaluacion de Impacto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/model-card/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Card
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/etica-ia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Marco Etico IA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/politica-datos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Politica de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/data-governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gobernanza de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estado del Proyecto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instalacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalación
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opciones-globales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opciones Globales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subcomandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subcomandos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Subcomandos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-listar-documentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        list — Listar documentos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-ver-detalle-de-un-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        get — Ver detalle de un documento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-busqueda-full-text-fts5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        search — Búsqueda full-text (FTS5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-eliminar-un-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        delete — Eliminar un documento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-batch-eliminacion-masiva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        delete-batch — Eliminación masiva
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-actualizar-un-campo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        update — Actualizar un campo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-importar-desde-excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        import — Importar desde Excel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-exportar-a-excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        export — Exportar a Excel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stats-estadisticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stats — Estadísticas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count-contar-documentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        count — Contar documentos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find-buscar-por-correo-o-accionante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        find — Buscar por correo o accionante
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corrections-ver-correcciones-de-un-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        corrections — Ver correcciones de un documento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-stats-estadisticas-de-correcciones-ner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        correction-stats — Estadísticas de correcciones NER
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stats-daily-estadisticas-diarias-de-procesamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stats-daily — Estadísticas diarias de procesamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-metricas-de-procesamiento-de-un-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        metrics — Métricas de procesamiento de un documento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-status-actualizar-estado-de-un-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        update-status — Actualizar estado de un documento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health-verificar-estado-de-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        health — Verificar estado de servicios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extract-acta-extraer-datos-de-acta-de-reparto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        extract-acta — Extraer datos de acta de reparto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-procesar-documento-pdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        process — Procesar documento PDF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audit-report-reporte-de-auditoria-gob-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        audit-report — Reporte de auditoría (GOB-11)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flujos-de-trabajo-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flujos de Trabajo Comunes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flujos de Trabajo Comunes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limpiar-una-importacion-fallida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limpiar una importación fallida
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificar-un-documento-especifico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificar un documento específico
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corregir-datos-de-un-documento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Corregir datos de un documento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procesar-un-documento-nuevo-desde-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procesar un documento nuevo desde terminal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extraer-datos-de-acta-de-reparto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extraer datos de acta de reparto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitorear-precision-de-ner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitorear precisión de NER
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificar-salud-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificar salud del sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buscar-documentos-de-un-accionante-recurrente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buscar documentos de un accionante recurrente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exportar-para-reporte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exportar para reporte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auditar-actividad-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auditar actividad del sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usar-con-otra-base-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usar con otra base de datos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codigos-de-salida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Códigos de Salida
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia-rapida-21-comandos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referencia Rápida — 21 Comandos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapeo-cli-futuro-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapeo CLI → Futuro API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notas-tecnicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notas Técnicas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="manual-de-uso-sherlock-cli">Manual de Uso — Sherlock CLI<a class="headerlink" href="#manual-de-uso-sherlock-cli" title="Permanent link">&para;</a></h1>
+<p><strong>Comando</strong>: <code>sherlock</code>
+<strong>Entry point</strong>: <code>sherlock_docs.interfaces.cli:main</code> (registrado en <code>pyproject.toml</code>)
+<strong>Requisito</strong>: <code>pip install -e .</code> desde el directorio raíz del proyecto</p>
+<hr />
+<h2 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Desde el directorio raíz del proyecto</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Verificar instalación</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sherlock<span class="w"> </span>--help
+</span></code></pre></div>
+<p>Si se usa un virtualenv, asegurarse de tenerlo activado.</p>
+<hr />
+<h2 id="opciones-globales">Opciones Globales<a class="headerlink" href="#opciones-globales" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sherlock [--db RUTA] &lt;subcomando&gt; [opciones]
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--db RUTA</code></td>
+<td>Ruta a la base de datos SQLite</td>
+<td><code>data/database/sherlock.db</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="subcomandos">Subcomandos<a class="headerlink" href="#subcomandos" title="Permanent link">&para;</a></h2>
+<h3 id="list-listar-documentos"><code>list</code> — Listar documentos<a class="headerlink" href="#list-listar-documentos" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sherlock<span class="w"> </span>list<span class="w"> </span><span class="o">[</span>--limit<span class="w"> </span>N<span class="o">]</span><span class="w"> </span><span class="o">[</span>--status<span class="w"> </span>ESTADO<span class="o">]</span><span class="w"> </span><span class="o">[</span>--source<span class="w"> </span>imported<span class="o">]</span><span class="w"> </span><span class="o">[</span>--from<span class="w"> </span>FECHA<span class="o">]</span><span class="w"> </span><span class="o">[</span>--to<span class="w"> </span>FECHA<span class="o">]</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--limit N</code></td>
+<td>Máximo de resultados</td>
+<td>20</td>
+</tr>
+<tr>
+<td><code>--status</code></td>
+<td>Filtrar por estado: <code>pending</code>, <code>processing</code>, <code>processed</code>, <code>validated</code>, <code>error</code></td>
+<td>todos</td>
+</tr>
+<tr>
+<td><code>--source imported</code></td>
+<td>Solo documentos importados desde Excel</td>
+<td>todos</td>
+</tr>
+<tr>
+<td><code>--from FECHA</code></td>
+<td>Fecha inicio (YYYY-MM-DD), requiere <code>--to</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>--to FECHA</code></td>
+<td>Fecha fin (YYYY-MM-DD), requiere <code>--from</code></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplos:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Últimos 10 documentos</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sherlock<span class="w"> </span>list<span class="w"> </span>--limit<span class="w"> </span><span class="m">10</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Solo importados</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>sherlock<span class="w"> </span>list<span class="w"> </span>--source<span class="w"> </span>imported<span class="w"> </span>--limit<span class="w"> </span><span class="m">50</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Solo validados</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>sherlock<span class="w"> </span>list<span class="w"> </span>--status<span class="w"> </span>validated
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># Rango de fechas (usa created_at = fecha de reparto para importados)</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>sherlock<span class="w"> </span>list<span class="w"> </span>--from<span class="w"> </span><span class="m">2022</span>-07-01<span class="w"> </span>--to<span class="w"> </span><span class="m">2022</span>-08-01
+</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ID                                     | RADICADO             | ACCIONANTE                | ESTADO       | CREADO
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>-----------------------------------------------------------------------------------------------------------------------------
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>e91032d9-ddc8-42f4-8271-5f733b6a526c   | 05088400300320220... | JULIO CÉSAR LEDESMA RE... | validated    | 2022-07-28 00:00
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>33210d12-b780-469e-8773-53b986e62c0c   | 05088400300320220... | JULIO CESAR AVENDAÑO P... | validated    | 2022-07-26 00:00
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>Total: 2 documento(s)
+</span></code></pre></div>
+<blockquote>
+<p>La columna CREADO muestra la fecha de reparto para documentos importados (no la fecha de importación).</p>
+</blockquote>
+<hr />
+<h3 id="get-ver-detalle-de-un-documento"><code>get</code> — Ver detalle de un documento<a class="headerlink" href="#get-ver-detalle-de-un-documento" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sherlock<span class="w"> </span>get<span class="w"> </span>&lt;id&gt;
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sherlock<span class="w"> </span>get<span class="w"> </span>--radicado<span class="w"> </span>&lt;radicado&gt;
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>sherlock<span class="w"> </span>get<span class="w"> </span>--cedula<span class="w"> </span>&lt;cedula&gt;
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Argumento</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;id&gt;</code></td>
+<td>UUID del documento</td>
+</tr>
+<tr>
+<td><code>--radicado</code></td>
+<td>Buscar por radicado exacto</td>
+</tr>
+<tr>
+<td><code>--cedula</code></td>
+<td>Buscar por cédula (si hay varios, muestra tabla)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplos:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Por ID</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sherlock<span class="w"> </span>get<span class="w"> </span>e91032d9-ddc8-42f4-8271-5f733b6a526c
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Por radicado</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>sherlock<span class="w"> </span>get<span class="w"> </span>--radicado<span class="w"> </span><span class="m">05088400300320220069600</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># Por cédula</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>sherlock<span class="w"> </span>get<span class="w"> </span>--cedula<span class="w"> </span><span class="m">71762368</span>
+</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>  ID                     : e91032d9-ddc8-42f4-8271-5f733b6a526c
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  Archivo                : import_05088400300320220069600.xlsx
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  Ruta                   : [imported]
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  Tipo                   : tutela
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>  Estado                 : validated
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>  Confianza OCR          : 0.00
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>  ...
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>  Accionante             : JULIO CÉSAR LEDESMA RENDÓN
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>  Accionado              : Administración del proyecto Tierra Linda...
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>  Radicado               : 05088400300320220069600
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>  Juzgado                : JUZGADO 1 CIVIL CIRCUITO BELLO
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>  Fecha documento        : 2022-07-28
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>  Cédula                 : 71762368
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>  Correo                 : juliozh@hotmail.com
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>  ...
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>  Creado                 : 2022-07-28 00:00:00
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>  Importado              : 2026-03-04 15:48:37
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>  Actualizado            : 2026-03-04 15:48:37
+</span></code></pre></div>
+<blockquote>
+<p><strong>Nota sobre fechas en documentos importados:</strong>
+- <strong>Creado</strong> = fecha de reparto del Excel (columna FECHA/HORA), que es la fecha operativamente relevante
+- <strong>Importado</strong> = fecha/hora en que se ejecutó la importación (solo aparece en documentos importados)
+- Para documentos procesados por OCR/NER, "Creado" es la fecha de procesamiento e "Importado" muestra "(no)"</p>
+</blockquote>
+<hr />
+<h3 id="search-busqueda-full-text-fts5"><code>search</code> — Búsqueda full-text (FTS5)<a class="headerlink" href="#search-busqueda-full-text-fts5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sherlock<span class="w"> </span>search<span class="w"> </span>&lt;texto&gt;<span class="w"> </span><span class="o">[</span>--limit<span class="w"> </span>N<span class="o">]</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;texto&gt;</code></td>
+<td>Texto a buscar (nombre, radicado, contenido, etc.)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>--limit N</code></td>
+<td>Máximo de resultados</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplos:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Buscar por nombre</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sherlock<span class="w"> </span>search<span class="w"> </span><span class="s2">&quot;LEDESMA&quot;</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Buscar por contenido</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>sherlock<span class="w"> </span>search<span class="w"> </span><span class="s2">&quot;tutela&quot;</span><span class="w"> </span>--limit<span class="w"> </span><span class="m">5</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Buscar por radicado parcial</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>sherlock<span class="w"> </span>search<span class="w"> </span><span class="s2">&quot;050884003&quot;</span>
+</span></code></pre></div>
+<p>La búsqueda usa FTS5 de SQLite, que indexa: radicado, demandante, demandado, juzgado, observaciones, contenido OCR, cédula, correo y etiquetas.</p>
+<hr />
+<h3 id="delete-eliminar-un-documento"><code>delete</code> — Eliminar un documento<a class="headerlink" href="#delete-eliminar-un-documento" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sherlock<span class="w"> </span>delete<span class="w"> </span>&lt;id&gt;<span class="w"> </span><span class="o">[</span>--force<span class="o">]</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sherlock<span class="w"> </span>delete<span class="w"> </span>--radicado<span class="w"> </span>&lt;radicado&gt;<span class="w"> </span><span class="o">[</span>--force<span class="o">]</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;id&gt;</code></td>
+<td>UUID del documento</td>
+</tr>
+<tr>
+<td><code>--radicado</code></td>
+<td>Buscar por radicado</td>
+</tr>
+<tr>
+<td><code>--force</code></td>
+<td>Eliminar sin pedir confirmación</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplos:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Con confirmación interactiva</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sherlock<span class="w"> </span>delete<span class="w"> </span>e91032d9-ddc8-42f4-8271-5f733b6a526c
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Sin confirmación</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>sherlock<span class="w"> </span>delete<span class="w"> </span>e91032d9-ddc8-42f4-8271-5f733b6a526c<span class="w"> </span>--force
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Por radicado</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>sherlock<span class="w"> </span>delete<span class="w"> </span>--radicado<span class="w"> </span><span class="m">05088400300320220069600</span><span class="w"> </span>--force
+</span></code></pre></div>
+<p>Sin <code>--force</code>, el CLI muestra los datos del documento y pide confirmación:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Documento: e91032d9-ddc8-42f4-8271-5f733b6a526c
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>  Radicado: 05088400300320220069600
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  Accionante: JULIO CÉSAR LEDESMA RENDÓN
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>¿Eliminar este documento? [s/N]:
+</span></code></pre></div>
+<hr />
+<h3 id="delete-batch-eliminacion-masiva"><code>delete-batch</code> — Eliminación masiva<a class="headerlink" href="#delete-batch-eliminacion-masiva" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sherlock<span class="w"> </span>delete-batch<span class="w"> </span><span class="o">[</span>--source<span class="w"> </span>imported<span class="o">]</span><span class="w"> </span><span class="o">[</span>--radicado-prefix<span class="w"> </span>PREFIJO<span class="o">]</span><span class="w"> </span><span class="o">[</span>--force<span class="o">]</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--source imported</code></td>
+<td>Solo documentos importados desde Excel</td>
+</tr>
+<tr>
+<td><code>--radicado-prefix</code></td>
+<td>Solo documentos cuyo radicado empiece con el prefijo</td>
+</tr>
+<tr>
+<td><code>--force</code></td>
+<td>Eliminar sin pedir confirmación</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplos:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Eliminar TODOS los importados (con confirmación)</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>sherlock<span class="w"> </span>delete-batch<span class="w"> </span>--source<span class="w"> </span>imported
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Eliminar importados con prefijo IMPORT- sin confirmación</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>sherlock<span class="w"> </span>delete-batch<span class="w"> </span>--source<span class="w"> </span>imported<span class="w"> </span>--radicado-prefix<span class="w"> </span>IMPORT-<span class="w"> </span>--force
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># Eliminar todos los que empiecen con &quot;050884003&quot;</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>sherlock<span class="w"> </span>delete-batch<span class="w"> </span>--radicado-prefix<span class="w"> </span><span class="m">050884003</span><span class="w"> </span>--force
+</span></code></pre></div>
+<p>Sin <code>--force</code>, muestra los primeros 10 documentos y pide confirmación antes de proceder.</p>
+<hr />
+<h3 id="update-actualizar-un-campo"><code>update</code> — Actualizar un campo<a class="headerlink" href="#update-actualizar-un-campo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sherlock<span class="w"> </span>update<span class="w"> </span>&lt;id&gt;<span class="w"> </span>&lt;campo&gt;<span class="w"> </span>&lt;valor&gt;
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Argumento</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;id&gt;</code></td>
+<td>UUID del documento</td>
+</tr>
+<tr>
+<td><code>&lt;campo&gt;</code></td>
+<td>Nombre del campo a actualizar</td>
+</tr>
+<tr>
+<td><code>&lt;valor&gt;</code></td>
+<td>Nuevo valor</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Campos válidos:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>demandante</code></td>
+<td>Nombre del accionante</td>
+</tr>
+<tr>
+<td><code>demandado</code></td>
+<td>Nombre del accionado</td>
+</tr>
+<tr>
+<td><code>radicado</code></td>
+<td>Número de radicado</td>
+</tr>
+<tr>
+<td><code>juzgado</code></td>
+<td>Juzgado de reparto</td>
+</tr>
+<tr>
+<td><code>fecha_documento</code></td>
+<td>Fecha del documento</td>
+</tr>
+<tr>
+<td><code>numero_acta</code></td>
+<td>Número de acta</td>
+</tr>
+<tr>
+<td><code>observaciones</code></td>
+<td>Texto libre</td>
+</tr>
+<tr>
+<td><code>etiquetas</code></td>
+<td>JSON array de etiquetas</td>
+</tr>
+<tr>
+<td><code>direccion_demandante</code></td>
+<td>Dirección del accionante</td>
+</tr>
+<tr>
+<td><code>direccion_demandado</code></td>
+<td>Dirección del accionado</td>
+</tr>
+<tr>
+<td><code>correo</code></td>
+<td>Email del accionante</td>
+</tr>
+<tr>
+<td><code>cedula</code></td>
+<td>CC/CE/NIT del accionante</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplos:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Corregir nombre del accionante</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>sherlock<span class="w"> </span>update<span class="w"> </span>e91032d9-ddc8-42f4-8271-5f733b6a526c<span class="w"> </span>demandante<span class="w"> </span><span class="s2">&quot;JULIO CÉSAR LEDESMA RENDÓN&quot;</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Actualizar juzgado</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>sherlock<span class="w"> </span>update<span class="w"> </span>e91032d9-ddc8-42f4-8271-5f733b6a526c<span class="w"> </span>juzgado<span class="w"> </span><span class="s2">&quot;JUZGADO 3 CIVIL MUNICIPAL BELLO&quot;</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1"># Agregar observaciones</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>sherlock<span class="w"> </span>update<span class="w"> </span>e91032d9-ddc8-42f4-8271-5f733b6a526c<span class="w"> </span>observaciones<span class="w"> </span><span class="s2">&quot;Revisado por operador&quot;</span>
+</span></code></pre></div>
+<hr />
+<h3 id="import-importar-desde-excel"><code>import</code> — Importar desde Excel<a class="headerlink" href="#import-importar-desde-excel" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sherlock<span class="w"> </span>import<span class="w"> </span>&lt;archivo.xlsx&gt;<span class="w"> </span><span class="o">[</span>--update-existing<span class="o">]</span><span class="w"> </span><span class="o">[</span>--skip-empty-radicado<span class="o">]</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;archivo.xlsx&gt;</code></td>
+<td>Ruta al archivo Excel (formato CSJ)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>--update-existing</code></td>
+<td>Actualizar documentos existentes si el radicado ya existe</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>--skip-empty-radicado</code></td>
+<td>Omitir filas sin radicado</td>
+<td>Sí</td>
+</tr>
+</tbody>
+</table>
+<p>El archivo Excel debe tener las columnas del formato CSJ:
+<code>CORREO</code>, <code>CEDULA</code>, <code>ACCIONANTE</code>, <code>ACCIONADO</code>, <code>RADICADO</code>, <code>FECHA/HORA</code>, <code>SECUENCIA</code>, <code>SECUENCIAANTERIOR</code>, <code>JUZGADO</code>, <code>OBSERVACIONES</code>, <code>COORDENADA</code></p>
+<p><strong>Manejo de fechas al importar:</strong>
+- La columna <code>FECHA/HORA</code> se usa como <code>created_at</code> del documento (fecha de reparto)
+- Esto permite que la GUI, filtros por rango y ordenamiento usen la fecha real del proceso judicial
+- Se registra además <code>imported_at</code> con la fecha/hora de importación (auditoría)
+- Formatos de fecha soportados: <code>YYYY-MM-DD</code>, <code>DD/MM/YYYY</code>, <code>DD-MM-YYYY</code>, <code>YYYY/MM/DD</code>
+- Si la fecha es inválida o vacía, se usa la fecha actual como fallback</p>
+<p><strong>Sanitización automática:</strong>
+- <code>CEDULA</code>: se eliminan puntos, espacios y caracteres no numéricos (ej: <code>1.234.567</code> → <code>1234567</code>)
+- Fechas inválidas se descartan con un warning en los logs</p>
+<p><strong>Ejemplos:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Importar (solo crea nuevos, omite existentes)</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sherlock<span class="w"> </span>import<span class="w"> </span>datos/indice_2026.xlsx
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># Importar actualizando existentes</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>sherlock<span class="w"> </span>import<span class="w"> </span>datos/indice_2026.xlsx<span class="w"> </span>--update-existing
+</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Importación completada:
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>  Total filas:  391
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>  Creados:      385
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>  Actualizados: 0
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>  Omitidos:     4
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>  Errores:      2
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>Detalle de errores:
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>  Fila 156: Radicado vacío
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>  Fila 290: Error al procesar fecha
+</span></code></pre></div>
+<hr />
+<h3 id="export-exportar-a-excel"><code>export</code> — Exportar a Excel<a class="headerlink" href="#export-exportar-a-excel" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sherlock<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&lt;archivo.xlsx&gt;<span class="w"> </span><span class="o">[</span>--from<span class="w"> </span>FECHA<span class="o">]</span><span class="w"> </span><span class="o">[</span>--to<span class="w"> </span>FECHA<span class="o">]</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;archivo.xlsx&gt;</code></td>
+<td>Ruta de salida</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>--from FECHA</code></td>
+<td>Fecha inicio (YYYY-MM-DD)</td>
+<td>sin filtro</td>
+</tr>
+<tr>
+<td><code>--to FECHA</code></td>
+<td>Fecha fin (YYYY-MM-DD)</td>
+<td>sin filtro</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplos:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Exportar todos los documentos</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>sherlock<span class="w"> </span><span class="nb">export</span><span class="w"> </span>salida.xlsx
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1"># Exportar por rango de fechas</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>sherlock<span class="w"> </span><span class="nb">export</span><span class="w"> </span>marzo_2026.xlsx<span class="w"> </span>--from<span class="w"> </span><span class="m">2026</span>-03-01<span class="w"> </span>--to<span class="w"> </span><span class="m">2026</span>-03-31
+</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Exportación completada:
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>  Registros: 423
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>  Archivo:   salida.xlsx
+</span></code></pre></div>
+<p>El Excel generado sigue el formato oficial del Consejo Superior de la Judicatura (CSJ).</p>
+<hr />
+<h3 id="stats-estadisticas"><code>stats</code> — Estadísticas<a class="headerlink" href="#stats-estadisticas" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sherlock<span class="w"> </span>stats
+</span></code></pre></div>
+<p>Sin argumentos. Muestra resumen del repositorio.</p>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>Estadísticas Sherlock-docs
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>========================================
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>  Total documentos: 423
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>  Por estado:
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>    processed   : 32
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>    validated   : 391
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>  Por origen:
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>    procesados  : 32
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>    importados  : 391
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>
+</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>  Tiempos promedio (ms):
+</span><span id="__span-24-14"><a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>    avg_ocr_ms  : 14523
+</span><span id="__span-24-15"><a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a>    avg_ner_ms  : 1742
+</span><span id="__span-24-16"><a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>    avg_dedup_ms: 39
+</span><span id="__span-24-17"><a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>    avg_total_ms: 16425
+</span><span id="__span-24-18"><a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a>    total_documents: 32
+</span></code></pre></div>
+<hr />
+<h3 id="count-contar-documentos"><code>count</code> — Contar documentos<a class="headerlink" href="#count-contar-documentos" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sherlock<span class="w"> </span>count
+</span></code></pre></div>
+<p>Imprime solo el número total de documentos (útil para scripts):</p>
+<div class="highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>423
+</span></code></pre></div>
+<hr />
+<h3 id="find-buscar-por-correo-o-accionante"><code>find</code> — Buscar por correo o accionante<a class="headerlink" href="#find-buscar-por-correo-o-accionante" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>sherlock<span class="w"> </span>find<span class="w"> </span>--email<span class="w"> </span>&lt;correo&gt;
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>sherlock<span class="w"> </span>find<span class="w"> </span>--plaintiff<span class="w"> </span>&lt;nombre&gt;
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--email</code></td>
+<td>Buscar por correo electrónico (coincidencia exacta, case-insensitive)</td>
+</tr>
+<tr>
+<td><code>--plaintiff</code></td>
+<td>Buscar por nombre de accionante (coincidencia parcial, case-insensitive)</td>
+</tr>
+</tbody>
+</table>
+<p>Las opciones son mutuamente excluyentes (se debe usar una u otra).</p>
+<p><strong>Ejemplos:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># Buscar por correo</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>sherlock<span class="w"> </span>find<span class="w"> </span>--email<span class="w"> </span>juliozh@hotmail.com
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="c1"># Buscar por nombre parcial del accionante</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>sherlock<span class="w"> </span>find<span class="w"> </span>--plaintiff<span class="w"> </span><span class="s2">&quot;LEDESMA&quot;</span>
+</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>Documentos con accionante &#39;LEDESMA&#39;:
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>ID                                     | RADICADO             | ACCIONANTE                | ESTADO       | CREADO
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>-----------------------------------------------------------------------------------------------------------------------------
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>e91032d9-ddc8-42f4-8271-5f733b6a526c   | 05088400300320220... | JULIO CÉSAR LEDESMA RE... | validated    | 2022-07-28 00:00
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>Total: 1 documento(s)
+</span></code></pre></div>
+<blockquote>
+<p><strong>Futuro endpoint API</strong>: <code>GET /api/documents?email=x</code> / <code>GET /api/documents?plaintiff=x</code></p>
+</blockquote>
+<hr />
+<h3 id="corrections-ver-correcciones-de-un-documento"><code>corrections</code> — Ver correcciones de un documento<a class="headerlink" href="#corrections-ver-correcciones-de-un-documento" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>sherlock<span class="w"> </span>corrections<span class="w"> </span>&lt;doc_id&gt;
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Argumento</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;doc_id&gt;</code></td>
+<td>UUID del documento</td>
+</tr>
+</tbody>
+</table>
+<p>Muestra todas las correcciones realizadas por operadores sobre las entidades extraídas por NER.</p>
+<p><strong>Ejemplo:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>sherlock<span class="w"> </span>corrections<span class="w"> </span>e91032d9-ddc8-42f4-8271-5f733b6a526c
+</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>Correcciones para documento e91032d9-ddc8-42f4-8271-5f733b6a526c:
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>CAMPO                | ORIGINAL                       | CORREGIDO                      | FECHA
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>------------------------------------------------------------------------------------------------------------
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>demandante           | JULIO CESAR LEDESMA            | JULIO CÉSAR LEDESMA RENDÓN     | 2026-03-03 14:22
+</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>juzgado              | (vacío)                        | JUZGADO 1 CIVIL CIRCUITO BELLO | 2026-03-03 14:23
+</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>
+</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>Total: 2 corrección(es)
+</span></code></pre></div>
+<blockquote>
+<p><strong>Futuro endpoint API</strong>: <code>GET /api/documents/{id}/corrections</code></p>
+</blockquote>
+<hr />
+<h3 id="correction-stats-estadisticas-de-correcciones-ner"><code>correction-stats</code> — Estadísticas de correcciones NER<a class="headerlink" href="#correction-stats-estadisticas-de-correcciones-ner" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>sherlock<span class="w"> </span>correction-stats
+</span></code></pre></div>
+<p>Sin argumentos. Muestra cuántas correcciones se han hecho por campo y la precisión estimada de NER.</p>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>Estadísticas de Correcciones
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>========================================
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>  Total correcciones: 136
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>  Por campo:
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>    tipo_documento      : 25
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>    correo              : 20
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>    demandado           : 20
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>    juzgado             : 18
+</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>    numero_acta         : 18
+</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>    radicado            : 18
+</span><span id="__span-34-12"><a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a>    demandante          : 7
+</span><span id="__span-34-13"><a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>    cedula              : 6
+</span><span id="__span-34-14"><a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>
+</span><span id="__span-34-15"><a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>  Precisión estimada por campo:
+</span><span id="__span-34-16"><a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>    demandado           : 37.5%
+</span><span id="__span-34-17"><a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a>    demandante          : 78.1%
+</span><span id="__span-34-18"><a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a>    juzgado             : 43.8%
+</span><span id="__span-34-19"><a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a>    radicado            : 43.8%
+</span></code></pre></div>
+<p>La precisión se calcula como <code>1 - (correcciones / total_documentos)</code> por campo. Valores bajos indican que NER necesita mejora en ese campo.</p>
+<blockquote>
+<p><strong>Futuro endpoint API</strong>: <code>GET /api/stats/corrections</code></p>
+</blockquote>
+<hr />
+<h3 id="stats-daily-estadisticas-diarias-de-procesamiento"><code>stats-daily</code> — Estadísticas diarias de procesamiento<a class="headerlink" href="#stats-daily-estadisticas-diarias-de-procesamiento" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>sherlock<span class="w"> </span>stats-daily<span class="w"> </span><span class="o">[</span>--days<span class="w"> </span>N<span class="o">]</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--days N</code></td>
+<td>Número de días a incluir</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>sherlock<span class="w"> </span>stats-daily<span class="w"> </span>--days<span class="w"> </span><span class="m">3</span>
+</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>Estadísticas diarias (últimos 3 días)
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>============================================================
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>  Hoy (2026-03-04):
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>    Documentos procesados: 5
+</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>    Tiempo promedio:       8234 ms
+</span><span id="__span-37-7"><a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>
+</span><span id="__span-37-8"><a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>  FECHA        | DOCS   | OCR (ms)   | NER (ms)   | TOTAL (ms)
+</span><span id="__span-37-9"><a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>  ----------------------------------------------------------
+</span><span id="__span-37-10"><a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>  2026-03-04   | 5      | 6120       | 1534       | 8234
+</span><span id="__span-37-11"><a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>  2026-03-03   | 14     | 7458       | 1938       | 9573
+</span><span id="__span-37-12"><a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a>  2026-03-02   | 6      | 11810      | 965        | 12926
+</span></code></pre></div>
+<blockquote>
+<p><strong>Futuro endpoint API</strong>: <code>GET /api/stats/daily?days=7</code></p>
+</blockquote>
+<hr />
+<h3 id="metrics-metricas-de-procesamiento-de-un-documento"><code>metrics</code> — Métricas de procesamiento de un documento<a class="headerlink" href="#metrics-metricas-de-procesamiento-de-un-documento" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>sherlock<span class="w"> </span>metrics<span class="w"> </span>&lt;doc_id&gt;
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Argumento</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;doc_id&gt;</code></td>
+<td>UUID del documento</td>
+</tr>
+</tbody>
+</table>
+<p>Muestra los tiempos de cada etapa del pipeline para un documento específico.</p>
+<p><strong>Ejemplo:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>sherlock<span class="w"> </span>metrics<span class="w"> </span>e91032d9-ddc8-42f4-8271-5f733b6a526c
+</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>Métricas de procesamiento — e91032d9-ddc8-42f4-8271-5f733b6a526c
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>  Motor OCR           : tesseract
+</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>  OCR (ms)            : 14523
+</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>  NER (ms)            : 1742
+</span><span id="__span-40-6"><a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>  Dedup (ms)          : 39
+</span><span id="__span-40-7"><a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>  Total (ms)          : 16425
+</span><span id="__span-40-8"><a id="__codelineno-40-8" name="__codelineno-40-8" href="#__codelineno-40-8"></a>  Páginas             : 8
+</span><span id="__span-40-9"><a id="__codelineno-40-9" name="__codelineno-40-9" href="#__codelineno-40-9"></a>  Tamaño (bytes)      : 1245678
+</span></code></pre></div>
+<blockquote>
+<p><strong>Futuro endpoint API</strong>: <code>GET /api/documents/{id}/metrics</code></p>
+</blockquote>
+<hr />
+<h3 id="update-status-actualizar-estado-de-un-documento"><code>update-status</code> — Actualizar estado de un documento<a class="headerlink" href="#update-status-actualizar-estado-de-un-documento" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>sherlock<span class="w"> </span>update-status<span class="w"> </span>&lt;id&gt;<span class="w"> </span>&lt;estado&gt;
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Argumento</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;id&gt;</code></td>
+<td>UUID del documento</td>
+</tr>
+<tr>
+<td><code>&lt;estado&gt;</code></td>
+<td>Nuevo estado</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Estados válidos:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pending</code></td>
+<td>Pendiente de procesamiento</td>
+</tr>
+<tr>
+<td><code>processing</code></td>
+<td>En procesamiento</td>
+</tr>
+<tr>
+<td><code>processed</code></td>
+<td>Procesado (OCR + NER completados)</td>
+</tr>
+<tr>
+<td><code>validated</code></td>
+<td>Validado por operador</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td>Error en procesamiento</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplo:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>sherlock<span class="w"> </span>update-status<span class="w"> </span>e91032d9-ddc8-42f4-8271-5f733b6a526c<span class="w"> </span>validated
+</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>Estado actualizado a &#39;validated&#39; para documento e91032d9-ddc8-42f4-8271-5f733b6a526c.
+</span></code></pre></div>
+<blockquote>
+<p><strong>Futuro endpoint API</strong>: <code>PATCH /api/documents/{id}/status</code></p>
+</blockquote>
+<hr />
+<h3 id="health-verificar-estado-de-servicios"><code>health</code> — Verificar estado de servicios<a class="headerlink" href="#health-verificar-estado-de-servicios" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>sherlock<span class="w"> </span>health
+</span></code></pre></div>
+<p>Sin argumentos. Verifica que los servicios principales estén disponibles.</p>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>Estado de servicios Sherlock-docs
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>  BD (SQLite)  : OK (423 documentos)
+</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>  OCR          : OK
+</span><span id="__span-45-5"><a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a>  NER (SpaCy)  : OK
+</span></code></pre></div>
+<p>Si un servicio no está disponible:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>Estado de servicios Sherlock-docs
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>  BD (SQLite)  : OK (423 documentos)
+</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>  OCR          : NO DISPONIBLE
+</span><span id="__span-46-5"><a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a>  NER (SpaCy)  : ERROR (es_core_news_lg model not found)
+</span></code></pre></div>
+<blockquote>
+<p><strong>Nota</strong>: Este comando carga los modelos OCR y NER (puede tardar unos segundos la primera vez).</p>
+<p><strong>Futuro endpoint API</strong>: <code>GET /api/health</code></p>
+</blockquote>
+<hr />
+<h3 id="extract-acta-extraer-datos-de-acta-de-reparto"><code>extract-acta</code> — Extraer datos de acta de reparto<a class="headerlink" href="#extract-acta-extraer-datos-de-acta-de-reparto" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>sherlock<span class="w"> </span>extract-acta<span class="w"> </span>&lt;archivo.pdf&gt;
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Argumento</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;archivo.pdf&gt;</code></td>
+<td>Ruta al PDF del acta de reparto (formato TYBA)</td>
+</tr>
+</tbody>
+</table>
+<p>Extrae campos estructurados del acta de reparto sin necesidad de pasar por el pipeline completo.</p>
+<p><strong>Ejemplo:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>sherlock<span class="w"> </span>extract-acta<span class="w"> </span>acta_reparto_2026.pdf
+</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>Datos extraídos del acta de reparto:
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>  Radicado            : 05088400300320260012300
+</span><span id="__span-49-4"><a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a>  Juzgado             : JUZGADO 3 CIVIL MUNICIPAL BELLO
+</span><span id="__span-49-5"><a id="__codelineno-49-5" name="__codelineno-49-5" href="#__codelineno-49-5"></a>  Número acta         : 0001234
+</span><span id="__span-49-6"><a id="__codelineno-49-6" name="__codelineno-49-6" href="#__codelineno-49-6"></a>  Clase proceso       : TUTELA
+</span><span id="__span-49-7"><a id="__codelineno-49-7" name="__codelineno-49-7" href="#__codelineno-49-7"></a>  Demandante          : JUAN PÉREZ GÓMEZ
+</span><span id="__span-49-8"><a id="__codelineno-49-8" name="__codelineno-49-8" href="#__codelineno-49-8"></a>  Cédula demandante   : 71762368
+</span><span id="__span-49-9"><a id="__codelineno-49-9" name="__codelineno-49-9" href="#__codelineno-49-9"></a>  Demandado           : EPS SURA
+</span><span id="__span-49-10"><a id="__codelineno-49-10" name="__codelineno-49-10" href="#__codelineno-49-10"></a>  Fecha reparto       : 2026-03-04 08:30:00
+</span></code></pre></div>
+<p>Si no se pueden extraer campos obligatorios:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>No se pudieron extraer datos del acta.
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>  Texto extraído (1234 chars), pero sin campos obligatorios.
+</span></code></pre></div>
+<blockquote>
+<p><strong>Futuro endpoint API</strong>: <code>POST /api/extract/acta</code></p>
+</blockquote>
+<hr />
+<h3 id="process-procesar-documento-pdf"><code>process</code> — Procesar documento PDF<a class="headerlink" href="#process-procesar-documento-pdf" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>sherlock<span class="w"> </span>process<span class="w"> </span>&lt;archivo.pdf&gt;<span class="w"> </span><span class="o">[</span>--type<span class="w"> </span>TIPO<span class="o">]</span><span class="w"> </span><span class="o">[</span>--verbose<span class="o">]</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;archivo.pdf&gt;</code></td>
+<td>Ruta al archivo PDF</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>--type</code></td>
+<td>Tipo de documento: <code>tutela</code>, <code>habeas_corpus</code>, <code>otro</code></td>
+<td><code>tutela</code></td>
+</tr>
+<tr>
+<td><code>--verbose</code>, <code>-v</code></td>
+<td>Mostrar log del pipeline en tiempo real</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Ejecuta el pipeline completo: OCR → NER → Detección de duplicados → Guardado en BD.</p>
+<p><strong>Ejemplo:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="c1"># Procesamiento estándar</span>
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>sherlock<span class="w"> </span>process<span class="w"> </span>documento.pdf
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>
+</span><span id="__span-52-4"><a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a><span class="c1"># Con tipo específico y log detallado</span>
+</span><span id="__span-52-5"><a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a>sherlock<span class="w"> </span>process<span class="w"> </span>tutela_urgente.pdf<span class="w"> </span>--type<span class="w"> </span>tutela<span class="w"> </span>--verbose
+</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>Procesando: documento.pdf (tipo: tutela)
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>--------------------------------------------------
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>
+</span><span id="__span-53-4"><a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a>  ID:             a1b2c3d4-e5f6-7890-abcd-ef1234567890
+</span><span id="__span-53-5"><a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a>  Motor OCR:      tesseract
+</span><span id="__span-53-6"><a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a>  Confianza OCR:  0.87
+</span><span id="__span-53-7"><a id="__codelineno-53-7" name="__codelineno-53-7" href="#__codelineno-53-7"></a>  Tiempo total:   16425 ms
+</span><span id="__span-53-8"><a id="__codelineno-53-8" name="__codelineno-53-8" href="#__codelineno-53-8"></a>
+</span><span id="__span-53-9"><a id="__codelineno-53-9" name="__codelineno-53-9" href="#__codelineno-53-9"></a>  Entidades extraídas:
+</span><span id="__span-53-10"><a id="__codelineno-53-10" name="__codelineno-53-10" href="#__codelineno-53-10"></a>    Accionante      : JUAN PÉREZ GÓMEZ
+</span><span id="__span-53-11"><a id="__codelineno-53-11" name="__codelineno-53-11" href="#__codelineno-53-11"></a>    Accionado       : EPS SURA
+</span><span id="__span-53-12"><a id="__codelineno-53-12" name="__codelineno-53-12" href="#__codelineno-53-12"></a>    Radicado        : 05088400300320260012300
+</span><span id="__span-53-13"><a id="__codelineno-53-13" name="__codelineno-53-13" href="#__codelineno-53-13"></a>    Juzgado         : JUZGADO 3 CIVIL MUNICIPAL BELLO
+</span><span id="__span-53-14"><a id="__codelineno-53-14" name="__codelineno-53-14" href="#__codelineno-53-14"></a>    Fecha           : 2026-03-04
+</span><span id="__span-53-15"><a id="__codelineno-53-15" name="__codelineno-53-15" href="#__codelineno-53-15"></a>    Cédula          : 71762368
+</span><span id="__span-53-16"><a id="__codelineno-53-16" name="__codelineno-53-16" href="#__codelineno-53-16"></a>    Correo          : juan@email.com
+</span><span id="__span-53-17"><a id="__codelineno-53-17" name="__codelineno-53-17" href="#__codelineno-53-17"></a>
+</span><span id="__span-53-18"><a id="__codelineno-53-18" name="__codelineno-53-18" href="#__codelineno-53-18"></a>  Medida provisional detectada: urgente, inmediato
+</span><span id="__span-53-19"><a id="__codelineno-53-19" name="__codelineno-53-19" href="#__codelineno-53-19"></a>
+</span><span id="__span-53-20"><a id="__codelineno-53-20" name="__codelineno-53-20" href="#__codelineno-53-20"></a>  Candidatos duplicados: 1
+</span><span id="__span-53-21"><a id="__codelineno-53-21" name="__codelineno-53-21" href="#__codelineno-53-21"></a>    - e91032d9-ddc8-42f4-8271-5f733b6a526c (score: 0.82, high)
+</span></code></pre></div>
+<p>Si el documento es un duplicado exacto (gate pre-OCR):</p>
+<div class="highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>Procesando: documento.pdf (tipo: tutela)
+</span><span id="__span-54-2"><a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a>--------------------------------------------------
+</span><span id="__span-54-3"><a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>
+</span><span id="__span-54-4"><a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a>  DUPLICADO de: e91032d9-ddc8-42f4-8271-5f733b6a526c
+</span><span id="__span-54-5"><a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a>  Acción recomendada: block
+</span></code></pre></div>
+<p>Con <code>--verbose</code>, se muestran los logs del pipeline:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>  [INFO] Iniciando procesamiento: documento.pdf
+</span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>  [INFO] OCR completado: 8 páginas, confianza=0.87, tiempo=14523ms
+</span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a>  [INFO] NER completado: 7 entidades extraídas
+</span><span id="__span-55-4"><a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a>  [INFO] Dedup: 1 candidato encontrado (score=0.82)
+</span></code></pre></div>
+<blockquote>
+<p><strong>Futuro endpoint API</strong>: <code>POST /api/documents/process</code></p>
+</blockquote>
+<hr />
+<h3 id="audit-report-reporte-de-auditoria-gob-11"><code>audit-report</code> — Reporte de auditoría (GOB-11)<a class="headerlink" href="#audit-report-reporte-de-auditoria-gob-11" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>sherlock<span class="w"> </span>audit-report<span class="w"> </span><span class="o">[</span>--action<span class="w"> </span>ACCION<span class="o">]</span><span class="w"> </span><span class="o">[</span>--user<span class="w"> </span>USUARIO<span class="o">]</span><span class="w"> </span><span class="o">[</span>--from<span class="w"> </span>FECHA<span class="o">]</span><span class="w"> </span><span class="o">[</span>--to<span class="w"> </span>FECHA<span class="o">]</span><span class="w"> </span><span class="o">[</span>--limit<span class="w"> </span>N<span class="o">]</span><span class="w"> </span><span class="o">[</span>--format<span class="w"> </span>text<span class="p">|</span>csv<span class="o">]</span><span class="w"> </span><span class="o">[</span>--summary<span class="o">]</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Opción</th>
+<th>Descripción</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--action</code></td>
+<td>Filtrar por tipo de acción (ver tabla abajo)</td>
+<td>todas</td>
+</tr>
+<tr>
+<td><code>--user</code></td>
+<td>Filtrar por nombre de usuario</td>
+<td>todos</td>
+</tr>
+<tr>
+<td><code>--from FECHA</code></td>
+<td>Fecha inicio (YYYY-MM-DD)</td>
+<td>sin filtro</td>
+</tr>
+<tr>
+<td><code>--to FECHA</code></td>
+<td>Fecha fin (YYYY-MM-DD)</td>
+<td>sin filtro</td>
+</tr>
+<tr>
+<td><code>--limit N</code></td>
+<td>Máximo de eventos</td>
+<td>100</td>
+</tr>
+<tr>
+<td><code>--format</code></td>
+<td>Formato de salida: <code>text</code> (tabla) o <code>csv</code></td>
+<td><code>text</code></td>
+</tr>
+<tr>
+<td><code>--summary</code></td>
+<td>Mostrar resumen estadístico en lugar de lista</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Acciones auditables:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Acción</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>document_processed</code></td>
+<td>Documento procesado (OCR + NER)</td>
+</tr>
+<tr>
+<td><code>document_corrected</code></td>
+<td>Entidades corregidas por operador</td>
+</tr>
+<tr>
+<td><code>document_validated</code></td>
+<td>Documento validado</td>
+</tr>
+<tr>
+<td><code>document_deleted</code></td>
+<td>Documento eliminado</td>
+</tr>
+<tr>
+<td><code>document_viewed</code></td>
+<td>Documento consultado</td>
+</tr>
+<tr>
+<td><code>document_searched</code></td>
+<td>Búsqueda ejecutada</td>
+</tr>
+<tr>
+<td><code>documents_exported</code></td>
+<td>Exportación a Excel</td>
+</tr>
+<tr>
+<td><code>documents_imported</code></td>
+<td>Importación desde Excel</td>
+</tr>
+<tr>
+<td><code>duplicate_detected</code></td>
+<td>Duplicado detectado</td>
+</tr>
+<tr>
+<td><code>login</code></td>
+<td>Inicio de sesión</td>
+</tr>
+<tr>
+<td><code>logout</code></td>
+<td>Cierre de sesión</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplos:</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="c1"># Últimos 100 eventos (por defecto)</span>
+</span><span id="__span-57-2"><a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a>sherlock<span class="w"> </span>audit-report
+</span><span id="__span-57-3"><a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a>
+</span><span id="__span-57-4"><a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a><span class="c1"># Filtrar por acción</span>
+</span><span id="__span-57-5"><a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a>sherlock<span class="w"> </span>audit-report<span class="w"> </span>--action<span class="w"> </span>document_processed<span class="w"> </span>--limit<span class="w"> </span><span class="m">50</span>
+</span><span id="__span-57-6"><a id="__codelineno-57-6" name="__codelineno-57-6" href="#__codelineno-57-6"></a>
+</span><span id="__span-57-7"><a id="__codelineno-57-7" name="__codelineno-57-7" href="#__codelineno-57-7"></a><span class="c1"># Filtrar por usuario y rango de fechas</span>
+</span><span id="__span-57-8"><a id="__codelineno-57-8" name="__codelineno-57-8" href="#__codelineno-57-8"></a>sherlock<span class="w"> </span>audit-report<span class="w"> </span>--user<span class="w"> </span>operador1<span class="w"> </span>--from<span class="w"> </span><span class="m">2026</span>-03-01<span class="w"> </span>--to<span class="w"> </span><span class="m">2026</span>-03-06
+</span><span id="__span-57-9"><a id="__codelineno-57-9" name="__codelineno-57-9" href="#__codelineno-57-9"></a>
+</span><span id="__span-57-10"><a id="__codelineno-57-10" name="__codelineno-57-10" href="#__codelineno-57-10"></a><span class="c1"># Exportar a CSV</span>
+</span><span id="__span-57-11"><a id="__codelineno-57-11" name="__codelineno-57-11" href="#__codelineno-57-11"></a>sherlock<span class="w"> </span>audit-report<span class="w"> </span>--format<span class="w"> </span>csv<span class="w"> </span>&gt;<span class="w"> </span>auditoria_marzo.csv
+</span><span id="__span-57-12"><a id="__codelineno-57-12" name="__codelineno-57-12" href="#__codelineno-57-12"></a>
+</span><span id="__span-57-13"><a id="__codelineno-57-13" name="__codelineno-57-13" href="#__codelineno-57-13"></a><span class="c1"># Exportar filtrado a CSV</span>
+</span><span id="__span-57-14"><a id="__codelineno-57-14" name="__codelineno-57-14" href="#__codelineno-57-14"></a>sherlock<span class="w"> </span>audit-report<span class="w"> </span>--action<span class="w"> </span>document_corrected<span class="w"> </span>--from<span class="w"> </span><span class="m">2026</span>-03-01<span class="w"> </span>--format<span class="w"> </span>csv<span class="w"> </span>&gt;<span class="w"> </span>correcciones.csv
+</span><span id="__span-57-15"><a id="__codelineno-57-15" name="__codelineno-57-15" href="#__codelineno-57-15"></a>
+</span><span id="__span-57-16"><a id="__codelineno-57-16" name="__codelineno-57-16" href="#__codelineno-57-16"></a><span class="c1"># Resumen estadístico</span>
+</span><span id="__span-57-17"><a id="__codelineno-57-17" name="__codelineno-57-17" href="#__codelineno-57-17"></a>sherlock<span class="w"> </span>audit-report<span class="w"> </span>--summary
+</span></code></pre></div>
+<p><strong>Output (texto):</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>FECHA                  | USUARIO         | ACCIÓN                    | RECURSO    | ID RECURSO
+</span><span id="__span-58-2"><a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>------------------------------------------------------------------------------------------------------------------------
+</span><span id="__span-58-3"><a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>2026-03-06T09:00:00    | operador1       | documents_exported        | export     |
+</span><span id="__span-58-4"><a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a>2026-03-05T11:00:00    | operador2       | document_corrected        | document   | a1b2c3d4-e5f6-7890-abcd-ef1234567890
+</span><span id="__span-58-5"><a id="__codelineno-58-5" name="__codelineno-58-5" href="#__codelineno-58-5"></a>2026-03-05T10:00:00    | operador1       | document_processed        | document   | a1b2c3d4-e5f6-7890-abcd-ef1234567890
+</span><span id="__span-58-6"><a id="__codelineno-58-6" name="__codelineno-58-6" href="#__codelineno-58-6"></a>
+</span><span id="__span-58-7"><a id="__codelineno-58-7" name="__codelineno-58-7" href="#__codelineno-58-7"></a>Total: 3 evento(s)
+</span></code></pre></div>
+<p><strong>Output (CSV):</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>timestamp,user_id,action,resource_type,resource_id,details
+</span><span id="__span-59-2"><a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a>2026-03-06T09:00:00,operador1,documents_exported,export,,
+</span><span id="__span-59-3"><a id="__codelineno-59-3" name="__codelineno-59-3" href="#__codelineno-59-3"></a>2026-03-05T11:00:00,operador2,document_corrected,document,a1b2c3d4,...,&quot;{&quot;&quot;fields&quot;&quot;:[&quot;&quot;demandante&quot;&quot;]}&quot;
+</span><span id="__span-59-4"><a id="__codelineno-59-4" name="__codelineno-59-4" href="#__codelineno-59-4"></a>2026-03-05T10:00:00,operador1,document_processed,document,a1b2c3d4,...,
+</span></code></pre></div>
+<p><strong>Output (resumen):</strong></p>
+<div class="highlight"><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>Resumen de auditoría
+</span><span id="__span-60-2"><a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a>
+</span><span id="__span-60-3"><a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a>  Total eventos: 150
+</span><span id="__span-60-4"><a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a>
+</span><span id="__span-60-5"><a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a>  Por acción:
+</span><span id="__span-60-6"><a id="__codelineno-60-6" name="__codelineno-60-6" href="#__codelineno-60-6"></a>    document_processed       : 85
+</span><span id="__span-60-7"><a id="__codelineno-60-7" name="__codelineno-60-7" href="#__codelineno-60-7"></a>    document_corrected       : 42
+</span><span id="__span-60-8"><a id="__codelineno-60-8" name="__codelineno-60-8" href="#__codelineno-60-8"></a>    documents_exported       : 12
+</span><span id="__span-60-9"><a id="__codelineno-60-9" name="__codelineno-60-9" href="#__codelineno-60-9"></a>    documents_imported       : 8
+</span><span id="__span-60-10"><a id="__codelineno-60-10" name="__codelineno-60-10" href="#__codelineno-60-10"></a>    document_validated       : 3
+</span><span id="__span-60-11"><a id="__codelineno-60-11" name="__codelineno-60-11" href="#__codelineno-60-11"></a>
+</span><span id="__span-60-12"><a id="__codelineno-60-12" name="__codelineno-60-12" href="#__codelineno-60-12"></a>  Por usuario:
+</span><span id="__span-60-13"><a id="__codelineno-60-13" name="__codelineno-60-13" href="#__codelineno-60-13"></a>    operador1                : 95
+</span><span id="__span-60-14"><a id="__codelineno-60-14" name="__codelineno-60-14" href="#__codelineno-60-14"></a>    operador2                : 45
+</span><span id="__span-60-15"><a id="__codelineno-60-15" name="__codelineno-60-15" href="#__codelineno-60-15"></a>    system                   : 10
+</span></code></pre></div>
+<blockquote>
+<p><strong>Futuro endpoint API</strong>: <code>GET /api/audit?action=x&amp;user=y&amp;from=z&amp;to=w</code></p>
+</blockquote>
+<hr />
+<h2 id="flujos-de-trabajo-comunes">Flujos de Trabajo Comunes<a class="headerlink" href="#flujos-de-trabajo-comunes" title="Permanent link">&para;</a></h2>
+<h3 id="limpiar-una-importacion-fallida">Limpiar una importación fallida<a class="headerlink" href="#limpiar-una-importacion-fallida" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="c1"># Ver qué se importó</span>
+</span><span id="__span-61-2"><a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>sherlock<span class="w"> </span>list<span class="w"> </span>--source<span class="w"> </span>imported<span class="w"> </span>--limit<span class="w"> </span><span class="m">5</span>
+</span><span id="__span-61-3"><a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a>
+</span><span id="__span-61-4"><a id="__codelineno-61-4" name="__codelineno-61-4" href="#__codelineno-61-4"></a><span class="c1"># Eliminar todo lo importado</span>
+</span><span id="__span-61-5"><a id="__codelineno-61-5" name="__codelineno-61-5" href="#__codelineno-61-5"></a>sherlock<span class="w"> </span>delete-batch<span class="w"> </span>--source<span class="w"> </span>imported<span class="w"> </span>--force
+</span><span id="__span-61-6"><a id="__codelineno-61-6" name="__codelineno-61-6" href="#__codelineno-61-6"></a>
+</span><span id="__span-61-7"><a id="__codelineno-61-7" name="__codelineno-61-7" href="#__codelineno-61-7"></a><span class="c1"># Re-importar con correcciones</span>
+</span><span id="__span-61-8"><a id="__codelineno-61-8" name="__codelineno-61-8" href="#__codelineno-61-8"></a>sherlock<span class="w"> </span>import<span class="w"> </span>indice_corregido.xlsx
+</span></code></pre></div>
+<h3 id="verificar-un-documento-especifico">Verificar un documento específico<a class="headerlink" href="#verificar-un-documento-especifico" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="c1"># Buscar por cédula</span>
+</span><span id="__span-62-2"><a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a>sherlock<span class="w"> </span>get<span class="w"> </span>--cedula<span class="w"> </span><span class="m">71762368</span>
+</span><span id="__span-62-3"><a id="__codelineno-62-3" name="__codelineno-62-3" href="#__codelineno-62-3"></a>
+</span><span id="__span-62-4"><a id="__codelineno-62-4" name="__codelineno-62-4" href="#__codelineno-62-4"></a><span class="c1"># O buscar por nombre</span>
+</span><span id="__span-62-5"><a id="__codelineno-62-5" name="__codelineno-62-5" href="#__codelineno-62-5"></a>sherlock<span class="w"> </span>search<span class="w"> </span><span class="s2">&quot;LEDESMA&quot;</span><span class="w"> </span>--limit<span class="w"> </span><span class="m">5</span>
+</span><span id="__span-62-6"><a id="__codelineno-62-6" name="__codelineno-62-6" href="#__codelineno-62-6"></a>
+</span><span id="__span-62-7"><a id="__codelineno-62-7" name="__codelineno-62-7" href="#__codelineno-62-7"></a><span class="c1"># Ver detalle completo</span>
+</span><span id="__span-62-8"><a id="__codelineno-62-8" name="__codelineno-62-8" href="#__codelineno-62-8"></a>sherlock<span class="w"> </span>get<span class="w"> </span>e91032d9-ddc8-42f4-8271-5f733b6a526c
+</span></code></pre></div>
+<h3 id="corregir-datos-de-un-documento">Corregir datos de un documento<a class="headerlink" href="#corregir-datos-de-un-documento" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="c1"># Ver estado actual</span>
+</span><span id="__span-63-2"><a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a>sherlock<span class="w"> </span>get<span class="w"> </span>e91032d9-ddc8-42f4-8271-5f733b6a526c
+</span><span id="__span-63-3"><a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a>
+</span><span id="__span-63-4"><a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a><span class="c1"># Corregir campo</span>
+</span><span id="__span-63-5"><a id="__codelineno-63-5" name="__codelineno-63-5" href="#__codelineno-63-5"></a>sherlock<span class="w"> </span>update<span class="w"> </span>e91032d9-ddc8-42f4-8271-5f733b6a526c<span class="w"> </span>demandante<span class="w"> </span><span class="s2">&quot;NOMBRE CORRECTO&quot;</span>
+</span><span id="__span-63-6"><a id="__codelineno-63-6" name="__codelineno-63-6" href="#__codelineno-63-6"></a>
+</span><span id="__span-63-7"><a id="__codelineno-63-7" name="__codelineno-63-7" href="#__codelineno-63-7"></a><span class="c1"># Verificar corrección</span>
+</span><span id="__span-63-8"><a id="__codelineno-63-8" name="__codelineno-63-8" href="#__codelineno-63-8"></a>sherlock<span class="w"> </span>get<span class="w"> </span>e91032d9-ddc8-42f4-8271-5f733b6a526c
+</span><span id="__span-63-9"><a id="__codelineno-63-9" name="__codelineno-63-9" href="#__codelineno-63-9"></a>
+</span><span id="__span-63-10"><a id="__codelineno-63-10" name="__codelineno-63-10" href="#__codelineno-63-10"></a><span class="c1"># Ver historial de correcciones</span>
+</span><span id="__span-63-11"><a id="__codelineno-63-11" name="__codelineno-63-11" href="#__codelineno-63-11"></a>sherlock<span class="w"> </span>corrections<span class="w"> </span>e91032d9-ddc8-42f4-8271-5f733b6a526c
+</span></code></pre></div>
+<h3 id="procesar-un-documento-nuevo-desde-terminal">Procesar un documento nuevo desde terminal<a class="headerlink" href="#procesar-un-documento-nuevo-desde-terminal" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="c1"># Procesar con tipo por defecto (tutela)</span>
+</span><span id="__span-64-2"><a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a>sherlock<span class="w"> </span>process<span class="w"> </span>tutela_nueva.pdf
+</span><span id="__span-64-3"><a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a>
+</span><span id="__span-64-4"><a id="__codelineno-64-4" name="__codelineno-64-4" href="#__codelineno-64-4"></a><span class="c1"># Procesar con log detallado</span>
+</span><span id="__span-64-5"><a id="__codelineno-64-5" name="__codelineno-64-5" href="#__codelineno-64-5"></a>sherlock<span class="w"> </span>process<span class="w"> </span>tutela_nueva.pdf<span class="w"> </span>--verbose
+</span><span id="__span-64-6"><a id="__codelineno-64-6" name="__codelineno-64-6" href="#__codelineno-64-6"></a>
+</span><span id="__span-64-7"><a id="__codelineno-64-7" name="__codelineno-64-7" href="#__codelineno-64-7"></a><span class="c1"># Verificar resultado</span>
+</span><span id="__span-64-8"><a id="__codelineno-64-8" name="__codelineno-64-8" href="#__codelineno-64-8"></a>sherlock<span class="w"> </span>get<span class="w"> </span>--radicado<span class="w"> </span><span class="m">05088400300320260012300</span>
+</span></code></pre></div>
+<h3 id="extraer-datos-de-acta-de-reparto">Extraer datos de acta de reparto<a class="headerlink" href="#extraer-datos-de-acta-de-reparto" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-65-1"><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="c1"># Extraer campos del acta</span>
+</span><span id="__span-65-2"><a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a>sherlock<span class="w"> </span>extract-acta<span class="w"> </span>acta_reparto.pdf
+</span><span id="__span-65-3"><a id="__codelineno-65-3" name="__codelineno-65-3" href="#__codelineno-65-3"></a>
+</span><span id="__span-65-4"><a id="__codelineno-65-4" name="__codelineno-65-4" href="#__codelineno-65-4"></a><span class="c1"># Si los datos son correctos, procesar el documento asociado</span>
+</span><span id="__span-65-5"><a id="__codelineno-65-5" name="__codelineno-65-5" href="#__codelineno-65-5"></a>sherlock<span class="w"> </span>process<span class="w"> </span>documento_asociado.pdf
+</span></code></pre></div>
+<h3 id="monitorear-precision-de-ner">Monitorear precisión de NER<a class="headerlink" href="#monitorear-precision-de-ner" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="c1"># Ver estadísticas de correcciones</span>
+</span><span id="__span-66-2"><a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a>sherlock<span class="w"> </span>correction-stats
+</span><span id="__span-66-3"><a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a>
+</span><span id="__span-66-4"><a id="__codelineno-66-4" name="__codelineno-66-4" href="#__codelineno-66-4"></a><span class="c1"># Ver correcciones de un documento específico</span>
+</span><span id="__span-66-5"><a id="__codelineno-66-5" name="__codelineno-66-5" href="#__codelineno-66-5"></a>sherlock<span class="w"> </span>corrections<span class="w"> </span>&lt;doc_id&gt;
+</span><span id="__span-66-6"><a id="__codelineno-66-6" name="__codelineno-66-6" href="#__codelineno-66-6"></a>
+</span><span id="__span-66-7"><a id="__codelineno-66-7" name="__codelineno-66-7" href="#__codelineno-66-7"></a><span class="c1"># Campos con baja precisión necesitan más patrones o training data</span>
+</span></code></pre></div>
+<h3 id="verificar-salud-del-sistema">Verificar salud del sistema<a class="headerlink" href="#verificar-salud-del-sistema" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="c1"># Comprobar que todos los servicios estén disponibles</span>
+</span><span id="__span-67-2"><a id="__codelineno-67-2" name="__codelineno-67-2" href="#__codelineno-67-2"></a>sherlock<span class="w"> </span>health
+</span><span id="__span-67-3"><a id="__codelineno-67-3" name="__codelineno-67-3" href="#__codelineno-67-3"></a>
+</span><span id="__span-67-4"><a id="__codelineno-67-4" name="__codelineno-67-4" href="#__codelineno-67-4"></a><span class="c1"># Ver actividad de los últimos 7 días</span>
+</span><span id="__span-67-5"><a id="__codelineno-67-5" name="__codelineno-67-5" href="#__codelineno-67-5"></a>sherlock<span class="w"> </span>stats-daily
+</span><span id="__span-67-6"><a id="__codelineno-67-6" name="__codelineno-67-6" href="#__codelineno-67-6"></a>
+</span><span id="__span-67-7"><a id="__codelineno-67-7" name="__codelineno-67-7" href="#__codelineno-67-7"></a><span class="c1"># Métricas detalladas de un documento</span>
+</span><span id="__span-67-8"><a id="__codelineno-67-8" name="__codelineno-67-8" href="#__codelineno-67-8"></a>sherlock<span class="w"> </span>metrics<span class="w"> </span>&lt;doc_id&gt;
+</span></code></pre></div>
+<h3 id="buscar-documentos-de-un-accionante-recurrente">Buscar documentos de un accionante recurrente<a class="headerlink" href="#buscar-documentos-de-un-accionante-recurrente" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="c1"># Por correo</span>
+</span><span id="__span-68-2"><a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a>sherlock<span class="w"> </span>find<span class="w"> </span>--email<span class="w"> </span>juliozh@hotmail.com
+</span><span id="__span-68-3"><a id="__codelineno-68-3" name="__codelineno-68-3" href="#__codelineno-68-3"></a>
+</span><span id="__span-68-4"><a id="__codelineno-68-4" name="__codelineno-68-4" href="#__codelineno-68-4"></a><span class="c1"># Por nombre (búsqueda parcial)</span>
+</span><span id="__span-68-5"><a id="__codelineno-68-5" name="__codelineno-68-5" href="#__codelineno-68-5"></a>sherlock<span class="w"> </span>find<span class="w"> </span>--plaintiff<span class="w"> </span><span class="s2">&quot;LEDESMA&quot;</span>
+</span><span id="__span-68-6"><a id="__codelineno-68-6" name="__codelineno-68-6" href="#__codelineno-68-6"></a>
+</span><span id="__span-68-7"><a id="__codelineno-68-7" name="__codelineno-68-7" href="#__codelineno-68-7"></a><span class="c1"># Por cédula (búsqueda exacta)</span>
+</span><span id="__span-68-8"><a id="__codelineno-68-8" name="__codelineno-68-8" href="#__codelineno-68-8"></a>sherlock<span class="w"> </span>get<span class="w"> </span>--cedula<span class="w"> </span><span class="m">71762368</span>
+</span></code></pre></div>
+<h3 id="exportar-para-reporte">Exportar para reporte<a class="headerlink" href="#exportar-para-reporte" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-69-1"><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a><span class="c1"># Exportar documentos de la última semana</span>
+</span><span id="__span-69-2"><a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a>sherlock<span class="w"> </span><span class="nb">export</span><span class="w"> </span>reporte_semanal.xlsx<span class="w"> </span>--from<span class="w"> </span><span class="m">2026</span>-02-25<span class="w"> </span>--to<span class="w"> </span><span class="m">2026</span>-03-04
+</span><span id="__span-69-3"><a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a>
+</span><span id="__span-69-4"><a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a><span class="c1"># Verificar estadísticas generales</span>
+</span><span id="__span-69-5"><a id="__codelineno-69-5" name="__codelineno-69-5" href="#__codelineno-69-5"></a>sherlock<span class="w"> </span>stats
+</span></code></pre></div>
+<h3 id="auditar-actividad-del-sistema">Auditar actividad del sistema<a class="headerlink" href="#auditar-actividad-del-sistema" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-70-1"><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="c1"># Ver resumen de actividad</span>
+</span><span id="__span-70-2"><a id="__codelineno-70-2" name="__codelineno-70-2" href="#__codelineno-70-2"></a>sherlock<span class="w"> </span>audit-report<span class="w"> </span>--summary
+</span><span id="__span-70-3"><a id="__codelineno-70-3" name="__codelineno-70-3" href="#__codelineno-70-3"></a>
+</span><span id="__span-70-4"><a id="__codelineno-70-4" name="__codelineno-70-4" href="#__codelineno-70-4"></a><span class="c1"># Actividad del último día</span>
+</span><span id="__span-70-5"><a id="__codelineno-70-5" name="__codelineno-70-5" href="#__codelineno-70-5"></a>sherlock<span class="w"> </span>audit-report<span class="w"> </span>--from<span class="w"> </span><span class="m">2026</span>-03-06<span class="w"> </span>--to<span class="w"> </span><span class="m">2026</span>-03-06
+</span><span id="__span-70-6"><a id="__codelineno-70-6" name="__codelineno-70-6" href="#__codelineno-70-6"></a>
+</span><span id="__span-70-7"><a id="__codelineno-70-7" name="__codelineno-70-7" href="#__codelineno-70-7"></a><span class="c1"># Correcciones de un operador específico</span>
+</span><span id="__span-70-8"><a id="__codelineno-70-8" name="__codelineno-70-8" href="#__codelineno-70-8"></a>sherlock<span class="w"> </span>audit-report<span class="w"> </span>--action<span class="w"> </span>document_corrected<span class="w"> </span>--user<span class="w"> </span>operador1
+</span><span id="__span-70-9"><a id="__codelineno-70-9" name="__codelineno-70-9" href="#__codelineno-70-9"></a>
+</span><span id="__span-70-10"><a id="__codelineno-70-10" name="__codelineno-70-10" href="#__codelineno-70-10"></a><span class="c1"># Generar reporte CSV para comité de gobernanza</span>
+</span><span id="__span-70-11"><a id="__codelineno-70-11" name="__codelineno-70-11" href="#__codelineno-70-11"></a>sherlock<span class="w"> </span>audit-report<span class="w"> </span>--from<span class="w"> </span><span class="m">2026</span>-03-01<span class="w"> </span>--to<span class="w"> </span><span class="m">2026</span>-03-31<span class="w"> </span>--format<span class="w"> </span>csv<span class="w"> </span>&gt;<span class="w"> </span>auditoria_marzo.csv
+</span></code></pre></div>
+<h3 id="usar-con-otra-base-de-datos">Usar con otra base de datos<a class="headerlink" href="#usar-con-otra-base-de-datos" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="c1"># Apuntar a BD de producción (backup)</span>
+</span><span id="__span-71-2"><a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>sherlock<span class="w"> </span>--db<span class="w"> </span>/ruta/backup/sherlock.db<span class="w"> </span>stats
+</span><span id="__span-71-3"><a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>
+</span><span id="__span-71-4"><a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a><span class="c1"># Listar desde BD de pruebas</span>
+</span><span id="__span-71-5"><a id="__codelineno-71-5" name="__codelineno-71-5" href="#__codelineno-71-5"></a>sherlock<span class="w"> </span>--db<span class="w"> </span>data/database/sherlock_test.db<span class="w"> </span>list
+</span></code></pre></div>
+<hr />
+<h2 id="codigos-de-salida">Códigos de Salida<a class="headerlink" href="#codigos-de-salida" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>Éxito</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>Error (documento no encontrado, campo inválido, etc.)</td>
+</tr>
+<tr>
+<td><code>130</code></td>
+<td>Interrumpido por el usuario (Ctrl+C)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="referencia-rapida-21-comandos">Referencia Rápida — 21 Comandos<a class="headerlink" href="#referencia-rapida-21-comandos" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>list</code></td>
+<td>Listar documentos con filtros</td>
+</tr>
+<tr>
+<td><code>get</code></td>
+<td>Ver detalle de un documento</td>
+</tr>
+<tr>
+<td><code>search</code></td>
+<td>Búsqueda full-text FTS5</td>
+</tr>
+<tr>
+<td><code>find</code></td>
+<td>Buscar por correo o accionante</td>
+</tr>
+<tr>
+<td><code>delete</code></td>
+<td>Eliminar un documento</td>
+</tr>
+<tr>
+<td><code>delete-batch</code></td>
+<td>Eliminación masiva</td>
+</tr>
+<tr>
+<td><code>update</code></td>
+<td>Actualizar un campo</td>
+</tr>
+<tr>
+<td><code>update-status</code></td>
+<td>Cambiar estado de un documento</td>
+</tr>
+<tr>
+<td><code>import</code></td>
+<td>Importar desde Excel</td>
+</tr>
+<tr>
+<td><code>export</code></td>
+<td>Exportar a Excel</td>
+</tr>
+<tr>
+<td><code>process</code></td>
+<td>Procesar PDF (OCR + NER + duplicados)</td>
+</tr>
+<tr>
+<td><code>extract-acta</code></td>
+<td>Extraer datos de acta de reparto</td>
+</tr>
+<tr>
+<td><code>audit-report</code></td>
+<td>Reporte de auditoría (GOB-11)</td>
+</tr>
+<tr>
+<td><code>corrections</code></td>
+<td>Ver correcciones de un documento</td>
+</tr>
+<tr>
+<td><code>correction-stats</code></td>
+<td>Estadísticas de correcciones NER</td>
+</tr>
+<tr>
+<td><code>stats</code></td>
+<td>Estadísticas generales</td>
+</tr>
+<tr>
+<td><code>stats-daily</code></td>
+<td>Estadísticas diarias de procesamiento</td>
+</tr>
+<tr>
+<td><code>metrics</code></td>
+<td>Métricas de procesamiento por documento</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>Contar total de documentos</td>
+</tr>
+<tr>
+<td><code>health</code></td>
+<td>Verificar estado de servicios</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="mapeo-cli-futuro-api">Mapeo CLI → Futuro API<a class="headerlink" href="#mapeo-cli-futuro-api" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>CLI</th>
+<th>Endpoint API futuro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sherlock process &lt;pdf&gt;</code></td>
+<td><code>POST /api/documents/process</code></td>
+</tr>
+<tr>
+<td><code>sherlock find --email</code></td>
+<td><code>GET /api/documents?email=x</code></td>
+</tr>
+<tr>
+<td><code>sherlock find --plaintiff</code></td>
+<td><code>GET /api/documents?plaintiff=x</code></td>
+</tr>
+<tr>
+<td><code>sherlock corrections &lt;id&gt;</code></td>
+<td><code>GET /api/documents/{id}/corrections</code></td>
+</tr>
+<tr>
+<td><code>sherlock correction-stats</code></td>
+<td><code>GET /api/stats/corrections</code></td>
+</tr>
+<tr>
+<td><code>sherlock stats-daily</code></td>
+<td><code>GET /api/stats/daily?days=7</code></td>
+</tr>
+<tr>
+<td><code>sherlock metrics &lt;id&gt;</code></td>
+<td><code>GET /api/documents/{id}/metrics</code></td>
+</tr>
+<tr>
+<td><code>sherlock update-status &lt;id&gt;</code></td>
+<td><code>PATCH /api/documents/{id}/status</code></td>
+</tr>
+<tr>
+<td><code>sherlock health</code></td>
+<td><code>GET /api/health</code></td>
+</tr>
+<tr>
+<td><code>sherlock extract-acta &lt;pdf&gt;</code></td>
+<td><code>POST /api/extract/acta</code></td>
+</tr>
+<tr>
+<td><code>sherlock audit-report</code></td>
+<td><code>GET /api/audit</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="notas-tecnicas">Notas Técnicas<a class="headerlink" href="#notas-tecnicas" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Sin dependencias nuevas</strong>: usa argparse (stdlib). openpyxl solo se requiere para import/export (ya instalado).</li>
+<li><strong>Reutiliza infraestructura existente</strong>: ServiceContainer, SQLiteDocumentRepository, ImportExcelUseCase, ExportExcelUseCase, ProcessDocumentUseCase, acta_reparto_extractor.</li>
+<li><strong>Logging silenciado</strong>: el CLI suprime los logs del proyecto para mantener output limpio. Los logs siguen escribiéndose al archivo <code>logs/sherlock_YYYY-MM-DD.log</code>. El comando <code>process</code> acepta <code>--verbose</code> para habilitar logs en consola.</li>
+<li><strong>Confirmación interactiva</strong>: <code>delete</code> y <code>delete-batch</code> piden confirmación a menos que se use <code>--force</code>.</li>
+<li><strong>Fechas en importados</strong>: <code>created_at</code> = fecha de reparto (del Excel), <code>imported_at</code> = cuándo se importó. Esto permite que <code>--from/--to</code>, la columna CREADO y la GUI muestren la fecha operativamente relevante.</li>
+<li><strong>Encoding</strong>: el output usa la codificación del terminal. En Windows, caracteres especiales (tildes, eñe) dependen del code page activo (<code>chcp 65001</code> para UTF-8).</li>
+<li><strong>Health check</strong>: <code>sherlock health</code> carga los modelos OCR y NER, lo que puede tardar varios segundos la primera vez. Es el equivalente al futuro <code>GET /api/health</code>.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2026 CSJ Bello &mdash; Sherlock-docs v1.0
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/hammerdev99/sherlock-docs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
