@@ -1,15 +1,16 @@
 # Sherlock-docs — Sitio de Documentacion
 
-Sitio estatico generado con MkDocs Material.
-URL: https://docs.sherlock.sprintjudicial.com/
+Sitio estatico generado automaticamente con MkDocs Material.
 
-**Ultima actualizacion**: 2026-03-06 16:11:21
+**Ultima actualizacion**: 2026-03-09 19:30:20
 
 ## Deploy
 
-```bash
+Este directorio contiene el HTML compilado listo para servir con Nginx.
+
+`ash
 docker build -t sherlock-docs-site .
 docker run -p 8080:80 sherlock-docs-site
-```
+`
 
-> Generado por `sync-docs.ps1` desde el repo principal de Sherlock-docs.
+> Generado por `sync-docs.ps1` desde el repositorio principal de Sherlock-docs.
