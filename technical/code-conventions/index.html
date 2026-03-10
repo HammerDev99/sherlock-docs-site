@@ -1614,7 +1614,7 @@
 <tr>
 <td>Enums</td>
 <td>StrEnum</td>
-<td><code>class DocumentType(str, Enum)</code></td>
+<td><code>class DocumentType(StrEnum)</code></td>
 </tr>
 <tr>
 <td>Booleans</td>
@@ -1627,7 +1627,7 @@
 <div class="highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">ProcessDocumentRequest</span><span class="p">:</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">document_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;tutela&quot;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">document_type</span><span class="p">:</span> <span class="n">DocumentType</span> <span class="o">=</span> <span class="n">DocumentType</span><span class="o">.</span><span class="n">TUTELA</span>
 </span></code></pre></div>
 <p>Todos los DTOs y value objects usan <code>frozen=True</code>.</p>
 <h2 id="railway-oriented-programming">Railway-Oriented Programming<a class="headerlink" href="#railway-oriented-programming" title="Permanent link">&para;</a></h2>

@@ -1638,7 +1638,7 @@
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    ↓
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Application (ProcessDocument + ImportExcel + ExportExcel + ServiceContainer)
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ↓
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Domain (Document, DocumentType, DocumentStatus, ValueObjects)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Domain (Document, DocumentType, DocumentStatus, RecommendedAction, ImportStatus, ValueObjects)
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    ↑
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Infrastructure (OCR Router, SpaCy NER, Hybrid Dedup, SQLite+FTS5)
 </span></code></pre></div>
@@ -1715,7 +1715,7 @@ Pesos configurables via JSON: <code>data/config/dedup_config.json</code></p>
 <p>Rebuild si &gt;10% documentos nuevos. Test: <code>test_similarity_search_under_2_seconds_with_1000_docs()</code></p>
 <h2 id="ner-ensemble">NER Ensemble<a class="headerlink" href="#ner-ensemble" title="Permanent link">&para;</a></h2>
 <p>5 extractores (Strategy): Marker(p=1), SpaCy(p=2), Regex(p=3), Address(p=4), Contact(p=5)
-4 validadores (Chain): Structural, Temporal, RadicadoFormat, Dedup
+4 validadores (Pipeline, no CoR — todos siempre ejecutan): Structural, Temporal, RadicadoFormat, Dedup
 F1 Global: 85.3% | Correo/Cédula: 100% | Demandante: 74%</p>
 <h2 id="base-de-datos">Base de Datos<a class="headerlink" href="#base-de-datos" title="Permanent link">&para;</a></h2>
 <p>SQLite + FTS5 + WAL mode. 5 tablas, 33 columnas documents, 11 índices.

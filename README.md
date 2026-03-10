@@ -2,7 +2,7 @@
 
 Sitio estatico generado automaticamente con MkDocs Material.
 
-**Ultima actualizacion**: 2026-03-09 19:30:20
+**Ultima actualizacion**: 2026-03-10 00:18:31
 
 ## Deploy
 
