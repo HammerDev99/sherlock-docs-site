@@ -1642,6 +1642,208 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/incident-response/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan de Incidentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/data-retention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retencion de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decisiones
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Decisiones
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/decisions/sqlcipher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLCipher (GOB-13)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/decisions/ner-bias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sesgo NER (GOB-12)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/decisions/dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard (GOB-16)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2035,7 +2237,9 @@
     subgraph Ensemble["⚖️ EntityExtractorEnsemble"]
         Collect[Recopilar Candidatos&lt;br/&gt;por tipo de entidad]
         Voting[Votación Ponderada&lt;br/&gt;weighted_vote]
+        MultiWinner[Multi-Winner S23-H3&lt;br/&gt;DEMANDADO: todos los ganadores&lt;br/&gt;dedup por texto normalizado]
         Resolve[Resolver Conflictos&lt;br/&gt;highest_confidence]
+        CompSplit[CompoundSplitter S23-H4&lt;br/&gt;split por Y heurístico&lt;br/&gt;≥2 palabras O entidad conocida]
     end
 
     subgraph Validators["✅ Validators (Pipeline — all always execute)"]
@@ -2067,9 +2271,9 @@
     Address --&gt; Collect
     Contact --&gt; Collect
 
-    Collect --&gt; Voting --&gt; Resolve
+    Collect --&gt; Voting --&gt; MultiWinner --&gt; Resolve --&gt; CompSplit
 
-    Resolve --&gt; ValChain
+    CompSplit --&gt; ValChain
     ValChain --&gt; Structural --&gt; Temporal --&gt; RadFormat --&gt; Dedup
 
     Marker -.uses.-&gt; Truncator
@@ -2412,7 +2616,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Última actualización</strong>: 2026-03-05 (Fix pesos ensemble: solo 3 extractores votan, pesos diferenciados persona/estructurado)</p>
+<p><strong>Última actualización</strong>: 2026-03-19 (Sprint 23 completado: compound_splitter S23-H4, multi-winner DEMANDADO S23-H3, fallback "contra" S23-H5, tie-breaking simétrico S23-H2, whitelist sync S23-H1)</p>
 
 
 

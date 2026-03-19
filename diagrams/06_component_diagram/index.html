@@ -1848,6 +1848,208 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/incident-response/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan de Incidentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/data-retention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retencion de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decisiones
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Decisiones
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/decisions/sqlcipher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLCipher (GOB-13)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/decisions/ner-bias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sesgo NER (GOB-12)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/decisions/dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard (GOB-16)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2429,7 +2631,7 @@
 <h2 id="diagrama">Diagrama<a class="headerlink" href="#diagrama" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph TB
     subgraph "Presentation Layer"
-        GUI[📱 Streamlit GUI ✅&lt;br/&gt;─────────────&lt;br/&gt;• 9 páginas implementadas&lt;br/&gt;• Upload, Process, Validate&lt;br/&gt;• Search, Duplicates, Stats&lt;br/&gt;• Detail, ManualEntry&lt;br/&gt;• ImportExcel]
+        GUI[📱 Streamlit GUI ✅&lt;br/&gt;─────────────&lt;br/&gt;• 9 páginas implementadas&lt;br/&gt;• Upload, Process, Validate&lt;br/&gt;• Search, Duplicates, Stats&lt;br/&gt;• Detail, ManualEntry&lt;br/&gt;• ImportExcel&lt;br/&gt;─────────────&lt;br/&gt;Components S23-D1:&lt;br/&gt;• DuplicateRenderer ✅&lt;br/&gt;  Facade+Strategy compartido&lt;br/&gt;  process.py + duplicates.py]
 
         CLI[⌨️ CLI Interface ✅&lt;br/&gt;─────────────&lt;br/&gt;• 21 comandos implementados&lt;br/&gt;• Procesamiento batch&lt;br/&gt;• Import/Export&lt;br/&gt;• Debugging y stats&lt;br/&gt;• audit-report GOB-11]
     end
@@ -2437,7 +2639,9 @@
     subgraph "Application Layer"
         direction TB
 
-        UseCases[🎯 Use Cases&lt;br/&gt;─────────────&lt;br/&gt;• ProcessDocumentUseCase ✅&lt;br/&gt;• ExportExcelUseCase ✅&lt;br/&gt;• ImportExcelUseCase ✅&lt;br/&gt;• SearchDocumentsUseCase ⏳&lt;br/&gt;• ValidateEntityUseCase ⏳]
+        UseCases[🎯 Use Cases&lt;br/&gt;─────────────&lt;br/&gt;• ProcessDocumentUseCase ✅&lt;br/&gt;• ExportExcelUseCase ✅&lt;br/&gt;• ImportExcelUseCase ✅ atomic txn]
+
+        AppServices[🔧 Services S23 ✅&lt;br/&gt;─────────────&lt;br/&gt;• ValidationService&lt;br/&gt;• SearchService&lt;br/&gt;• StatisticsService&lt;br/&gt;• ManualEntryService&lt;br/&gt;• DedupConfigService&lt;br/&gt;─────────────&lt;br/&gt;Sin dependencia Streamlit]
 
         DTOs[📦 DTOs&lt;br/&gt;─────────────&lt;br/&gt;• ProcessDocumentRequest&lt;br/&gt;• ProcessDocumentResponse&lt;br/&gt;• ProcessingMetrics&lt;br/&gt;• ExportExcelRequest/Response&lt;br/&gt;• ImportExcelRequest/Response&lt;br/&gt;• SearchRequest&lt;br/&gt;• DuplicateCandidateDTO]
 
@@ -2449,7 +2653,7 @@
 
         Entities[🏛️ Entities&lt;br/&gt;─────────────&lt;br/&gt;• Document&lt;br/&gt;• DocumentType&lt;br/&gt;• DocumentStatus]
 
-        ValueObjects[💎 Value Objects&lt;br/&gt;─────────────&lt;br/&gt;• OCRResult&lt;br/&gt;• EntityResult&lt;br/&gt;• DuplicateCandidate&lt;br/&gt;• LevelScore]
+        ValueObjects[💎 Value Objects&lt;br/&gt;─────────────&lt;br/&gt;• OCRResult&lt;br/&gt;• EntityResult&lt;br/&gt;• DuplicateCandidate&lt;br/&gt;• LevelScore&lt;br/&gt;• NERFields ✅ S23&lt;br/&gt;• CSJMetadata ✅ S23&lt;br/&gt;• ProvisionalInfo ✅ S23&lt;br/&gt;• SectionsInfo ✅ S23]
 
         BusinessRules[📋 Business Rules&lt;br/&gt;─────────────&lt;br/&gt;• Validation Logic&lt;br/&gt;• Domain Events&lt;br/&gt;• Invariants]
     end
@@ -2465,7 +2669,7 @@
     subgraph "Infrastructure Layer - NER"
         direction TB
 
-        NERModule[🏷️ NER Module&lt;br/&gt;─────────────&lt;br/&gt;Ports:&lt;br/&gt;• NERPort&lt;br/&gt;─────────────&lt;br/&gt;Adapters:&lt;br/&gt;• SpaCyAdapter ✅&lt;br/&gt;• EntityExtractorEnsemble ✅&lt;br/&gt;─────────────&lt;br/&gt;Extractors Strategy ✅:&lt;br/&gt;• EntityExtractor Protocol&lt;br/&gt;• MarkerExtractor pri=1&lt;br/&gt;• SpaCyNERExtractor pri=2&lt;br/&gt;• RegexExtractor pri=3&lt;br/&gt;• AddressExtractor pri=4&lt;br/&gt;• ContactExtractor pri=5&lt;br/&gt;─────────────&lt;br/&gt;Validators Chain ✅:&lt;br/&gt;• EntityValidator Protocol&lt;br/&gt;• ValidatorChain&lt;br/&gt;• StructuralValidator&lt;br/&gt;• TemporalValidator&lt;br/&gt;• RadicadoFormatValidator&lt;br/&gt;• DeduplicationValidator&lt;br/&gt;─────────────&lt;br/&gt;Active Learning ✅:&lt;br/&gt;• CorrectionRepository&lt;br/&gt;• Correction, CorrectionStats&lt;br/&gt;─────────────&lt;br/&gt;Detectors:&lt;br/&gt;• ActaRepartoExtractor ✅&lt;br/&gt;• SectionsDetector ✅&lt;br/&gt;• ProvisionalMeasureDetector ✅&lt;br/&gt;─────────────&lt;br/&gt;Utilities:&lt;br/&gt;• EntityTruncator ✅&lt;br/&gt;• ContextScorer ✅&lt;br/&gt;• EntityLinker ✅&lt;br/&gt;• RadicadoValidator ✅&lt;br/&gt;• DocumentStructureAnalyzer ✅&lt;br/&gt;• TemporalFeatures ✅&lt;br/&gt;─────────────&lt;br/&gt;F1 Score: 85.3%]
+        NERModule[🏷️ NER Module&lt;br/&gt;─────────────&lt;br/&gt;Ports:&lt;br/&gt;• NERPort&lt;br/&gt;─────────────&lt;br/&gt;Adapters:&lt;br/&gt;• SpaCyAdapter ✅&lt;br/&gt;• EntityExtractorEnsemble ✅&lt;br/&gt;─────────────&lt;br/&gt;Extractors Strategy ✅:&lt;br/&gt;• EntityExtractor Protocol&lt;br/&gt;• MarkerExtractor pri=1&lt;br/&gt;• SpaCyNERExtractor pri=2&lt;br/&gt;• RegexExtractor pri=3&lt;br/&gt;• AddressExtractor pri=4&lt;br/&gt;• ContactExtractor pri=5&lt;br/&gt;─────────────&lt;br/&gt;Validators Chain ✅:&lt;br/&gt;• EntityValidator Protocol&lt;br/&gt;• ValidatorChain&lt;br/&gt;• StructuralValidator&lt;br/&gt;• TemporalValidator&lt;br/&gt;• RadicadoFormatValidator&lt;br/&gt;• DeduplicationValidator&lt;br/&gt;─────────────&lt;br/&gt;Active Learning ✅:&lt;br/&gt;• CorrectionRepository&lt;br/&gt;• Correction, CorrectionStats&lt;br/&gt;─────────────&lt;br/&gt;Detectors:&lt;br/&gt;• ActaRepartoExtractor ✅&lt;br/&gt;• SectionsDetector ✅&lt;br/&gt;• ProvisionalMeasureDetector ✅&lt;br/&gt;─────────────&lt;br/&gt;Utilities:&lt;br/&gt;• EntityTruncator ✅&lt;br/&gt;• ContextScorer ✅ S23-H2 fix&lt;br/&gt;• EntityLinker ✅&lt;br/&gt;• RadicadoValidator ✅&lt;br/&gt;• DocumentStructureAnalyzer ✅&lt;br/&gt;• TemporalFeatures ✅&lt;br/&gt;• CompoundSplitter ✅ S23-H4&lt;br/&gt;─────────────&lt;br/&gt;F1 Score: 85.3%]
 
         NERDeps[Dependencies:&lt;br/&gt;• spacy&lt;br/&gt;• es_core_news_lg&lt;br/&gt;• regex&lt;br/&gt;• unicodedata]
     end
@@ -2500,12 +2704,15 @@
 
     %% Presentation → Application
     GUI --&gt; UseCases
+    GUI --&gt; AppServices
     CLI --&gt; UseCases
 
     %% Application internal
     UseCases --&gt; DTOs
     UseCases --&gt; Container
+    AppServices --&gt; Container
     Container --&gt; UseCases
+    Container --&gt; AppServices
 
     %% Application → Domain
     UseCases --&gt; Entities
@@ -2558,6 +2765,7 @@
     style UseCases fill:#d5e5f9
     style DTOs fill:#d5e5f9
     style Container fill:#d5e5f9
+    style AppServices fill:#d5e5f9
     style Entities fill:#d5f9e5
     style ValueObjects fill:#d5f9e5
     style BusinessRules fill:#d5f9e5
@@ -2603,8 +2811,11 @@
 - <code>ProcessDocumentUseCase</code> ✅: Pipeline completo OCR → NER → Dedup → Persist
 - <code>ExportExcelUseCase</code> ✅: Exportación masiva a Excel con filtros por fecha/tipo
 - <code>ImportExcelUseCase</code> ✅: Importación masiva desde Excel con validación
-- <code>SearchDocumentsUseCase</code> ⏳: Búsqueda full-text con FTS5 (planificado, actualmente en Repository)
-- <code>ValidateEntityUseCase</code> ⏳: Validación y corrección de entidades (planificado)</p>
+- <code>SearchService</code> ✅: Búsqueda FTS5 + filtros client-side (extraído de search.py, Sprint 23)
+- <code>ValidationService</code> ✅: Correcciones + entidades recurrentes (extraído de validate.py, Sprint 23)
+- <code>StatisticsService</code> ✅: Dashboard stats (extraído de stats.py, Sprint 23)
+- <code>ManualEntryService</code> ✅: Ingreso manual con validación (extraído de manual_entry.py, Sprint 23)
+- <code>DedupConfigService</code> ✅: Configuración ensemble dedup (extraído de duplicates.py, Sprint 23)</p>
 <p><strong>Patrón</strong>: Railway-Oriented Programming con <code>Result</code> pattern.</p>
 <h4 id="dtos-data-transfer-objects">DTOs (Data Transfer Objects)<a class="headerlink" href="#dtos-data-transfer-objects" title="Permanent link">&para;</a></h4>
 <p><strong>Responsabilidad</strong>: Transferencia de datos entre capas.</p>
@@ -2931,11 +3142,11 @@
 </tr>
 <tr>
 <td>⏳</td>
-<td>Planificado para fase futura (SearchDocuments, ValidateEntity use cases)</td>
+<td>Planificado para fase futura</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Última actualización</strong>: 2026-03-06 (GOB-05 auth, GOB-06 AuditService, GOB-11 audit-report CLI, CLI 21 cmds, argparse)</p>
+<p><strong>Última actualización</strong>: 2026-03-19 (Sprint 23 completado: +DuplicateRenderer S23-D1, +CompoundSplitter S23-H4, ContextScorer fix S23-H2)</p>
 
 
 

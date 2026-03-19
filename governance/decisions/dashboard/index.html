@@ -10,31 +10,31 @@
       
       
       
-        <link rel="canonical" href="https://docs.sherlock.sprintjudicial.com/technical/architecture/">
+        <link rel="canonical" href="https://docs.sherlock.sprintjudicial.com/governance/decisions/dashboard/">
       
       
-        <link rel="prev" href="../../user-guide/cli/">
+        <link rel="prev" href="../ner-bias/">
       
       
-        <link rel="next" href="../../diagrams/01_system_context/">
+        <link rel="next" href="../../../project-status/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
     
     
       
-        <title>Vista General - Sherlock-docs</title>
+        <title>Dashboard (GOB-16) - Sherlock-docs</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,7 +53,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#arquitectura-y-componentes-tecnicos" class="md-skip">
+        <a href="#decision-aplazamiento-de-dashboard-de-gobernanza-gui-gob-16" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -99,7 +99,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="../.." title="Sherlock-docs" class="md-header__button md-logo" aria-label="Sherlock-docs" data-md-component="logo">
+    <a href="../../.." title="Sherlock-docs" class="md-header__button md-logo" aria-label="Sherlock-docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Vista General
+              Dashboard (GOB-16)
             
           </span>
         </div>
@@ -231,7 +231,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -252,7 +252,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../user-guide/manual/" class="md-tabs__link">
+        <a href="../../../user-guide/manual/" class="md-tabs__link">
           
   
   
@@ -268,13 +268,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../technical/architecture/" class="md-tabs__link">
           
   
   
@@ -294,7 +292,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../code-conventions/" class="md-tabs__link">
+        <a href="../../../technical/code-conventions/" class="md-tabs__link">
           
   
   
@@ -310,11 +308,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../governance/evaluacion-impacto/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../evaluacion-impacto/" class="md-tabs__link">
           
   
   
@@ -332,7 +332,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../project-status/" class="md-tabs__link">
+      <a href="../../../project-status/" class="md-tabs__link">
         
   
   
@@ -373,7 +373,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Sherlock-docs" class="md-nav__button md-logo" aria-label="Sherlock-docs" data-md-component="logo">
+    <a href="../../.." title="Sherlock-docs" class="md-nav__button md-logo" aria-label="Sherlock-docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -403,7 +403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -484,7 +484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../user-guide/manual/" class="md-nav__link">
+      <a href="../../../user-guide/manual/" class="md-nav__link">
         
   
   
@@ -512,7 +512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../user-guide/cli/" class="md-nav__link">
+      <a href="../../../user-guide/cli/" class="md-nav__link">
         
   
   
@@ -544,31 +544,28 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -586,7 +583,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -601,37 +598,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Vista General
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../technical/architecture/" class="md-nav__link">
         
   
   
@@ -647,125 +617,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#capas-clean-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Capas (Clean Architecture)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#patrones-implementados" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Patrones implementados
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pipeline-de-procesamiento" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pipeline de Procesamiento
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deteccion-de-duplicados" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Detección de Duplicados
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extraccion-hibrida-pdf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Extracción Híbrida PDF
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cache-tf-idf-critico" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Caché TF-IDF (CRÍTICO)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ner-ensemble" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NER Ensemble
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#base-de-datos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Base de Datos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#diagramas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Diagramas
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -778,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/01_system_context/" class="md-nav__link">
+      <a href="../../../diagrams/01_system_context/" class="md-nav__link">
         
   
   
@@ -806,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/02_architecture_layers/" class="md-nav__link">
+      <a href="../../../diagrams/02_architecture_layers/" class="md-nav__link">
         
   
   
@@ -834,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/03_processing_flow/" class="md-nav__link">
+      <a href="../../../diagrams/03_processing_flow/" class="md-nav__link">
         
   
   
@@ -862,7 +713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/04_duplicate_detection/" class="md-nav__link">
+      <a href="../../../diagrams/04_duplicate_detection/" class="md-nav__link">
         
   
   
@@ -890,7 +741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/05_class_diagram/" class="md-nav__link">
+      <a href="../../../diagrams/05_class_diagram/" class="md-nav__link">
         
   
   
@@ -918,7 +769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/06_component_diagram/" class="md-nav__link">
+      <a href="../../../diagrams/06_component_diagram/" class="md-nav__link">
         
   
   
@@ -946,7 +797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/07_database_schema/" class="md-nav__link">
+      <a href="../../../diagrams/07_database_schema/" class="md-nav__link">
         
   
   
@@ -974,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/08_gui_navigation/" class="md-nav__link">
+      <a href="../../../diagrams/08_gui_navigation/" class="md-nav__link">
         
   
   
@@ -1002,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/09_ner_pipeline/" class="md-nav__link">
+      <a href="../../../diagrams/09_ner_pipeline/" class="md-nav__link">
         
   
   
@@ -1091,7 +942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code-conventions/" class="md-nav__link">
+      <a href="../../../technical/code-conventions/" class="md-nav__link">
         
   
   
@@ -1119,7 +970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../logging/" class="md-nav__link">
+      <a href="../../../technical/logging/" class="md-nav__link">
         
   
   
@@ -1147,7 +998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/" class="md-nav__link">
+      <a href="../../../technical/testing/" class="md-nav__link">
         
   
   
@@ -1175,7 +1026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workflow/" class="md-nav__link">
+      <a href="../../../technical/workflow/" class="md-nav__link">
         
   
   
@@ -1203,7 +1054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/" class="md-nav__link">
+      <a href="../../../technical/troubleshooting/" class="md-nav__link">
         
   
   
@@ -1231,7 +1082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../antipatterns/" class="md-nav__link">
+      <a href="../../../technical/antipatterns/" class="md-nav__link">
         
   
   
@@ -1263,28 +1114,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -1302,7 +1156,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1320,7 +1174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../governance/evaluacion-impacto/" class="md-nav__link">
+      <a href="../../evaluacion-impacto/" class="md-nav__link">
         
   
   
@@ -1348,7 +1202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../governance/model-card/" class="md-nav__link">
+      <a href="../../model-card/" class="md-nav__link">
         
   
   
@@ -1376,7 +1230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../governance/etica-ia/" class="md-nav__link">
+      <a href="../../etica-ia/" class="md-nav__link">
         
   
   
@@ -1404,7 +1258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../governance/politica-datos/" class="md-nav__link">
+      <a href="../../politica-datos/" class="md-nav__link">
         
   
   
@@ -1432,7 +1286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../governance/data-governance/" class="md-nav__link">
+      <a href="../../data-governance/" class="md-nav__link">
         
   
   
@@ -1460,7 +1314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../governance/incident-response/" class="md-nav__link">
+      <a href="../../incident-response/" class="md-nav__link">
         
   
   
@@ -1488,7 +1342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../governance/data-retention/" class="md-nav__link">
+      <a href="../../data-retention/" class="md-nav__link">
         
   
   
@@ -1513,28 +1367,31 @@
                 
   
   
+    
   
   
+  
     
     
     
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
         
           
+          
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8" >
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" checked>
         
           
-          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="">
             
   
   
@@ -1552,7 +1409,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1570,7 +1427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../governance/decisions/sqlcipher/" class="md-nav__link">
+      <a href="../sqlcipher/" class="md-nav__link">
         
   
   
@@ -1598,7 +1455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../governance/decisions/ner-bias/" class="md-nav__link">
+      <a href="../ner-bias/" class="md-nav__link">
         
   
   
@@ -1623,10 +1480,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../governance/decisions/dashboard/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard (GOB-16)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1642,6 +1526,159 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Contexto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Contexto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-requerimiento-original" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Requerimiento original
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Decision
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-justificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Justificacion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Justificacion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-cobertura-actual-del-cli-audit-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Cobertura actual del CLI audit-report
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-perfil-de-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Perfil de usuarios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-relacion-costo-beneficio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Relacion costo-beneficio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-alternativa-pragmatica-actual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Alternativa pragmatica actual
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-paginas-gui-existentes-que-cubren-parcialmente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Paginas GUI Existentes que Cubren Parcialmente
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-condiciones-para-re-evaluar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Condiciones para Re-evaluar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-firmas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Firmas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1669,7 +1706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../project-status/" class="md-nav__link">
+      <a href="../../../project-status/" class="md-nav__link">
         
   
   
@@ -1716,10 +1753,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#capas-clean-architecture" class="md-nav__link">
+  <a href="#1-contexto" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Capas (Clean Architecture)
+        1. Contexto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Contexto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-requerimiento-original" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Requerimiento original
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Decision
       
     </span>
   </a>
@@ -1727,10 +1792,71 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#patrones-implementados" class="md-nav__link">
+  <a href="#3-justificacion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Patrones implementados
+        3. Justificacion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Justificacion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-cobertura-actual-del-cli-audit-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Cobertura actual del CLI audit-report
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-perfil-de-usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Perfil de usuarios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-relacion-costo-beneficio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Relacion costo-beneficio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-alternativa-pragmatica-actual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Alternativa pragmatica actual
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-paginas-gui-existentes-que-cubren-parcialmente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Paginas GUI Existentes que Cubren Parcialmente
       
     </span>
   </a>
@@ -1738,10 +1864,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pipeline-de-procesamiento" class="md-nav__link">
+  <a href="#5-condiciones-para-re-evaluar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pipeline de Procesamiento
+        5. Condiciones para Re-evaluar
       
     </span>
   </a>
@@ -1749,65 +1875,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deteccion-de-duplicados" class="md-nav__link">
+  <a href="#6-firmas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Detección de Duplicados
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extraccion-hibrida-pdf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Extracción Híbrida PDF
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cache-tf-idf-critico" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Caché TF-IDF (CRÍTICO)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ner-ensemble" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NER Ensemble
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#base-de-datos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Base de Datos
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#diagramas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Diagramas
+        6. Firmas
       
     </span>
   </a>
@@ -1834,99 +1905,228 @@
   
 
 
-<h1 id="arquitectura-y-componentes-tecnicos">Arquitectura y Componentes Técnicos<a class="headerlink" href="#arquitectura-y-componentes-tecnicos" title="Permanent link">&para;</a></h1>
-<h2 id="capas-clean-architecture">Capas (Clean Architecture)<a class="headerlink" href="#capas-clean-architecture" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Interfaces (GUI 9 páginas + CLI 20 comandos)
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    ↓
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Application (ProcessDocument + ImportExcel + ExportExcel + ServiceContainer)
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ↓
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Domain (Document, DocumentType, DocumentStatus, RecommendedAction, ImportStatus, ValueObjects)
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    ↑
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Infrastructure (OCR Router, SpaCy NER, Hybrid Dedup, SQLite+FTS5)
-</span></code></pre></div>
-<h2 id="patrones-implementados">Patrones implementados<a class="headerlink" href="#patrones-implementados" title="Permanent link">&para;</a></h2>
+<h1 id="decision-aplazamiento-de-dashboard-de-gobernanza-gui-gob-16">Decision: Aplazamiento de Dashboard de Gobernanza GUI (GOB-16)<a class="headerlink" href="#decision-aplazamiento-de-dashboard-de-gobernanza-gui-gob-16" title="Permanent link">&para;</a></h1>
+<p><strong>Sistema</strong>: Sherlock-docs v1.0
+<strong>Entidad</strong>: Centro de Servicios Judiciales de Bello, Antioquia — Rama Judicial
+<strong>Marco normativo</strong>: Acuerdo PCSJA24-12243 (Art. 10 — transparencia)
+<strong>Fecha</strong>: 2026-03-19
+<strong>Version</strong>: 1.0
+<strong>Referencia interna</strong>: GOB-16
+<strong>Tipo de decision</strong>: Aplazamiento — CLI <code>audit-report</code> cubre necesidad funcional</p>
+<hr />
+<h2 id="1-contexto">1. Contexto<a class="headerlink" href="#1-contexto" title="Permanent link">&para;</a></h2>
+<p>La contraauditoria SDD (doc 03) recomendo crear una pagina GUI dedicada a gobernanza que consolide metricas de auditoria, cumplimiento normativo y estado de controles de seguridad.</p>
+<h3 id="11-requerimiento-original">1.1 Requerimiento original<a class="headerlink" href="#11-requerimiento-original" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"Pagina GUI de gobernanza o decision documentada de mantener solo CLI <code>audit-report</code>"</p>
+</blockquote>
+<hr />
+<h2 id="2-decision">2. Decision<a class="headerlink" href="#2-decision" title="Permanent link">&para;</a></h2>
+<p><strong>Se aplaza la implementacion de una pagina GUI de gobernanza.</strong> El comando CLI <code>audit-report</code> cubre la necesidad funcional actual.</p>
+<hr />
+<h2 id="3-justificacion">3. Justificacion<a class="headerlink" href="#3-justificacion" title="Permanent link">&para;</a></h2>
+<h3 id="31-cobertura-actual-del-cli-audit-report">3.1 Cobertura actual del CLI <code>audit-report</code><a class="headerlink" href="#31-cobertura-actual-del-cli-audit-report" title="Permanent link">&para;</a></h3>
+<p>El comando <code>sherlock audit-report</code> (GOB-11) ya proporciona:</p>
 <table>
 <thead>
 <tr>
-<th>Patrón</th>
-<th>Implementación</th>
+<th>Funcionalidad</th>
+<th style="text-align: center;">Implementacion CLI</th>
+<th style="text-align: center;">Equivalente GUI necesario</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Ports &amp; Adapters</td>
-<td>OCRPort, NERPort, DuplicateDetectorPort, DocumentRepository</td>
+<td>Resumen de documentos procesados</td>
+<td style="text-align: center;">Si</td>
+<td style="text-align: center;">No (ya existe en pagina Estadisticas)</td>
 </tr>
 <tr>
-<td>ISP</td>
-<td>5 protocols: Reader, Writer, Searcher, Correction, Metrics</td>
+<td>Eventos de auditoria recientes</td>
+<td style="text-align: center;">Si</td>
+<td style="text-align: center;">No (dato tecnico, no operativo)</td>
 </tr>
 <tr>
-<td>ROP</td>
-<td>returns.Result en todo el pipeline</td>
+<td>Estadisticas de correcciones NER</td>
+<td style="text-align: center;">Si</td>
+<td style="text-align: center;">No (ya existe via <code>correction-stats</code>)</td>
 </tr>
 <tr>
-<td>Strategy</td>
-<td>OCRRouter, NER Extractors (5)</td>
+<td>Estado de servicios</td>
+<td style="text-align: center;">Si</td>
+<td style="text-align: center;">No (ya existe en <code>health</code>)</td>
 </tr>
 <tr>
-<td>Template Method</td>
-<td>PageBase (GUI), BaseOCRAdapter</td>
+<td>Metricas de rendimiento</td>
+<td style="text-align: center;">Si</td>
+<td style="text-align: center;">No (ya existe en pagina Estadisticas)</td>
 </tr>
 <tr>
-<td>Factory</td>
-<td>PageFactory (singleton)</td>
+<td>Conteo de backups</td>
+<td style="text-align: center;">Si</td>
+<td style="text-align: center;">No (verificacion tecnica)</td>
 </tr>
 <tr>
-<td>DI</td>
-<td>ServiceContainer con lazy-loading</td>
+<td>Alertas de seguridad</td>
+<td style="text-align: center;">Si</td>
+<td style="text-align: center;">No (operacion de Admin TI)</td>
 </tr>
 </tbody>
 </table>
-<h2 id="pipeline-de-procesamiento">Pipeline de Procesamiento<a class="headerlink" href="#pipeline-de-procesamiento" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>PDF → Gate Pre-OCR (SHA-256+size) → OCR Híbrido → NER Ensemble
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    → Secciones/Medida Provisional → Dedup Ensemble → BD + FTS5
+<h3 id="32-perfil-de-usuarios">3.2 Perfil de usuarios<a class="headerlink" href="#32-perfil-de-usuarios" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Rol</th>
+<th style="text-align: center;">Necesita dashboard GUI?</th>
+<th>Justificacion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Operador</strong> (1-2 personas)</td>
+<td style="text-align: center;">No</td>
+<td>Usa paginas de procesamiento y validacion; no necesita metricas de gobernanza</td>
+</tr>
+<tr>
+<td><strong>Coordinador CSJ</strong> (1 persona)</td>
+<td style="text-align: center;">Parcial</td>
+<td>Puede ejecutar <code>sherlock audit-report</code> o revisar pagina Estadisticas</td>
+</tr>
+<tr>
+<td><strong>Admin TI</strong> (1 persona)</td>
+<td style="text-align: center;">No</td>
+<td>Prefiere CLI y logs; accede via SSH</td>
+</tr>
+<tr>
+<td><strong>Oficial PDP</strong> (pendiente designacion)</td>
+<td style="text-align: center;">Posible</td>
+<td>Cuando se designe, evaluar si requiere interfaz visual</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-relacion-costo-beneficio">3.3 Relacion costo-beneficio<a class="headerlink" href="#33-relacion-costo-beneficio" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Evaluacion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Esfuerzo estimado</strong></td>
+<td>2-3 dias (pagina Streamlit con graficos, metricas, controles)</td>
+</tr>
+<tr>
+<td><strong>Usuarios beneficiados</strong></td>
+<td>1 (Coordinador CSJ) — y ya tiene CLI</td>
+</tr>
+<tr>
+<td><strong>Mantenimiento</strong></td>
+<td>Cada nueva metrica o control requiere actualizacion en 2 lugares (CLI + GUI)</td>
+</tr>
+<tr>
+<td><strong>Valor marginal</strong></td>
+<td>Bajo — no agrega informacion nueva, solo la presenta visualmente</td>
+</tr>
+<tr>
+<td><strong>Riesgo de obsolescencia</strong></td>
+<td>Alto — si se migra a API .NET + frontend SPA, la pagina Streamlit se descarta</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34-alternativa-pragmatica-actual">3.4 Alternativa pragmatica actual<a class="headerlink" href="#34-alternativa-pragmatica-actual" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># El Coordinador CSJ puede obtener el reporte completo con:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sherlock<span class="w"> </span>audit-report
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># O exportar a archivo para compartir:</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sherlock<span class="w"> </span>audit-report<span class="w"> </span>&gt;<span class="w"> </span>reporte_gobernanza_<span class="k">$(</span>date<span class="w"> </span>+%Y-%m-%d<span class="k">)</span>.txt
 </span></code></pre></div>
-<h2 id="deteccion-de-duplicados">Detección de Duplicados<a class="headerlink" href="#deteccion-de-duplicados" title="Permanent link">&para;</a></h2>
-<p><strong>Gate pre-OCR</strong> (ProcessDocumentUseCase):
-- SHA-256 binario + file_size → short-circuit sin OCR/NER</p>
-<p><strong>Ensemble post-OCR</strong> (HybridEnsembleDetector, 3 niveles):
-1. MinHash LSH (peso 0.25): Jaccard por shingles
-2. TF-IDF Coseno (peso 0.40): Similitud léxica
-3. Entity Matching (peso 0.35): Demandante + Demandado + Cédula + Correo</p>
-<p>Boosts: +0.20 ambas partes, +0.10 cédula, +0.05 correo.
-Auto-exclusión: documento no aparece como su propio duplicado.
-Pesos configurables via JSON: <code>data/config/dedup_config.json</code></p>
-<h2 id="extraccion-hibrida-pdf">Extracción Híbrida PDF<a class="headerlink" href="#extraccion-hibrida-pdf" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Paso 1: Texto nativo por página (PyMuPDF)</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># Página con ≥50 chars → usar directo (confidence=0.99, engine=NATIVE)</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Página con &lt;50 chars → marcar para OCR</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Paso 2: OCR solo para páginas sin texto nativo</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># Alta calidad → Tesseract, fallback PaddleOCR si confidence &lt;70%</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Baja calidad → PaddleOCR directo</span>
-</span></code></pre></div>
-<h2 id="cache-tf-idf-critico">Caché TF-IDF (CRÍTICO)<a class="headerlink" href="#cache-tf-idf-critico" title="Permanent link">&para;</a></h2>
-<p>Sin caché: 2-5 min con 10,000 docs. Con caché: &lt;2 seg.</p>
-<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># ✅ Caché incremental</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">cached_matrix</span> <span class="o">=</span> <span class="n">load_from_cache</span><span class="p">(</span><span class="s2">&quot;data/cache/tfidf.pkl&quot;</span><span class="p">)</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">new_vector</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="n">new_doc</span><span class="p">])</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">updated</span> <span class="o">=</span> <span class="n">vstack</span><span class="p">([</span><span class="n">cached_matrix</span><span class="p">,</span> <span class="n">new_vector</span><span class="p">])</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">save_to_cache</span><span class="p">(</span><span class="n">updated</span><span class="p">)</span>
-</span></code></pre></div>
-<p>Rebuild si &gt;10% documentos nuevos. Test: <code>test_similarity_search_under_2_seconds_with_1000_docs()</code></p>
-<h2 id="ner-ensemble">NER Ensemble<a class="headerlink" href="#ner-ensemble" title="Permanent link">&para;</a></h2>
-<p>5 extractores (Strategy): Marker(p=1), SpaCy(p=2), Regex(p=3), Address(p=4), Contact(p=5)
-4 validadores (Pipeline, no CoR — todos siempre ejecutan): Structural, Temporal, RadicadoFormat, Dedup
-F1 Global: 85.3% | Correo/Cédula: 100% | Demandante: 74%</p>
-<h2 id="base-de-datos">Base de Datos<a class="headerlink" href="#base-de-datos" title="Permanent link">&para;</a></h2>
-<p>SQLite + FTS5 + WAL mode. 5 tablas, 33 columnas documents, 11 índices.
-FK ON DELETE CASCADE en corrections y processing_stats.
-Ver diagrama completo: <code>docs/diagrams/07_database_schema.md</code></p>
-<h2 id="diagramas">Diagramas<a class="headerlink" href="#diagramas" title="Permanent link">&para;</a></h2>
-<p>9 diagramas actualizados en <code>docs/diagrams/</code>:
-01-System Context, 02-Architecture, 03-Processing Flow, 04-Dedup,
-05-Classes, 06-Components, 07-DB Schema, 08-GUI Nav, 09-NER Pipeline</p>
+<hr />
+<h2 id="4-paginas-gui-existentes-que-cubren-parcialmente">4. Paginas GUI Existentes que Cubren Parcialmente<a class="headerlink" href="#4-paginas-gui-existentes-que-cubren-parcialmente" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Pagina</th>
+<th>Metricas relevantes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Estadisticas</strong></td>
+<td>Volumenes, tiempos, distribucion por tipo, tendencias</td>
+</tr>
+<tr>
+<td><strong>Buscar</strong></td>
+<td>Busqueda FTS5 con filtros (equivale a consulta ad-hoc)</td>
+</tr>
+<tr>
+<td><strong>Validar</strong></td>
+<td>Estado de validacion de entidades NER</td>
+</tr>
+<tr>
+<td><strong>Duplicados</strong></td>
+<td>Metricas de deteccion de duplicados</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-condiciones-para-re-evaluar">5. Condiciones para Re-evaluar<a class="headerlink" href="#5-condiciones-para-re-evaluar" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Condicion</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Designacion de Oficial PDP</td>
+<td>Si requiere interfaz visual para auditorias periodicas</td>
+</tr>
+<tr>
+<td>Multi-sede</td>
+<td>Si mas de 3 usuarios necesitan acceso a metricas de gobernanza</td>
+</tr>
+<tr>
+<td>Requerimiento del CSJ</td>
+<td>Si se exige interfaz visual para reportes de cumplimiento</td>
+</tr>
+<tr>
+<td>API .NET implementada</td>
+<td>Si se construye frontend SPA, integrar dashboard de gobernanza ahi (no en Streamlit)</td>
+</tr>
+<tr>
+<td>Aumento de complejidad normativa</td>
+<td>Si se agregan &gt;5 controles GOB nuevos que requieran monitoreo visual</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-firmas">6. Firmas<a class="headerlink" href="#6-firmas" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Nombre</th>
+<th>Firma</th>
+<th>Fecha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coordinador CSJ Bello</td>
+<td><strong><em>_</em></strong><strong><em>_</em></strong>___</td>
+<td><strong><em>_</em></strong></td>
+<td><strong><em>_</em></strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Decision tecnica documentada conforme a GOB-16. El cumplimiento de transparencia (Art. 10, PCSJA24-12243) se satisface mediante CLI <code>audit-report</code> + pagina Estadisticas existente.</em></p>
+<p><em>Referencias: Acuerdo PCSJA24-12243</em>
+<em>Version: 1.0 — 2026-03-19</em></p>
 
 
 
@@ -1997,13 +2197,13 @@ Ver diagrama completo: <code>docs/diagrams/07_database_schema.md</code></p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
   <!-- Mermaid.js self-hosted (CSP blocks unpkg.com CDN) -->
-  <script src="../../js/mermaid.min.js"></script>
+  <script src="../../../js/mermaid.min.js"></script>
   
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
 

@@ -10,31 +10,31 @@
       
       
       
-        <link rel="canonical" href="https://docs.sherlock.sprintjudicial.com/governance/evaluacion-impacto/">
+        <link rel="canonical" href="https://docs.sherlock.sprintjudicial.com/governance/decisions/ner-bias/">
       
       
-        <link rel="prev" href="../../technical/antipatterns/">
+        <link rel="prev" href="../sqlcipher/">
       
       
-        <link rel="next" href="../model-card/">
+        <link rel="next" href="../dashboard/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
     
     
       
-        <title>Evaluacion de Impacto - Sherlock-docs</title>
+        <title>Sesgo NER (GOB-12) - Sherlock-docs</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,7 +53,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#evaluacion-de-impacto-de-inteligencia-artificial-eiai" class="md-skip">
+        <a href="#analisis-de-sesgo-ner-y-decision-de-aplazamiento-gob-12" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -99,7 +99,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="../.." title="Sherlock-docs" class="md-header__button md-logo" aria-label="Sherlock-docs" data-md-component="logo">
+    <a href="../../.." title="Sherlock-docs" class="md-header__button md-logo" aria-label="Sherlock-docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Evaluacion de Impacto
+              Sesgo NER (GOB-12)
             
           </span>
         </div>
@@ -231,7 +231,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -252,7 +252,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../user-guide/manual/" class="md-tabs__link">
+        <a href="../../../user-guide/manual/" class="md-tabs__link">
           
   
   
@@ -272,7 +272,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../technical/architecture/" class="md-tabs__link">
+        <a href="../../../technical/architecture/" class="md-tabs__link">
           
   
   
@@ -292,7 +292,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../technical/code-conventions/" class="md-tabs__link">
+        <a href="../../../technical/code-conventions/" class="md-tabs__link">
           
   
   
@@ -314,7 +314,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../../evaluacion-impacto/" class="md-tabs__link">
           
   
   
@@ -332,7 +332,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../project-status/" class="md-tabs__link">
+      <a href="../../../project-status/" class="md-tabs__link">
         
   
   
@@ -373,7 +373,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Sherlock-docs" class="md-nav__button md-logo" aria-label="Sherlock-docs" data-md-component="logo">
+    <a href="../../.." title="Sherlock-docs" class="md-nav__button md-logo" aria-label="Sherlock-docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -403,7 +403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -484,7 +484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../user-guide/manual/" class="md-nav__link">
+      <a href="../../../user-guide/manual/" class="md-nav__link">
         
   
   
@@ -512,7 +512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../user-guide/cli/" class="md-nav__link">
+      <a href="../../../user-guide/cli/" class="md-nav__link">
         
   
   
@@ -601,7 +601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../technical/architecture/" class="md-nav__link">
+      <a href="../../../technical/architecture/" class="md-nav__link">
         
   
   
@@ -629,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/01_system_context/" class="md-nav__link">
+      <a href="../../../diagrams/01_system_context/" class="md-nav__link">
         
   
   
@@ -657,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/02_architecture_layers/" class="md-nav__link">
+      <a href="../../../diagrams/02_architecture_layers/" class="md-nav__link">
         
   
   
@@ -685,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/03_processing_flow/" class="md-nav__link">
+      <a href="../../../diagrams/03_processing_flow/" class="md-nav__link">
         
   
   
@@ -713,7 +713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/04_duplicate_detection/" class="md-nav__link">
+      <a href="../../../diagrams/04_duplicate_detection/" class="md-nav__link">
         
   
   
@@ -741,7 +741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/05_class_diagram/" class="md-nav__link">
+      <a href="../../../diagrams/05_class_diagram/" class="md-nav__link">
         
   
   
@@ -769,7 +769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/06_component_diagram/" class="md-nav__link">
+      <a href="../../../diagrams/06_component_diagram/" class="md-nav__link">
         
   
   
@@ -797,7 +797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/07_database_schema/" class="md-nav__link">
+      <a href="../../../diagrams/07_database_schema/" class="md-nav__link">
         
   
   
@@ -825,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/08_gui_navigation/" class="md-nav__link">
+      <a href="../../../diagrams/08_gui_navigation/" class="md-nav__link">
         
   
   
@@ -853,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../diagrams/09_ner_pipeline/" class="md-nav__link">
+      <a href="../../../diagrams/09_ner_pipeline/" class="md-nav__link">
         
   
   
@@ -942,7 +942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../technical/code-conventions/" class="md-nav__link">
+      <a href="../../../technical/code-conventions/" class="md-nav__link">
         
   
   
@@ -970,7 +970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../technical/logging/" class="md-nav__link">
+      <a href="../../../technical/logging/" class="md-nav__link">
         
   
   
@@ -998,7 +998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../technical/testing/" class="md-nav__link">
+      <a href="../../../technical/testing/" class="md-nav__link">
         
   
   
@@ -1026,7 +1026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../technical/workflow/" class="md-nav__link">
+      <a href="../../../technical/workflow/" class="md-nav__link">
         
   
   
@@ -1054,7 +1054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../technical/troubleshooting/" class="md-nav__link">
+      <a href="../../../technical/troubleshooting/" class="md-nav__link">
         
   
   
@@ -1082,7 +1082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../technical/antipatterns/" class="md-nav__link">
+      <a href="../../../technical/antipatterns/" class="md-nav__link">
         
   
   
@@ -1171,37 +1171,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Evaluacion de Impacto
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../evaluacion-impacto/" class="md-nav__link">
         
   
   
@@ -1217,365 +1190,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-descripcion-del-sistema-y-contexto-institucional" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Descripcion del Sistema y Contexto Institucional
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Descripcion del Sistema y Contexto Institucional">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11-proposito" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.1 Proposito
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-contexto-operativo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.2 Contexto operativo
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-objetivo-del-uso-de-ia" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.3 Objetivo del uso de IA
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-datos-personales-tratados" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Datos Personales Tratados
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Datos Personales Tratados">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-tipos-de-datos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.1 Tipos de datos
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-volumen-estimado" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.2 Volumen estimado
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-almacenamiento" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3 Almacenamiento
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-componentes-de-ia-detalle-tecnico" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Componentes de IA — Detalle Tecnico
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Componentes de IA — Detalle Tecnico">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-ocr-reconocimiento-optico-de-caracteres" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.1 OCR (Reconocimiento Optico de Caracteres)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-ner-extraccion-de-entidades" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2 NER (Extraccion de Entidades)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-deteccion-de-duplicados" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.3 Deteccion de Duplicados
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-riesgos-identificados-y-mitigaciones" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Riesgos Identificados y Mitigaciones
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Riesgos Identificados y Mitigaciones">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-matriz-de-riesgos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1 Matriz de riesgos
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-riesgos-aceptados" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.2 Riesgos aceptados
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-poblacion-impactada" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Poblacion Impactada
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Poblacion Impactada">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-usuarios-directos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.1 Usuarios directos
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52-poblacion-indirectamente-afectada" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.2 Poblacion indirectamente afectada
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-beneficios-cuantificados" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Beneficios Cuantificados
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-mecanismos-de-supervision-humana" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. Mecanismos de Supervision Humana
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Mecanismos de Supervision Humana">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71-validacion-obligatoria-pcsja24-12243-art9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.1 Validacion obligatoria (PCSJA24-12243 Art.9)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72-no-autonomia-de-la-ia" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.2 No autonomia de la IA
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#73-trazabilidad" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.3 Trazabilidad
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-plan-de-monitoreo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. Plan de Monitoreo
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. Plan de Monitoreo">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#81-metricas-de-rendimiento" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.1 Metricas de rendimiento
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#82-revision-periodica" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.2 Revision periodica
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-aprobaciones" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9. Aprobaciones
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1588,7 +1202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../model-card/" class="md-nav__link">
+      <a href="../../model-card/" class="md-nav__link">
         
   
   
@@ -1616,7 +1230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../etica-ia/" class="md-nav__link">
+      <a href="../../etica-ia/" class="md-nav__link">
         
   
   
@@ -1644,7 +1258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../politica-datos/" class="md-nav__link">
+      <a href="../../politica-datos/" class="md-nav__link">
         
   
   
@@ -1672,7 +1286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data-governance/" class="md-nav__link">
+      <a href="../../data-governance/" class="md-nav__link">
         
   
   
@@ -1700,7 +1314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../incident-response/" class="md-nav__link">
+      <a href="../../incident-response/" class="md-nav__link">
         
   
   
@@ -1728,7 +1342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data-retention/" class="md-nav__link">
+      <a href="../../data-retention/" class="md-nav__link">
         
   
   
@@ -1753,8 +1367,10 @@
                 
   
   
+    
   
   
+  
     
     
     
@@ -1768,13 +1384,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" checked>
         
           
           <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="">
@@ -1795,7 +1409,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1813,7 +1427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../decisions/sqlcipher/" class="md-nav__link">
+      <a href="../sqlcipher/" class="md-nav__link">
         
   
   
@@ -1838,10 +1452,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../decisions/ner-bias/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sesgo NER (GOB-12)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1857,6 +1498,265 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Contexto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Contexto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-arquitectura-del-pipeline-ner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Arquitectura del pipeline NER
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-metricas-actuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Metricas actuales
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Decision
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-justificacion-del-aplazamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Justificacion del Aplazamiento
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Justificacion del Aplazamiento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-ausencia-de-corpus-anotado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Ausencia de corpus anotado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-limitaciones-del-modelo-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Limitaciones del modelo base
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-mitigaciones-implementadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Mitigaciones Implementadas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Mitigaciones Implementadas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-validacion-humana-obligatoria-mitigacion-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Validacion humana obligatoria (mitigacion principal)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-mejoras-tecnicas-implementadas-sprint-h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Mejoras tecnicas implementadas (Sprint H)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-controles-de-auditoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Controles de auditoria
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tipos-de-sesgo-evaluados-cualitativamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Tipos de Sesgo Evaluados Cualitativamente
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Tipos de Sesgo Evaluados Cualitativamente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-sesgo-por-tipo-de-nombre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Sesgo por tipo de nombre
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-sesgo-por-rol-procesal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Sesgo por rol procesal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-plan-de-evaluacion-formal-cuando-sea-factible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Plan de Evaluacion Formal (cuando sea factible)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Plan de Evaluacion Formal (cuando sea factible)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-prerequisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Prerequisitos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-metricas-a-reportar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Metricas a reportar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-condiciones-para-re-evaluar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Condiciones para re-evaluar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-firmas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Firmas
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1869,7 +1769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../decisions/dashboard/" class="md-nav__link">
+      <a href="../dashboard/" class="md-nav__link">
         
   
   
@@ -1912,7 +1812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../project-status/" class="md-nav__link">
+      <a href="../../../project-status/" class="md-nav__link">
         
   
   
@@ -1959,22 +1859,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-descripcion-del-sistema-y-contexto-institucional" class="md-nav__link">
+  <a href="#1-contexto" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Descripcion del Sistema y Contexto Institucional
+        1. Contexto
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Descripcion del Sistema y Contexto Institucional">
+    <nav class="md-nav" aria-label="1. Contexto">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11-proposito" class="md-nav__link">
+  <a href="#11-arquitectura-del-pipeline-ner" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1 Proposito
+        1.1 Arquitectura del pipeline NER
       
     </span>
   </a>
@@ -1982,21 +1882,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-contexto-operativo" class="md-nav__link">
+  <a href="#12-metricas-actuales" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.2 Contexto operativo
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-objetivo-del-uso-de-ia" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.3 Objetivo del uso de IA
+        1.2 Metricas actuales
       
     </span>
   </a>
@@ -2009,22 +1898,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-datos-personales-tratados" class="md-nav__link">
+  <a href="#2-decision" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Datos Personales Tratados
+        2. Decision
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Datos Personales Tratados">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-justificacion-del-aplazamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Justificacion del Aplazamiento
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Justificacion del Aplazamiento">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-tipos-de-datos" class="md-nav__link">
+  <a href="#31-ausencia-de-corpus-anotado" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 Tipos de datos
+        3.1 Ausencia de corpus anotado
       
     </span>
   </a>
@@ -2032,21 +1932,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-volumen-estimado" class="md-nav__link">
+  <a href="#32-limitaciones-del-modelo-base" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 Volumen estimado
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-almacenamiento" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2.3 Almacenamiento
+        3.2 Limitaciones del modelo base
       
     </span>
   </a>
@@ -2059,22 +1948,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-componentes-de-ia-detalle-tecnico" class="md-nav__link">
+  <a href="#4-mitigaciones-implementadas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Componentes de IA — Detalle Tecnico
+        4. Mitigaciones Implementadas
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Componentes de IA — Detalle Tecnico">
+    <nav class="md-nav" aria-label="4. Mitigaciones Implementadas">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-ocr-reconocimiento-optico-de-caracteres" class="md-nav__link">
+  <a href="#41-validacion-humana-obligatoria-mitigacion-principal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 OCR (Reconocimiento Optico de Caracteres)
+        4.1 Validacion humana obligatoria (mitigacion principal)
       
     </span>
   </a>
@@ -2082,10 +1971,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-ner-extraccion-de-entidades" class="md-nav__link">
+  <a href="#42-mejoras-tecnicas-implementadas-sprint-h" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 NER (Extraccion de Entidades)
+        4.2 Mejoras tecnicas implementadas (Sprint H)
       
     </span>
   </a>
@@ -2093,10 +1982,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#33-deteccion-de-duplicados" class="md-nav__link">
+  <a href="#43-controles-de-auditoria" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 Deteccion de Duplicados
+        4.3 Controles de auditoria
       
     </span>
   </a>
@@ -2109,22 +1998,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-riesgos-identificados-y-mitigaciones" class="md-nav__link">
+  <a href="#5-tipos-de-sesgo-evaluados-cualitativamente" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Riesgos Identificados y Mitigaciones
+        5. Tipos de Sesgo Evaluados Cualitativamente
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Riesgos Identificados y Mitigaciones">
+    <nav class="md-nav" aria-label="5. Tipos de Sesgo Evaluados Cualitativamente">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-matriz-de-riesgos" class="md-nav__link">
+  <a href="#51-sesgo-por-tipo-de-nombre" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 Matriz de riesgos
+        5.1 Sesgo por tipo de nombre
       
     </span>
   </a>
@@ -2132,10 +2021,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-riesgos-aceptados" class="md-nav__link">
+  <a href="#52-sesgo-por-rol-procesal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 Riesgos aceptados
+        5.2 Sesgo por rol procesal
       
     </span>
   </a>
@@ -2148,22 +2037,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-poblacion-impactada" class="md-nav__link">
+  <a href="#6-plan-de-evaluacion-formal-cuando-sea-factible" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Poblacion Impactada
+        6. Plan de Evaluacion Formal (cuando sea factible)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. Poblacion Impactada">
+    <nav class="md-nav" aria-label="6. Plan de Evaluacion Formal (cuando sea factible)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-usuarios-directos" class="md-nav__link">
+  <a href="#61-prerequisitos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.1 Usuarios directos
+        6.1 Prerequisitos
       
     </span>
   </a>
@@ -2171,10 +2060,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#52-poblacion-indirectamente-afectada" class="md-nav__link">
+  <a href="#62-metricas-a-reportar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.2 Poblacion indirectamente afectada
+        6.2 Metricas a reportar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-condiciones-para-re-evaluar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Condiciones para re-evaluar
       
     </span>
   </a>
@@ -2187,110 +2087,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-beneficios-cuantificados" class="md-nav__link">
+  <a href="#7-firmas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Beneficios Cuantificados
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-mecanismos-de-supervision-humana" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. Mecanismos de Supervision Humana
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Mecanismos de Supervision Humana">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71-validacion-obligatoria-pcsja24-12243-art9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.1 Validacion obligatoria (PCSJA24-12243 Art.9)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72-no-autonomia-de-la-ia" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.2 No autonomia de la IA
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#73-trazabilidad" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.3 Trazabilidad
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-plan-de-monitoreo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. Plan de Monitoreo
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. Plan de Monitoreo">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#81-metricas-de-rendimiento" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.1 Metricas de rendimiento
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#82-revision-periodica" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.2 Revision periodica
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-aprobaciones" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9. Aprobaciones
+        7. Firmas
       
     </span>
   </a>
@@ -2317,373 +2117,372 @@
   
 
 
-<h1 id="evaluacion-de-impacto-de-inteligencia-artificial-eiai">Evaluacion de Impacto de Inteligencia Artificial (EIAI)<a class="headerlink" href="#evaluacion-de-impacto-de-inteligencia-artificial-eiai" title="Permanent link">&para;</a></h1>
+<h1 id="analisis-de-sesgo-ner-y-decision-de-aplazamiento-gob-12">Analisis de Sesgo NER y Decision de Aplazamiento (GOB-12)<a class="headerlink" href="#analisis-de-sesgo-ner-y-decision-de-aplazamiento-gob-12" title="Permanent link">&para;</a></h1>
 <p><strong>Sistema</strong>: Sherlock-docs v1.0
 <strong>Entidad</strong>: Centro de Servicios Judiciales de Bello, Antioquia — Rama Judicial
-<strong>Fecha</strong>: 2026-03-06
-<strong>Elaborado por</strong>: Equipo de desarrollo Sherlock-docs
-<strong>Marco normativo</strong>: Guia MinTIC/PNUD Uso Responsable de IA en Entidades Publicas, CONPES 3975 (2019), Acuerdo PCSJA24-12243</p>
+<strong>Marco normativo</strong>: CONPES 3975 (principio de no discriminacion), Guia MinTIC/PNUD, Acuerdo PCSJA24-12243 (Art. 9)
+<strong>Fecha</strong>: 2026-03-19
+<strong>Version</strong>: 1.0
+<strong>Referencia interna</strong>: GOB-12
+<strong>Tipo de decision</strong>: Aplazamiento parcial con mitigaciones implementadas</p>
 <hr />
-<h2 id="1-descripcion-del-sistema-y-contexto-institucional">1. Descripcion del Sistema y Contexto Institucional<a class="headerlink" href="#1-descripcion-del-sistema-y-contexto-institucional" title="Permanent link">&para;</a></h2>
-<h3 id="11-proposito">1.1 Proposito<a class="headerlink" href="#11-proposito" title="Permanent link">&para;</a></h3>
-<p>Sherlock-docs es un sistema de gestion documental que asiste a los funcionarios del Centro de Servicios Judiciales (CSJ) de Bello en el registro de acciones de tutela, habeas corpus e incidentes de desacato. El sistema:</p>
-<ul>
-<li><strong>Digitaliza</strong> documentos fisicos mediante OCR (reconocimiento optico de caracteres)</li>
-<li><strong>Extrae</strong> entidades clave (accionante, accionado, radicado, cedula, correo) mediante NLP</li>
-<li><strong>Detecta</strong> documentos duplicados mediante similitud textual</li>
-<li><strong>Facilita</strong> la validacion humana de toda la informacion extraida</li>
-</ul>
-<h3 id="12-contexto-operativo">1.2 Contexto operativo<a class="headerlink" href="#12-contexto-operativo" title="Permanent link">&para;</a></h3>
-<p>El CSJ de Bello recibe aproximadamente 100 documentos diarios. El proceso anterior era 100% manual: un funcionario leia cada documento, identificaba las partes, radicado y datos del proceso, y los registraba en una hoja de calculo. Este proceso tomaba 15-20 minutos por documento.</p>
-<h3 id="13-objetivo-del-uso-de-ia">1.3 Objetivo del uso de IA<a class="headerlink" href="#13-objetivo-del-uso-de-ia" title="Permanent link">&para;</a></h3>
-<p>Reducir el tiempo de registro de 15-20 minutos a 2-3 minutos por documento, manteniendo la precision mediante validacion humana obligatoria. <strong>La IA no toma decisiones judiciales ni administrativas</strong> — solo extrae datos para facilitar el registro.</p>
-<hr />
-<h2 id="2-datos-personales-tratados">2. Datos Personales Tratados<a class="headerlink" href="#2-datos-personales-tratados" title="Permanent link">&para;</a></h2>
-<h3 id="21-tipos-de-datos">2.1 Tipos de datos<a class="headerlink" href="#21-tipos-de-datos" title="Permanent link">&para;</a></h3>
+<h2 id="1-contexto">1. Contexto<a class="headerlink" href="#1-contexto" title="Permanent link">&para;</a></h2>
+<p>La contraauditoria SDD (doc 03) identifico la necesidad de evaluar el pipeline NER (Named Entity Recognition) de Sherlock-docs para detectar posibles sesgos en la extraccion de entidades, particularmente en la clasificacion de DEMANDANTE y DEMANDADO.</p>
+<h3 id="11-arquitectura-del-pipeline-ner">1.1 Arquitectura del pipeline NER<a class="headerlink" href="#11-arquitectura-del-pipeline-ner" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Dato</th>
-<th>Categoria (Ley 1581)</th>
-<th>Fuente</th>
-<th>Proposito</th>
+<th>Componente</th>
+<th>Funcion</th>
+<th style="text-align: center;">Potencial de sesgo</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Nombres (accionante/accionado)</td>
-<td>Dato personal</td>
-<td>Documento judicial</td>
-<td>Registro del proceso</td>
+<td>SpaCy <code>es_core_news_sm</code></td>
+<td>Modelo base de NER en español</td>
+<td style="text-align: center;">Medio — entrenado en corpus general, no juridico</td>
 </tr>
 <tr>
-<td>Cedula (CC/CE/NIT)</td>
-<td>Dato personal</td>
-<td>Documento judicial</td>
-<td>Identificacion unica</td>
+<td>MarkerExtractor</td>
+<td>Extraccion por marcadores textuales</td>
+<td style="text-align: center;">Bajo — basado en reglas deterministicas</td>
 </tr>
 <tr>
-<td>Correo electronico</td>
-<td>Dato personal</td>
-<td>Documento judicial</td>
-<td>Notificaciones</td>
+<td>ContextScorer</td>
+<td>Puntuacion por contexto</td>
+<td style="text-align: center;">Medio — pesos configurados manualmente</td>
 </tr>
 <tr>
-<td>Direccion</td>
-<td>Dato personal</td>
-<td>Documento judicial</td>
-<td>Notificaciones</td>
+<td>NER Ensemble</td>
+<td>Votacion entre extractores</td>
+<td style="text-align: center;">Bajo — deduplicacion y consensus</td>
 </tr>
 <tr>
-<td>Contenido de la tutela</td>
-<td>Dato sensible*</td>
-<td>Documento judicial</td>
-<td>Deteccion de duplicados</td>
+<td>Entity Linker</td>
+<td>Normalizacion de nombres</td>
+<td style="text-align: center;">Bajo — reglas de normalizacion</td>
 </tr>
 </tbody>
 </table>
-<p>*El contenido puede incluir informacion de salud, situacion economica u otros datos sensibles del ciudadano.</p>
-<h3 id="22-volumen-estimado">2.2 Volumen estimado<a class="headerlink" href="#22-volumen-estimado" title="Permanent link">&para;</a></h3>
-<ul>
-<li>~100 documentos/dia, ~2,500/mes</li>
-<li>Cada documento contiene datos de 2-4 personas (accionante, accionado, testigos)</li>
-<li>Poblacion indirectamente impactada: ~5,000-10,000 ciudadanos/mes</li>
-</ul>
-<h3 id="23-almacenamiento">2.3 Almacenamiento<a class="headerlink" href="#23-almacenamiento" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Base de datos SQLite en servidor local de la entidad</li>
-<li><strong>Sin transferencia a terceros</strong>: 100% local, sin APIs externas, sin cloud</li>
-<li>Respaldos segun politica de la entidad</li>
-</ul>
-<hr />
-<h2 id="3-componentes-de-ia-detalle-tecnico">3. Componentes de IA — Detalle Tecnico<a class="headerlink" href="#3-componentes-de-ia-detalle-tecnico" title="Permanent link">&para;</a></h2>
-<h3 id="31-ocr-reconocimiento-optico-de-caracteres">3.1 OCR (Reconocimiento Optico de Caracteres)<a class="headerlink" href="#31-ocr-reconocimiento-optico-de-caracteres" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Aspecto</th>
-<th>Detalle</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Motores</strong></td>
-<td>Tesseract 5.x (LSTM) + PaddleOCR v2.x (CNN+LSTM+Attention)</td>
-</tr>
-<tr>
-<td><strong>Routing</strong></td>
-<td>Automatico segun calidad del documento (Strategy pattern)</td>
-</tr>
-<tr>
-<td><strong>Confianza promedio</strong></td>
-<td>90-93%</td>
-</tr>
-<tr>
-<td><strong>Riesgo</strong></td>
-<td>Texto mal extraido en documentos degradados</td>
-</tr>
-<tr>
-<td><strong>Mitigacion</strong></td>
-<td>Validacion humana + visualizacion del texto extraido</td>
-</tr>
-</tbody>
-</table>
-<h3 id="32-ner-extraccion-de-entidades">3.2 NER (Extraccion de Entidades)<a class="headerlink" href="#32-ner-extraccion-de-entidades" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Aspecto</th>
-<th>Detalle</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Modelo principal</strong></td>
-<td>SpaCy <code>es_core_news_lg</code> v3.8 (CNN, 560 MB)</td>
-</tr>
-<tr>
-<td><strong>Arquitectura</strong></td>
-<td>Ensemble de 5 extractores (1 neural + 4 deterministicos)</td>
-</tr>
-<tr>
-<td><strong>F1 global</strong></td>
-<td>85.3% (radicado/cedula/correo 100%, demandante 74%)</td>
-</tr>
-<tr>
-<td><strong>Riesgo</strong></td>
-<td>Extraccion incorrecta de nombres de personas</td>
-</tr>
-<tr>
-<td><strong>Mitigacion</strong></td>
-<td>Validacion humana obligatoria antes de guardar</td>
-</tr>
-</tbody>
-</table>
-<h3 id="33-deteccion-de-duplicados">3.3 Deteccion de Duplicados<a class="headerlink" href="#33-deteccion-de-duplicados" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Aspecto</th>
-<th>Detalle</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Tecnicas</strong></td>
-<td>SHA-256 (exacto) + MinHash (fuzzy) + TF-IDF (textual) + Entity Matching</td>
-</tr>
-<tr>
-<td><strong>Precision</strong></td>
-<td>Gate SHA-256 = 100%, ensemble configurable</td>
-</tr>
-<tr>
-<td><strong>Riesgo</strong></td>
-<td>Falso positivo (documento valido marcado como duplicado)</td>
-</tr>
-<tr>
-<td><strong>Mitigacion</strong></td>
-<td>El operador decide — el sistema solo sugiere</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="4-riesgos-identificados-y-mitigaciones">4. Riesgos Identificados y Mitigaciones<a class="headerlink" href="#4-riesgos-identificados-y-mitigaciones" title="Permanent link">&para;</a></h2>
-<h3 id="41-matriz-de-riesgos">4.1 Matriz de riesgos<a class="headerlink" href="#41-matriz-de-riesgos" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>Riesgo</th>
-<th>Probabilidad</th>
-<th>Impacto</th>
-<th>Mitigacion</th>
-<th>Estado</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>R1</td>
-<td>Entidad mal extraida (nombre incorrecto)</td>
-<td>Media</td>
-<td>Alto</td>
-<td>Validacion humana obligatoria</td>
-<td>Implementado</td>
-</tr>
-<tr>
-<td>R2</td>
-<td>Texto OCR ilegible</td>
-<td>Baja</td>
-<td>Medio</td>
-<td>Dual-engine routing + fallback</td>
-<td>Implementado</td>
-</tr>
-<tr>
-<td>R3</td>
-<td>Duplicado no detectado</td>
-<td>Baja</td>
-<td>Medio</td>
-<td>4 niveles de deteccion complementarios</td>
-<td>Implementado</td>
-</tr>
-<tr>
-<td>R4</td>
-<td>Falso positivo en duplicados</td>
-<td>Baja</td>
-<td>Bajo</td>
-<td>Operador decide, sistema sugiere</td>
-<td>Implementado</td>
-</tr>
-<tr>
-<td>R5</td>
-<td>Acceso no autorizado a datos</td>
-<td>Media</td>
-<td>Alto</td>
-<td>Autenticacion basica (en implementacion)</td>
-<td>Pendiente (GOB-05)</td>
-</tr>
-<tr>
-<td>R6</td>
-<td>Sesgo del modelo NER en nombres</td>
-<td>Baja</td>
-<td>Medio</td>
-<td>Ensemble con extractores deterministicos</td>
-<td>Implementado</td>
-</tr>
-<tr>
-<td>R7</td>
-<td>Fuga de datos por transferencia</td>
-<td>Muy baja</td>
-<td>Critico</td>
-<td>Arquitectura 100% local</td>
-<td>Por diseno</td>
-</tr>
-</tbody>
-</table>
-<h3 id="42-riesgos-aceptados">4.2 Riesgos aceptados<a class="headerlink" href="#42-riesgos-aceptados" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>R5</strong>: Autenticacion pendiente. El sistema opera en red interna de la entidad con acceso restringido a nivel de red. Se implementara login basico (GOB-05).</li>
-<li><strong>NER F1 74% en demandante</strong>: Aceptable porque la validacion humana obliga a verificar cada campo.</li>
-</ul>
-<hr />
-<h2 id="5-poblacion-impactada">5. Poblacion Impactada<a class="headerlink" href="#5-poblacion-impactada" title="Permanent link">&para;</a></h2>
-<h3 id="51-usuarios-directos">5.1 Usuarios directos<a class="headerlink" href="#51-usuarios-directos" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Funcionarios del CSJ</strong>: 5-10 operadores que procesan documentos diariamente</li>
-<li>Impacto: Reduccion de carga operativa, mejora en eficiencia</li>
-</ul>
-<h3 id="52-poblacion-indirectamente-afectada">5.2 Poblacion indirectamente afectada<a class="headerlink" href="#52-poblacion-indirectamente-afectada" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Ciudadanos</strong>: Accionantes y accionados cuyas tutelas son procesadas</li>
-<li>Los ciudadanos no interactuan con el sistema</li>
-<li>Sus datos personales son tratados conforme a la finalidad judicial</li>
-<li>Impacto potencial negativo: error en registro (mitigado por validacion humana)</li>
-</ul>
-<hr />
-<h2 id="6-beneficios-cuantificados">6. Beneficios Cuantificados<a class="headerlink" href="#6-beneficios-cuantificados" title="Permanent link">&para;</a></h2>
+<h3 id="12-metricas-actuales">1.2 Metricas actuales<a class="headerlink" href="#12-metricas-actuales" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
 <th>Metrica</th>
-<th>Sin Sherlock-docs</th>
-<th>Con Sherlock-docs</th>
+<th style="text-align: center;">Valor</th>
+<th>Evaluacion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1 global NER</td>
+<td style="text-align: center;">85.3%</td>
+<td>Aceptable para MVP con validacion humana</td>
+</tr>
+<tr>
+<td>Precision DEMANDANTE</td>
+<td style="text-align: center;">~90%</td>
+<td>Buena</td>
+</tr>
+<tr>
+<td>Recall DEMANDANTE</td>
+<td style="text-align: center;">~88%</td>
+<td>Buena</td>
+</tr>
+<tr>
+<td>Precision DEMANDADO</td>
+<td style="text-align: center;">~82%</td>
+<td>Aceptable — mejorado en Sprint H</td>
+</tr>
+<tr>
+<td>Recall DEMANDADO</td>
+<td style="text-align: center;">~78%</td>
+<td>Aceptable — mejorado en Sprint H (5 causas corregidas)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Nota</strong>: Las metricas desagregadas son estimaciones basadas en pruebas manuales con ~50 documentos de prueba. No se dispone de un corpus anotado formal para evaluacion sistematica.</p>
+</blockquote>
+<hr />
+<h2 id="2-decision">2. Decision<a class="headerlink" href="#2-decision" title="Permanent link">&para;</a></h2>
+<p><strong>Se aplaza la evaluacion formal de sesgo desagregada por categoria de nombre</strong> hasta que se disponga de un corpus anotado representativo. Se documentan las mitigaciones actualmente implementadas.</p>
+<hr />
+<h2 id="3-justificacion-del-aplazamiento">3. Justificacion del Aplazamiento<a class="headerlink" href="#3-justificacion-del-aplazamiento" title="Permanent link">&para;</a></h2>
+<h3 id="31-ausencia-de-corpus-anotado">3.1 Ausencia de corpus anotado<a class="headerlink" href="#31-ausencia-de-corpus-anotado" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Requisito</th>
+<th style="text-align: center;">Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Corpus anotado con &gt;200 documentos reales</td>
+<td style="text-align: center;">No disponible</td>
+</tr>
+<tr>
+<td>Anotaciones gold-standard por tipo de nombre (hispano, indigena, afro, extranjero)</td>
+<td style="text-align: center;">No disponible</td>
+</tr>
+<tr>
+<td>Acuerdo inter-anotador (IAA)</td>
+<td style="text-align: center;">No aplicable (un solo anotador)</td>
+</tr>
+<tr>
+<td>Distribucion representativa por region/etnia</td>
+<td style="text-align: center;">No disponible</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Razon</strong>: Los documentos procesados son tutelas reales con datos personales protegidos por Ley 1581. No se pueden usar como corpus de evaluacion sin anonimizacion previa, lo cual invalidaria la evaluacion de sesgo por nombre.</p>
+<h3 id="32-limitaciones-del-modelo-base">3.2 Limitaciones del modelo base<a class="headerlink" href="#32-limitaciones-del-modelo-base" title="Permanent link">&para;</a></h3>
+<p>SpaCy <code>es_core_news_sm</code> fue entrenado en corpus periodistico general (AnCora + WikiNER). Sus limitaciones conocidas incluyen:</p>
+<ul>
+<li>Menor precision en nombres indigenas y afrocolombianos (subrepresentados en corpus de entrenamiento)</li>
+<li>Confunsion entre nombres propios y toponimos en regiones con nomenclatura indigena</li>
+<li>Mejor desempeno en nombres hispanos comunes (sobrerrepresentados en corpus)</li>
+</ul>
+<p>Estas limitaciones son <strong>inherentes al modelo pre-entrenado</strong> y no pueden corregirse sin fine-tuning o un corpus juridico colombiano anotado.</p>
+<hr />
+<h2 id="4-mitigaciones-implementadas">4. Mitigaciones Implementadas<a class="headerlink" href="#4-mitigaciones-implementadas" title="Permanent link">&para;</a></h2>
+<h3 id="41-validacion-humana-obligatoria-mitigacion-principal">4.1 Validacion humana obligatoria (mitigacion principal)<a class="headerlink" href="#41-validacion-humana-obligatoria-mitigacion-principal" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Implementacion</th>
+<th>Referencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Validacion humana de todas las entidades NER</strong></td>
+<td>Pagina GUI "Validar" — operador revisa y corrige antes de confirmar</td>
+<td>Art. 9, PCSJA24-12243</td>
+</tr>
+<tr>
+<td><strong>Entidades marcadas como <code>extracted</code> (no validadas)</strong></td>
+<td>Status diferenciado: extracted → validated</td>
+<td>Flujo de trabajo</td>
+</tr>
+<tr>
+<td><strong>Correccion libre</strong></td>
+<td>Operador puede modificar cualquier campo NER sin restriccion</td>
+<td>Pagina Validar</td>
+</tr>
+<tr>
+<td><strong>Indicador visual</strong></td>
+<td>Entidades con baja confianza se muestran con advertencia</td>
+<td>GUI process.py</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>La validacion humana obligatoria es la mitigacion mas efectiva contra sesgo NER.</strong> Ningun resultado del pipeline se acepta automaticamente como verdad; todo pasa por revision humana.</p>
+</blockquote>
+<h3 id="42-mejoras-tecnicas-implementadas-sprint-h">4.2 Mejoras tecnicas implementadas (Sprint H)<a class="headerlink" href="#42-mejoras-tecnicas-implementadas-sprint-h" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>SPEC</th>
 <th>Mejora</th>
+<th style="text-align: center;">Impacto en sesgo</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Tiempo por documento</td>
-<td>15-20 min</td>
-<td>2-3 min</td>
-<td>85-87%</td>
+<td>S23-H1</td>
+<td>Whitelist ORGs sincronizada en MarkerExtractor</td>
+<td style="text-align: center;">Reduce falsos negativos en entidades corporativas como DEMANDADO</td>
 </tr>
 <tr>
-<td>Deteccion de duplicados</td>
-<td>Manual/visual</td>
-<td>Automatica 4 niveles</td>
-<td>Significativa</td>
+<td>S23-H2</td>
+<td>Fix tie-breaking simetrico en ContextScorer</td>
+<td style="text-align: center;"><strong>Elimina sesgo sistematico</strong> que favorecia DEMANDANTE sobre DEMANDADO</td>
 </tr>
 <tr>
-<td>Errores de transcripcion</td>
-<td>~5-10%</td>
-<td>&lt;3% (post-validacion)</td>
-<td>40-70%</td>
+<td>S23-H3</td>
+<td>Multi-winner ensemble para DEMANDADO</td>
+<td style="text-align: center;">Permite multiples demandados (tutelas con litisconsorcio)</td>
 </tr>
 <tr>
-<td>Documentos/hora/operador</td>
-<td>3-4</td>
-<td>15-20</td>
-<td>400-500%</td>
+<td>S23-H4</td>
+<td>Compound splitter para "Y"</td>
+<td style="text-align: center;">Separa "X Y Z" en demandados individuales</td>
+</tr>
+<tr>
+<td>S23-H5</td>
+<td>Fallback "contra" para DEMANDADO</td>
+<td style="text-align: center;">Mejora recall via marcadores alternativos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-controles-de-auditoria">4.3 Controles de auditoria<a class="headerlink" href="#43-controles-de-auditoria" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Metricas de correccion</td>
+<td>Tabla <code>processing_stats</code> registra correcciones NER por campo</td>
+</tr>
+<tr>
+<td>CLI <code>correction-stats</code></td>
+<td>Reporte de tasas de correccion por tipo de entidad</td>
+</tr>
+<tr>
+<td>CLI <code>audit-report</code></td>
+<td>Reporte consolidado incluyendo estadisticas de correcciones</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="7-mecanismos-de-supervision-humana">7. Mecanismos de Supervision Humana<a class="headerlink" href="#7-mecanismos-de-supervision-humana" title="Permanent link">&para;</a></h2>
-<h3 id="71-validacion-obligatoria-pcsja24-12243-art9">7.1 Validacion obligatoria (PCSJA24-12243 Art.9)<a class="headerlink" href="#71-validacion-obligatoria-pcsja24-12243-art9" title="Permanent link">&para;</a></h3>
-<ul>
-<li>La pagina <strong>ValidatePage</strong> obliga al funcionario a revisar cada campo extraido por IA</li>
-<li>El sistema muestra la confianza OCR y permite ver el texto original</li>
-<li>Los campos no se guardan en BD hasta que el operador confirma</li>
-<li>Se registran correcciones con valor original vs corregido</li>
-</ul>
-<h3 id="72-no-autonomia-de-la-ia">7.2 No autonomia de la IA<a class="headerlink" href="#72-no-autonomia-de-la-ia" title="Permanent link">&para;</a></h3>
-<ul>
-<li>El sistema <strong>nunca</strong> toma decisiones judiciales ni administrativas</li>
-<li>No modifica, rechaza ni aprueba documentos automaticamente</li>
-<li>No genera texto ni contenido — solo extrae informacion existente</li>
-</ul>
-<h3 id="73-trazabilidad">7.3 Trazabilidad<a class="headerlink" href="#73-trazabilidad" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Historial de correcciones por documento</li>
-<li>Logs de procesamiento con tiempos y metricas</li>
-<li>Estadisticas de uso diario accesibles en la GUI</li>
-</ul>
+<h2 id="5-tipos-de-sesgo-evaluados-cualitativamente">5. Tipos de Sesgo Evaluados Cualitativamente<a class="headerlink" href="#5-tipos-de-sesgo-evaluados-cualitativamente" title="Permanent link">&para;</a></h2>
+<h3 id="51-sesgo-por-tipo-de-nombre">5.1 Sesgo por tipo de nombre<a class="headerlink" href="#51-sesgo-por-tipo-de-nombre" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tipo de nombre</th>
+<th style="text-align: center;">Riesgo estimado</th>
+<th>Mitigacion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hispano comun (Garcia, Rodriguez)</td>
+<td style="text-align: center;">Bajo</td>
+<td>Bien representado en corpus SpaCy</td>
+</tr>
+<tr>
+<td>Compuesto (Maria del Carmen, Juan de Dios)</td>
+<td style="text-align: center;">Medio</td>
+<td>Entity Linker normaliza; validacion humana corrige</td>
+</tr>
+<tr>
+<td>Indigena (Yarumal, Quimbaya)</td>
+<td style="text-align: center;">Alto</td>
+<td>Confundido con toponimos; validacion humana obligatoria</td>
+</tr>
+<tr>
+<td>Afrocolombiano</td>
+<td style="text-align: center;">Medio</td>
+<td>Subrepresentado en corpus; validacion humana obligatoria</td>
+</tr>
+<tr>
+<td>Extranjero (nombres no hispanicos)</td>
+<td style="text-align: center;">Medio</td>
+<td>SpaCy reconoce patrones latinos/anglosajones; otros menos</td>
+</tr>
+<tr>
+<td>Corporativo (EPS, ARL, entidades)</td>
+<td style="text-align: center;">Bajo</td>
+<td>Whitelist de 45 ORGs (SPEC S23-A6) + KNOWN_SINGLE_WORD_ORGS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-sesgo-por-rol-procesal">5.2 Sesgo por rol procesal<a class="headerlink" href="#52-sesgo-por-rol-procesal" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Sesgo</th>
+<th style="text-align: center;">Estado</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEMANDANTE favorecido sobre DEMANDADO</td>
+<td style="text-align: center;"><strong>Corregido</strong></td>
+<td>Sprint H — tie-breaking simetrico (S23-H2)</td>
+</tr>
+<tr>
+<td>DEMANDADO single-winner</td>
+<td style="text-align: center;"><strong>Corregido</strong></td>
+<td>Sprint H — multi-winner ensemble (S23-H3)</td>
+</tr>
+<tr>
+<td>Personas naturales vs juridicas</td>
+<td style="text-align: center;"><strong>Mitigado</strong></td>
+<td>Whitelist ORGs + corporate suffix detection</td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h2 id="8-plan-de-monitoreo">8. Plan de Monitoreo<a class="headerlink" href="#8-plan-de-monitoreo" title="Permanent link">&para;</a></h2>
-<h3 id="81-metricas-de-rendimiento">8.1 Metricas de rendimiento<a class="headerlink" href="#81-metricas-de-rendimiento" title="Permanent link">&para;</a></h3>
+<h2 id="6-plan-de-evaluacion-formal-cuando-sea-factible">6. Plan de Evaluacion Formal (cuando sea factible)<a class="headerlink" href="#6-plan-de-evaluacion-formal-cuando-sea-factible" title="Permanent link">&para;</a></h2>
+<h3 id="61-prerequisitos">6.1 Prerequisitos<a class="headerlink" href="#61-prerequisitos" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Corpus de evaluacion: minimo 200 documentos anotados manualmente</li>
+<li>Anonimizacion que preserve la estructura de nombres (reemplazar con nombres sinteticos de igual complejidad)</li>
+<li>Distribucion representativa: al menos 20% nombres no-hispanos comunes</li>
+<li>Dos anotadores independientes para calcular IAA (Inter-Annotator Agreement)</li>
+</ol>
+<h3 id="62-metricas-a-reportar">6.2 Metricas a reportar<a class="headerlink" href="#62-metricas-a-reportar" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
 <th>Metrica</th>
-<th>Frecuencia</th>
-<th>Responsable</th>
-<th>Umbral de alerta</th>
+<th style="text-align: center;">Desagregacion</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Confianza OCR promedio</td>
-<td>Semanal</td>
-<td>Coordinador CSJ</td>
-<td>&lt; 80%</td>
+<td>F1 por tipo de entidad</td>
+<td style="text-align: center;">DEMANDANTE, DEMANDADO, RADICADO, JUZGADO, FECHA</td>
 </tr>
 <tr>
-<td>Tasa de correcciones por campo</td>
-<td>Mensual</td>
-<td>Coordinador CSJ</td>
-<td>&gt; 50% en un campo</td>
+<td>F1 por tipo de nombre</td>
+<td style="text-align: center;">Hispano, compuesto, indigena, corporativo</td>
 </tr>
 <tr>
-<td>Documentos procesados/dia</td>
-<td>Diario (automatico)</td>
-<td>Sistema</td>
-<td>Anomalia estadistica</td>
+<td>Tasa de falsos negativos</td>
+<td style="text-align: center;">Por tipo de nombre y rol procesal</td>
 </tr>
 <tr>
-<td>Tiempo promedio procesamiento</td>
-<td>Semanal</td>
-<td>Desarrollador</td>
-<td>&gt; 2 min consistente</td>
+<td>Delta de correccion humana</td>
+<td style="text-align: center;">Porcentaje de correcciones por categoria</td>
 </tr>
 </tbody>
 </table>
-<h3 id="82-revision-periodica">8.2 Revision periodica<a class="headerlink" href="#82-revision-periodica" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Trimestral</strong>: Revisar F1 NER contra documentos reales (benchmark)</li>
-<li><strong>Semestral</strong>: Evaluar actualizacion de modelos SpaCy</li>
-<li><strong>Anual</strong>: Revision integral de esta evaluacion de impacto</li>
-</ul>
+<h3 id="63-condiciones-para-re-evaluar">6.3 Condiciones para re-evaluar<a class="headerlink" href="#63-condiciones-para-re-evaluar" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Condicion</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Corpus anotado disponible</td>
+<td>Proyecto de anotacion con MinJusticia o universidades</td>
+</tr>
+<tr>
+<td>F1 degrada en produccion</td>
+<td>Tasa de correccion supera 30% en cualquier campo</td>
+</tr>
+<tr>
+<td>Queja formal de sesgo</td>
+<td>Reporte de operador o ciudadano sobre discriminacion</td>
+</tr>
+<tr>
+<td>Regulacion especifica</td>
+<td>Requerimiento explicito del CSJ o de la SIC</td>
+</tr>
+<tr>
+<td>Fine-tuning del modelo</td>
+<td>Si se entrena modelo NER juridico colombiano</td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h2 id="9-aprobaciones">9. Aprobaciones<a class="headerlink" href="#9-aprobaciones" title="Permanent link">&para;</a></h2>
+<h2 id="7-firmas">7. Firmas<a class="headerlink" href="#7-firmas" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2695,31 +2494,23 @@
 </thead>
 <tbody>
 <tr>
-<td>Desarrollador</td>
-<td><strong><em>_</em></strong><strong><em>_</em></strong>___</td>
-<td><strong><em>_</em></strong></td>
-<td><strong><em>_</em></strong></td>
-</tr>
-<tr>
 <td>Coordinador CSJ Bello</td>
 <td><strong><em>_</em></strong><strong><em>_</em></strong>___</td>
 <td><strong><em>_</em></strong></td>
 <td><strong><em>_</em></strong></td>
 </tr>
 <tr>
-<td>Area Juridica CSJ</td>
+<td>Oficial de Proteccion de Datos</td>
 <td><strong><em>_</em></strong><strong><em>_</em></strong>___</td>
 <td><strong><em>_</em></strong></td>
 <td><strong><em>_</em></strong></td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>Nota</strong>: Este documento debe ser completado con los datos de la entidad y aprobado por el area juridica del CSJ antes de la operacion formal del sistema.</p>
-</blockquote>
 <hr />
-<p><em>Referencia: Guia MinTIC/PNUD para el Uso Responsable de IA en Entidades Publicas</em>
-<em>Version: 1.0 — 2026-03-06</em></p>
+<p><em>Analisis tecnico documentado conforme a GOB-12 y principios de no discriminacion de CONPES 3975. La mitigacion principal (validacion humana obligatoria) cumple Art. 9 del Acuerdo PCSJA24-12243.</em></p>
+<p><em>Referencias: CONPES 3975, Guia MinTIC/PNUD, Acuerdo PCSJA24-12243, Ley 1581 de 2012</em>
+<em>Version: 1.0 — 2026-03-19</em></p>
 
 
 
@@ -2790,13 +2581,13 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
   <!-- Mermaid.js self-hosted (CSP blocks unpkg.com CDN) -->
-  <script src="../../js/mermaid.min.js"></script>
+  <script src="../../../js/mermaid.min.js"></script>
   
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
 

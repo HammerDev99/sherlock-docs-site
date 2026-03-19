@@ -959,6 +959,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#7-duplicate_detections-detecciones-de-duplicados-sprint-23-spec-s23-c2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. duplicate_detections - Detecciones de Duplicados (Sprint 23 SPEC-S23-C2)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1575,6 +1586,208 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/incident-response/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan de Incidentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/data-retention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retencion de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decisiones
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Decisiones
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/decisions/sqlcipher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLCipher (GOB-13)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/decisions/ner-bias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sesgo NER (GOB-12)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/decisions/dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard (GOB-16)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1729,6 +1942,17 @@
     <span class="md-ellipsis">
       
         6. audit_events - Eventos de Auditoría (GOB-06)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-duplicate_detections-detecciones-de-duplicados-sprint-23-spec-s23-c2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. duplicate_detections - Detecciones de Duplicados (Sprint 23 SPEC-S23-C2)
       
     </span>
   </a>
@@ -1897,7 +2121,6 @@
         TEXT demandado "Entidad extraída por NER"
         TEXT radicado "Número de radicado"
         TEXT juzgado "Juzgado asignado"
-        TEXT fecha_documento "Fecha del documento"
         TEXT correo "Email extraído por NER"
         TEXT cedula "CC/CE/NIT extraído por NER"
         TEXT hora_radicacion "HH:MM:SS auto-generado"
@@ -1985,10 +2208,26 @@
         TEXT created_at "ISO 8601 timestamp"
     }
 
+    duplicate_detections {
+        INTEGER id PK "AUTOINCREMENT"
+        TEXT query_document_id FK "Documento fuente"
+        TEXT candidate_document_id FK "Documento candidato"
+        REAL final_score "Score ensemble 0.0-1.0"
+        TEXT confidence "high|medium|low"
+        TEXT detection_method "ensemble|exact|minhash"
+        REAL hash_score "Score exact match"
+        REAL minhash_score "Score MinHash LSH"
+        REAL tfidf_score "Score TF-IDF cosine"
+        REAL entity_score "Score entity match"
+        TEXT detected_at "ISO 8601 timestamp"
+    }
+
     documents ||--o{ corrections : "tiene (ON DELETE CASCADE)"
     documents ||--o| processing_stats : "tiene (ON DELETE CASCADE)"
     documents ||--|| documents_fts : "sincroniza via triggers"
-    documents ||--o{ audit_events : "genera"</code></pre>
+    documents ||--o{ audit_events : "genera"
+    documents ||--o{ duplicate_detections : "query_doc (ON DELETE CASCADE)"
+    documents ||--o{ duplicate_detections : "candidate_doc (ON DELETE CASCADE)"</code></pre>
 <h2 id="tablas-principales">Tablas Principales<a class="headerlink" href="#tablas-principales" title="Permanent link">&para;</a></h2>
 <h3 id="1-documents-tabla-principal">1. <code>documents</code> - Tabla Principal<a class="headerlink" href="#1-documents-tabla-principal" title="Permanent link">&para;</a></h3>
 <p>Almacena todos los documentos legales procesados.</p>
@@ -2079,12 +2318,6 @@
 <td>TEXT</td>
 <td>DEFAULT ''</td>
 <td>Juzgado asignado</td>
-</tr>
-<tr>
-<td><code>fecha_documento</code></td>
-<td>TEXT</td>
-<td>DEFAULT ''</td>
-<td>Fecha del documento</td>
 </tr>
 <tr>
 <td><code>correo</code></td>
@@ -2598,6 +2831,92 @@
 - <code>idx_audit_events_resource</code> en <code>resource_type, resource_id</code> — Búsqueda por recurso
 - <code>idx_audit_events_created</code> en <code>created_at</code> — Búsqueda temporal</p>
 <p><strong>Uso</strong>: Trazabilidad GOB-06, reportes de auditoría GOB-11 (CLI <code>audit-report</code>), cumplimiento gobernanza IA.</p>
+<h3 id="7-duplicate_detections-detecciones-de-duplicados-sprint-23-spec-s23-c2">7. <code>duplicate_detections</code> - Detecciones de Duplicados (Sprint 23 SPEC-S23-C2)<a class="headerlink" href="#7-duplicate_detections-detecciones-de-duplicados-sprint-23-spec-s23-c2" title="Permanent link">&para;</a></h3>
+<p>Almacena resultados de detección de duplicados del ensemble dedup para análisis y auditoría.</p>
+<table>
+<thead>
+<tr>
+<th>Columna</th>
+<th>Tipo</th>
+<th>Restricción</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>INTEGER</td>
+<td>PK AUTOINCREMENT</td>
+<td>ID secuencial</td>
+</tr>
+<tr>
+<td><code>query_document_id</code></td>
+<td>TEXT</td>
+<td>FK → documents.id</td>
+<td>Documento fuente de la búsqueda</td>
+</tr>
+<tr>
+<td><code>candidate_document_id</code></td>
+<td>TEXT</td>
+<td>FK → documents.id</td>
+<td>Documento candidato a duplicado</td>
+</tr>
+<tr>
+<td><code>final_score</code></td>
+<td>REAL</td>
+<td>NOT NULL</td>
+<td>Score final del ensemble (0.0-1.0)</td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td>TEXT</td>
+<td>NOT NULL</td>
+<td>Nivel: <code>high</code>, <code>medium</code>, <code>low</code></td>
+</tr>
+<tr>
+<td><code>detection_method</code></td>
+<td>TEXT</td>
+<td>NOT NULL</td>
+<td>Método: <code>ensemble</code>, <code>exact</code>, <code>minhash</code></td>
+</tr>
+<tr>
+<td><code>hash_score</code></td>
+<td>REAL</td>
+<td>DEFAULT 0</td>
+<td>Score exact hash match</td>
+</tr>
+<tr>
+<td><code>minhash_score</code></td>
+<td>REAL</td>
+<td>DEFAULT 0</td>
+<td>Score MinHash LSH</td>
+</tr>
+<tr>
+<td><code>tfidf_score</code></td>
+<td>REAL</td>
+<td>DEFAULT 0</td>
+<td>Score TF-IDF cosine similarity</td>
+</tr>
+<tr>
+<td><code>entity_score</code></td>
+<td>REAL</td>
+<td>DEFAULT 0</td>
+<td>Score entity matching</td>
+</tr>
+<tr>
+<td><code>detected_at</code></td>
+<td>TEXT</td>
+<td>NOT NULL</td>
+<td>Timestamp de detección (ISO 8601)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Constraint</strong>: <code>UNIQUE(query_document_id, candidate_document_id)</code> — evita detecciones duplicadas.</p>
+<p><strong>FK</strong>: Ambas FKs con <code>ON DELETE CASCADE</code> — si se borra un documento, se borran sus detecciones.</p>
+<p><strong>Índices</strong> (2):
+- <code>idx_dedup_query</code> en <code>query_document_id</code> — búsqueda de duplicados de un documento
+- <code>idx_dedup_candidate</code> en <code>candidate_document_id</code> — búsqueda inversa</p>
+<p><strong>Uso</strong>: Auditoría de detecciones, análisis de falsos positivos, dashboard de duplicados.</p>
 <h2 id="triggers-de-sincronizacion-fts5">Triggers de Sincronización FTS5<a class="headerlink" href="#triggers-de-sincronizacion-fts5" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">-- INSERT: Sincroniza nuevos documentos al índice FTS5</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">documents_ai</span><span class="w"> </span><span class="k">AFTER</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">documents</span><span class="w"> </span><span class="k">BEGIN</span>
@@ -2643,7 +2962,7 @@
 </span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">    </span><span class="p">);</span>
 </span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="k">END</span><span class="p">;</span>
 </span></code></pre></div>
-<p><strong>Campos corregibles</strong>: <code>demandante</code>, <code>demandado</code>, <code>radicado</code>, <code>juzgado</code>, <code>fecha_documento</code>, <code>numero_acta</code>, <code>observaciones</code>, <code>etiquetas</code>, <code>direccion_demandante</code>, <code>direccion_demandado</code></p>
+<p><strong>Campos corregibles</strong>: <code>demandante</code>, <code>demandado</code>, <code>radicado</code>, <code>juzgado</code>, <code>numero_acta</code>, <code>observaciones</code>, <code>etiquetas</code>, <code>direccion_demandante</code>, <code>direccion_demandado</code></p>
 <h2 id="diagrama-de-flujo-de-datos">Diagrama de Flujo de Datos<a class="headerlink" href="#diagrama-de-flujo-de-datos" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart LR
     subgraph Input["📄 Entrada"]
@@ -2777,7 +3096,7 @@
 </tr>
 <tr>
 <td><strong>Índices</strong></td>
-<td>6 en documents, 1 en corrections, 1 en processing_stats, 3 en logs, 4 en audit_events</td>
+<td>6 en documents, 1 en corrections, 1 en processing_stats, 3 en logs, 4 en audit_events, 2 en duplicate_detections</td>
 <td>Búsquedas O(log n)</td>
 </tr>
 </tbody>
@@ -2814,7 +3133,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Última actualización</strong>: 2026-03-06 (GOB-05 auth + GOB-06 audit_events + GOB-07 cols + GOB-11 audit-report)</p>
+<p><strong>Última actualización</strong>: 2026-03-18 (Sprint 23: tabla duplicate_detections con CASCADE + UNIQUE, 2 índices)</p>
 
 
 

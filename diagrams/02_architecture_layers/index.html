@@ -1481,6 +1481,208 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/incident-response/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan de Incidentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/data-retention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retencion de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decisiones
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Decisiones
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/decisions/sqlcipher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLCipher (GOB-13)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/decisions/ner-bias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sesgo NER (GOB-12)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/decisions/dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard (GOB-16)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1696,18 +1898,19 @@
 <pre class="mermaid"><code>graph TB
     subgraph InterfacesLayer["Interfaces Layer (UI)"]
         GUI[Streamlit GUI&lt;br/&gt;app.py]
-        CLI[CLI Interface&lt;br/&gt;cli.py&lt;br/&gt;✅ 20 comandos]
+        CLI[CLI Interface&lt;br/&gt;cli.py&lt;br/&gt;✅ 21 comandos]
     end
 
     subgraph ApplicationLayer["Application Layer"]
         UC[Use Cases&lt;br/&gt;ProcessDocumentUseCase&lt;br/&gt;ExportExcelUseCase&lt;br/&gt;ImportExcelUseCase]
+        Services[Services S23&lt;br/&gt;ValidationService&lt;br/&gt;SearchService&lt;br/&gt;StatisticsService&lt;br/&gt;ManualEntryService&lt;br/&gt;DedupConfigService]
         DTOs[DTOs&lt;br/&gt;ProcessDocumentRequest&lt;br/&gt;ProcessDocumentResponse]
-        Container[Service Container&lt;br/&gt;Dependency Injection]
+        Container[Service Container&lt;br/&gt;Dependency Injection&lt;br/&gt;Thread-safe RLock]
     end
 
     subgraph DomainLayer["Domain Layer (Core)"]
         Entities[Entities&lt;br/&gt;Document&lt;br/&gt;DocumentType&lt;br/&gt;DocumentStatus]
-        ValueObjects[Value Objects&lt;br/&gt;EntityResult&lt;br/&gt;OCRResult&lt;br/&gt;DuplicateCandidate]
+        ValueObjects[Value Objects&lt;br/&gt;EntityResult&lt;br/&gt;OCRResult&lt;br/&gt;DuplicateCandidate&lt;br/&gt;NERFields&lt;br/&gt;CSJMetadata&lt;br/&gt;ProvisionalInfo&lt;br/&gt;SectionsInfo]
     end
 
     subgraph InfrastructureLayer["Infrastructure Layer (Adapters)"]
@@ -1740,8 +1943,8 @@
         end
 
         subgraph "Persistence"
-            Repo[SQLite Repository&lt;br/&gt;FTS5 Support&lt;br/&gt;3 Mixins: Connection,&lt;br/&gt;Correction, Metrics]
-            ISP[ISP Protocols:&lt;br/&gt;DocumentReader,&lt;br/&gt;DocumentWriter,&lt;br/&gt;DocumentSearcher,&lt;br/&gt;CorrectionRepository,&lt;br/&gt;MetricsRepository]
+            Repo[SQLite Repository&lt;br/&gt;FTS5 Support&lt;br/&gt;3 Mixins: Connection,&lt;br/&gt;Correction, Metrics&lt;br/&gt;Transaction Support]
+            ISP[ISP Protocols:&lt;br/&gt;DocumentReader,&lt;br/&gt;DocumentWriter + Txn,&lt;br/&gt;DocumentSearcher,&lt;br/&gt;CorrectionRepository,&lt;br/&gt;MetricsRepository]
         end
 
         subgraph "Logging"
@@ -1758,8 +1961,10 @@
     end
 
     GUI --&gt; Container
+    GUI --&gt; Services
     CLI --&gt; Container
     Container --&gt; UC
+    Container --&gt; Services
     UC --&gt; DTOs
     UC --&gt; OCRPort
     UC --&gt; NERPort
@@ -1810,7 +2015,7 @@
 <p><strong>Responsabilidad</strong>: Lógica de negocio pura, sin dependencias externas.</p>
 <ul>
 <li><strong>Entities</strong>: <code>Document</code>, <code>DocumentType</code>, <code>DocumentStatus</code></li>
-<li><strong>Value Objects</strong>: <code>EntityResult</code>, <code>OCRResult</code>, <code>DuplicateCandidate</code></li>
+<li><strong>Value Objects</strong>: <code>EntityResult</code>, <code>OCRResult</code>, <code>DuplicateCandidate</code>, <code>NERFields</code>, <code>CSJMetadata</code>, <code>ProvisionalInfo</code>, <code>SectionsInfo</code> (Sprint 23: 4 nuevos frozen VOs)</li>
 <li><strong>Reglas de negocio</strong>: Validaciones de estado, invariantes del dominio</li>
 </ul>
 <p><strong>Característica clave</strong>: Cero dependencias a frameworks o bibliotecas externas.</p>
@@ -1818,8 +2023,9 @@
 <p><strong>Responsabilidad</strong>: Orquestación de casos de uso, coordinación entre puertos.</p>
 <ul>
 <li><strong>Use Cases</strong>: <code>ProcessDocumentUseCase</code> (pipeline OCR -&gt; NER -&gt; Dedup -&gt; Persist), <code>ExportExcelUseCase</code>, <code>ImportExcelUseCase</code></li>
+<li><strong>Services</strong> (Sprint 23): <code>ValidationService</code>, <code>SearchService</code>, <code>StatisticsService</code>, <code>ManualEntryService</code>, <code>DedupConfigService</code> — lógica extraída de GUI, sin dependencia Streamlit</li>
 <li><strong>DTOs</strong>: Objetos inmutables para transferencia entre capas</li>
-<li><strong>Service Container</strong>: Inyección de dependencias, lazy loading de recursos</li>
+<li><strong>Service Container</strong>: Inyección de dependencias, lazy loading, thread-safe con RLock</li>
 </ul>
 <p><strong>Pattern</strong>: Railway-Oriented Programming con <code>returns.Result</code> para manejo de errores.</p>
 <h3 id="3-infrastructure-layer-adapters">3. Infrastructure Layer (Adapters)<a class="headerlink" href="#3-infrastructure-layer-adapters" title="Permanent link">&para;</a></h3>
@@ -1837,7 +2043,7 @@
 <p><strong>Responsabilidad</strong>: Interacción con usuarios (GUI, CLI).</p>
 <ul>
 <li><strong>Streamlit GUI</strong> ✅: Interfaz web para operadores (9 páginas implementadas)</li>
-<li><strong>CLI</strong> ✅: Interfaz de línea de comandos con 20 comandos (procesamiento batch, búsqueda, exportación, debugging) en <code>interfaces/cli.py</code></li>
+<li><strong>CLI</strong> ✅: Interfaz de línea de comandos con 21 comandos (procesamiento batch, búsqueda, exportación, debugging) en <code>interfaces/cli.py</code></li>
 </ul>
 <h3 id="5-ports-protocolos">5. Ports (Protocolos)<a class="headerlink" href="#5-ports-protocolos" title="Permanent link">&para;</a></h3>
 <p><strong>Responsabilidad</strong>: Contratos (interfaces) que define Application, implementa Infrastructure.</p>
@@ -1883,7 +2089,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Última actualización</strong>: 2026-03-05 (CLI implementado, NER extractores, ISP protocols, use cases import/export)</p>
+<p><strong>Última actualización</strong>: 2026-03-18 (Sprint 23: Services layer, 4 VOs, transaction support, thread-safe container, negation detector)</p>
 
 
 

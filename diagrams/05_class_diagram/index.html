@@ -1597,6 +1597,208 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/incident-response/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan de Incidentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/data-retention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retencion de Datos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decisiones
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Decisiones
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/decisions/sqlcipher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLCipher (GOB-13)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/decisions/ner-bias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sesgo NER (GOB-12)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/decisions/dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard (GOB-16)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1943,7 +2145,6 @@
         +String? demandado
         +String? radicado
         +String? juzgado
-        +datetime? fecha_documento
         +String hora_radicacion
         +String numero_acta
         +String? cedula
@@ -2005,7 +2206,38 @@
         +DuplicateConfidence confidence
         +String detection_method
         +String explanation
-        +Dict~String,bool~ matched_entities
+        +Mapping~String,bool~ matched_entities
+    }
+
+    class NERFields {
+        &lt;&lt;value object - frozen&gt;&gt;
+        +String demandante
+        +String demandado
+        +String radicado
+        +String juzgado
+        +String correo
+        +String cedula
+        +String direccion_demandante
+        +String direccion_demandado
+    }
+
+    class CSJMetadata {
+        &lt;&lt;value object - frozen&gt;&gt;
+        +String secuencia_anterior
+        +String coordenada
+        +String numero_acta
+    }
+
+    class ProvisionalInfo {
+        &lt;&lt;value object - frozen&gt;&gt;
+        +bool has_provisional_measure
+        +String provisional_keywords
+    }
+
+    class SectionsInfo {
+        &lt;&lt;value object - frozen&gt;&gt;
+        +bool has_hechos
+        +bool has_pretensiones
     }
 
     Document --&gt; DocumentType
@@ -2137,6 +2369,9 @@
     class DocumentWriter {
         &lt;&lt;protocol - ISP&gt;&gt;
         +save(document: Document) Document
+        +begin_transaction() None
+        +commit_transaction() None
+        +rollback_transaction() None
     }
 
     class DocumentSearcher {
@@ -2609,6 +2844,7 @@
     }
 
     class SQLiteDocumentRepository {
+        -bool _in_transaction
         +save(document: Document) Document
         +find_by_id(id: String) Document?
         +find_by_hash(hash: String) Document?
@@ -2617,6 +2853,9 @@
         +get_all(limit: int) List~Document~
         +count() int
         +delete(doc_id: String) bool
+        +begin_transaction() None
+        +commit_transaction() None
+        +rollback_transaction() None
     }
 
     ConnectionMixin &lt;|-- SQLiteDocumentRepository : extends
@@ -2881,7 +3120,7 @@
 <li><strong>HybridEnsembleDetector</strong> coordina 4 matchers independientes</li>
 <li><strong>SQLiteDocumentRepository</strong> persiste entidades <code>Document</code></li>
 </ol>
-<p><strong>Última actualización</strong>: 2026-03-05 (Sprint 19: Document +cedula/correo/imported_at, DTOs import/export, index_document_with_fields NER)</p>
+<p><strong>Última actualización</strong>: 2026-03-19 (Sprint 23 completado: DuplicateRenderer Facade+Strategy S23-D1, CompoundSplitter S23-H4, multi-winner ensemble S23-H3)</p>
 
 
 
