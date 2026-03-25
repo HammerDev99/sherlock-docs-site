@@ -533,6 +533,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API REST (7 Endpoints)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2221,6 +2249,14 @@
         ImportExcel[ImportExcelPage&lt;br/&gt;📥 Importar Excel]
     end
 
+    subgraph Services["🔧 Application Services (Fase 0)"]
+        StatsSvc[StatisticsService&lt;br/&gt;Result~StatisticsResponse~]
+        SearchSvc[SearchService&lt;br/&gt;Result~SearchDocumentsResponse~]
+        ValidSvc[ValidationService&lt;br/&gt;Result~ValidateDocumentResponse~]
+        ManualSvc[ManualEntryService&lt;br/&gt;Result~CreateManualDocumentResponse~]
+        DedupSvc[DedupConfigService&lt;br/&gt;Result~DedupConfigResponse~]
+    end
+
     subgraph Components["🧩 Shared Components"]
         NERDisplay[ner_display.py&lt;br/&gt;Visualización entidades]
         OCRDisplay[ocr_display.py&lt;br/&gt;Visualización OCR]
@@ -2252,6 +2288,19 @@
     Duplicates --&gt; DupDisplay
     Detail --&gt; Breadcrumb &amp; NERDisplay
 
+    %% Fase 0: Delegación a Application Services
+    Stats -.-&gt;|"delega"| StatsSvc
+    Search -.-&gt;|"delega"| SearchSvc
+    Validate -.-&gt;|"delega"| ValidSvc
+    ManualEntry -.-&gt;|"delega"| ManualSvc
+    Duplicates -.-&gt;|"delega"| DedupSvc
+
+    style StatsSvc fill:#d5e5f9
+    style SearchSvc fill:#d5e5f9
+    style ValidSvc fill:#d5e5f9
+    style ManualSvc fill:#d5e5f9
+    style DedupSvc fill:#d5e5f9
+
     style Upload fill:#e3f2fd
     style Process fill:#fff3e0
     style Validate fill:#e8f5e9
@@ -2280,30 +2329,36 @@
 5. Persistencia en SQLite</p>
 <p><strong>Componentes visuales</strong>: Progress bar, OCR metrics, NER preview</p>
 <h3 id="3-validatepage-validar-entidades">3. ValidatePage (✅ Validar Entidades)<a class="headerlink" href="#3-validatepage-validar-entidades" title="Permanent link">&para;</a></h3>
-<p><strong>Responsabilidad</strong>: Validación humana de entidades extraídas.</p>
+<p><strong>Responsabilidad</strong>: Validación humana de entidades extraídas.
+<strong>Servicio (Fase 0)</strong>: <code>container.validation_service</code> — <code>save_corrections_result()</code> + <code>check_recurring_entities()</code></p>
 <p><strong>Funcionalidades</strong>:
 - Edición inline de campos
 - Confirmación/corrección de entidades
-- Registro de correcciones (Active Learning)
-- Guardado de cambios</p>
+- Registro de correcciones (Active Learning) — delegado a ValidationService
+- Verificación de entidades recurrentes — delegado a ValidationService
+- Audit trail GOB-06 dentro del servicio</p>
 <h3 id="4-searchpage-buscar-documentos">4. SearchPage (🔍 Buscar Documentos)<a class="headerlink" href="#4-searchpage-buscar-documentos" title="Permanent link">&para;</a></h3>
-<p><strong>Responsabilidad</strong>: Búsqueda full-text en documentos.</p>
+<p><strong>Responsabilidad</strong>: Búsqueda full-text en documentos.
+<strong>Servicio (Fase 0)</strong>: <code>container.search_service</code> — <code>search_result()</code> + <code>count_documents()</code> + <code>get_recent_documents()</code></p>
 <p><strong>Características</strong>:
-- Búsqueda FTS5 (SQLite)
-- Filtros por tipo, fecha, estado
-- Resultados paginados
+- Búsqueda FTS5 (SQLite) — delegada a SearchService
+- Filtros por tipo, fecha, estado — <code>apply_filters()</code> en servicio
+- Resultados paginados — paginación en servicio (<code>SearchDocumentsResponse</code>)
 - Preview de coincidencias</p>
 <h3 id="5-duplicatespage-ver-duplicados">5. DuplicatesPage (📋 Ver Duplicados)<a class="headerlink" href="#5-duplicatespage-ver-duplicados" title="Permanent link">&para;</a></h3>
-<p><strong>Responsabilidad</strong>: Visualización de duplicados detectados.</p>
+<p><strong>Responsabilidad</strong>: Visualización de duplicados detectados.
+<strong>Servicio (Fase 0)</strong>: <code>container.dedup_config_service</code> — <code>save_config_result()</code> (tab configuración)</p>
 <p><strong>Información mostrada</strong>:
 - Score de similitud (0-100%)
 - Método de detección
 - Entidades coincidentes
-- Comparación lado a lado</p>
+- Comparación lado a lado
+- Configuración de umbrales — delegada a DedupConfigService</p>
 <h3 id="6-statspage-dashboard">6. StatsPage (📊 Dashboard)<a class="headerlink" href="#6-statspage-dashboard" title="Permanent link">&para;</a></h3>
-<p><strong>Responsabilidad</strong>: Métricas y estadísticas del sistema.</p>
+<p><strong>Responsabilidad</strong>: Métricas y estadísticas del sistema.
+<strong>Servicio (Fase 0)</strong>: <code>container.statistics_service</code> — <code>get_dashboard_stats_result()</code></p>
 <p><strong>Métricas</strong>:
-- Total de documentos procesados
+- Total de documentos procesados — delegado a StatisticsService
 - Duplicados detectados
 - Distribución por tipo
 - Timeline de procesamiento</p>
@@ -2315,7 +2370,8 @@
 - Contenido OCR
 - Historial de correcciones</p>
 <h3 id="8-manualentrypage-registro-manual">8. ManualEntryPage (✍️ Registro Manual)<a class="headerlink" href="#8-manualentrypage-registro-manual" title="Permanent link">&para;</a></h3>
-<p><strong>Responsabilidad</strong>: Registro manual de documentos sin archivo.</p>
+<p><strong>Responsabilidad</strong>: Registro manual de documentos sin archivo.
+<strong>Servicio (Fase 0)</strong>: <code>container.manual_entry_service</code> — <code>save_manual_entry_result()</code> + <code>validate_required_fields()</code></p>
 <p><strong>Campos</strong>:
 - Tipo de documento
 - Demandante/Demandado
@@ -2414,7 +2470,8 @@
     Pr-&gt;&gt;Pr: Pipeline OCR+NER
     Pr-&gt;&gt;Va: Documento procesado
     U-&gt;&gt;Va: Corrige entidad
-    Va-&gt;&gt;Va: save_correction()
+    Va-&gt;&gt;Va: container.validation_service.save_corrections_result(request)
+    Note over Va: Fase 0: delega a ValidationService
     U-&gt;&gt;De: Click "Ver detalle"
     De-&gt;&gt;De: render() con breadcrumb</code></pre>
 <h2 id="componentes-compartidos">Componentes Compartidos<a class="headerlink" href="#componentes-compartidos" title="Permanent link">&para;</a></h2>
@@ -2512,7 +2569,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Última actualización</strong>: 2026-03-06 (GOB-05 auth gate + session keys USERNAME/USER_DISPLAY_NAME)</p>
+<p><strong>Última actualización</strong>: 2026-03-19 (Fase 0: 5 Application Services, delegación GUI→Service en 5 páginas)</p>
 
 
 

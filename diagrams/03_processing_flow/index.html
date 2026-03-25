@@ -533,6 +533,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API REST (7 Endpoints)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2121,7 +2149,9 @@
     end
 
     Usuario-&gt;&gt;GUI: Validar/corregir entidades extraídas
-    GUI-&gt;&gt;Repo: Guardar correcciones (feedback loop)</code></pre>
+    GUI-&gt;&gt;GUI: container.validation_service.save_corrections_result(request)
+    Note over GUI,Repo: Fase 0: GUI delega a ValidationService (no accede a Repo directo)
+    GUI-&gt;&gt;Repo: ValidationService → save_correction(feedback loop)</code></pre>
 <h2 id="pasos-del-pipeline">Pasos del Pipeline<a class="headerlink" href="#pasos-del-pipeline" title="Permanent link">&para;</a></h2>
 <h3 id="1-gate-pre-ocr-50ms">1. Gate Pre-OCR (&lt; 50ms)<a class="headerlink" href="#1-gate-pre-ocr-50ms" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2284,7 +2314,7 @@
 <li>MEDIUM → revisar manualmente</li>
 <li>LOW → aceptar</li>
 </ol>
-<p><strong>Última actualización</strong>: 2026-03-06 (GOB-05 auth + GOB-06 audit trail paso 7)</p>
+<p><strong>Última actualización</strong>: 2026-03-19 (Fase 0: feedback loop via ValidationService, no acceso directo a Repo)</p>
 
 
 

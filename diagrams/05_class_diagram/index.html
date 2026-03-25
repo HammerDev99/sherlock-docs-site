@@ -533,6 +533,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API REST (7 Endpoints)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2337,13 +2365,185 @@
         -OCRRouter? _ocr_router
         -SpaCyAdapter? _ner_adapter
         -HybridEnsembleDetector? _duplicate_detector
+        -StatisticsService? _statistics_service
+        -SearchService? _search_service
+        -ValidationService? _validation_service
+        -ManualEntryService? _manual_entry_service
+        -DedupConfigService? _dedup_config_service
         +repository() DocumentRepository
         +ocr_router() OCRRouter
         +ner_adapter() SpaCyAdapter
         +duplicate_detector() HybridEnsembleDetector
         +process_document_use_case() ProcessDocumentUseCase
+        +statistics_service() StatisticsService
+        +search_service() SearchService
+        +validation_service() ValidationService
+        +manual_entry_service() ManualEntryService
+        +dedup_config_service() DedupConfigService
         +close() None
     }
+
+    %% ============================================
+    %% APPLICATION SERVICES (Fase 0 Pre-API)
+    %% ============================================
+
+    class StatisticsService {
+        -DocumentRepository _repository
+        +get_dashboard_stats() dict
+        +get_dashboard_stats_result() Result~StatisticsResponse, str~
+    }
+
+    class SearchService {
+        -DocumentRepository _repository
+        +search_documents(query, limit) List~Document~
+        +apply_filters(docs, filters) List~Document~
+        +get_recent_documents(limit) List~Document~
+        +count_documents() int
+        +search_result(request) Result~SearchDocumentsResponse, str~
+    }
+
+    class ValidationService {
+        -DocumentRepository _repository
+        -AuditService? _audit_service
+        +save_corrections(doc_id, validated, original, user) List~str~
+        +save_corrections_result(request) Result~ValidateDocumentResponse, str~
+        +check_recurring_entities(doc_id, validated) RecurringMatches?
+        +check_recurring_entities_result(request) Result~RecurringCheckResponse, str~
+        +get_document_for_validation(doc_id) Document?
+    }
+
+    class ManualEntryService {
+        -DocumentRepository _repository
+        -AuditService? _audit_service
+        +validate_required_fields(numero_acta, demandante, demandado)$ List~str~
+        +save_manual_entry(...) Document
+        +save_manual_entry_result(request) Result~CreateManualDocumentResponse, str~
+    }
+
+    class DedupConfigService {
+        +get_config()$ EnsembleConfig
+        +validate_weights(w1, w2, w3)$ bool
+        +save_config_with_weights(...)$ bool
+        +get_config_result()$ Result~DedupConfigResponse, str~
+        +save_config_result(request)$ Result~DedupConfigResponse, str~
+    }
+
+    %% Fase 0 DTOs (frozen dataclasses, JSON-serializable)
+
+    class StatisticsResponse {
+        &lt;&lt;DTO frozen&gt;&gt;
+        +int total_documents
+        +int validated
+        +int processed
+        +int pending
+        +int total_corrections
+        +Dict corrections_by_field
+        +Dict accuracy_by_field
+        +Dict type_counts
+        +Dict processing_metrics
+        +bool has_real_data
+    }
+
+    class SearchDocumentsRequest {
+        &lt;&lt;DTO frozen&gt;&gt;
+        +str query
+        +Dict filters
+        +str sort_by
+        +int page
+        +int page_size
+    }
+
+    class SearchDocumentsResponse {
+        &lt;&lt;DTO frozen&gt;&gt;
+        +List~DocumentSummary~ documents
+        +int total_count
+        +int page
+        +int total_pages
+    }
+
+    class ValidateDocumentRequest {
+        &lt;&lt;DTO frozen&gt;&gt;
+        +str document_id
+        +Dict validated_fields
+        +Dict original_fields
+        +str corrected_by
+    }
+
+    class ValidateDocumentResponse {
+        &lt;&lt;DTO frozen&gt;&gt;
+        +str document_id
+        +Tuple corrected_fields
+        +int total_corrections
+        +bool success
+    }
+
+    class CreateManualDocumentRequest {
+        &lt;&lt;DTO frozen&gt;&gt;
+        +str numero_acta
+        +str demandante
+        +str demandado
+        +str doc_type
+    }
+
+    class CreateManualDocumentResponse {
+        &lt;&lt;DTO frozen&gt;&gt;
+        +str document_id
+        +bool success
+        +Tuple validation_errors
+    }
+
+    class RecurringCheckRequest {
+        &lt;&lt;DTO frozen&gt;&gt;
+        +str document_id
+        +str cedula
+        +str correo
+        +str demandante
+    }
+
+    class RecurringCheckResponse {
+        &lt;&lt;DTO frozen&gt;&gt;
+        +bool has_matches
+        +Dict matches_by_field
+        +int total_matches
+    }
+
+    class DedupConfigResponse {
+        &lt;&lt;DTO frozen&gt;&gt;
+        +float minhash_weight
+        +float tfidf_weight
+        +float entity_weight
+        +float tutela_threshold
+        +float habeas_threshold
+        +float default_threshold
+        +bool success
+    }
+
+    class DedupConfigUpdateRequest {
+        &lt;&lt;DTO frozen&gt;&gt;
+        +float minhash_weight
+        +float tfidf_weight
+        +float entity_weight
+    }
+
+    note for StatisticsService "Fase 0 Pre-API: Result pattern\nGUI delega a Services\nNo dependen de Streamlit"
+
+    StatisticsService --&gt; StatisticsResponse
+    SearchService --&gt; SearchDocumentsRequest
+    SearchService --&gt; SearchDocumentsResponse
+    ValidationService --&gt; ValidateDocumentRequest
+    ValidationService --&gt; ValidateDocumentResponse
+    ValidationService --&gt; RecurringCheckRequest
+    ValidationService --&gt; RecurringCheckResponse
+    ManualEntryService --&gt; CreateManualDocumentRequest
+    ManualEntryService --&gt; CreateManualDocumentResponse
+    DedupConfigService --&gt; DedupConfigResponse
+    DedupConfigService --&gt; DedupConfigUpdateRequest
+
+    ServiceContainer ..&gt; StatisticsService : creates
+    ServiceContainer ..&gt; SearchService : creates
+    ServiceContainer ..&gt; ValidationService : creates
+    ServiceContainer ..&gt; ManualEntryService : creates
+    ServiceContainer ..&gt; DedupConfigService : creates
 
     ProcessDocumentUseCase --&gt; ProcessDocumentRequest
     ProcessDocumentUseCase --&gt; ProcessDocumentResponse
@@ -2871,7 +3071,12 @@
     ServiceContainer --&gt; DocumentRepository
     ServiceContainer --&gt; OCRRouter
     ServiceContainer --&gt; SpaCyAdapter
-    ServiceContainer --&gt; HybridEnsembleDetector</code></pre>
+    ServiceContainer --&gt; HybridEnsembleDetector
+    ServiceContainer --&gt; StatisticsService
+    ServiceContainer --&gt; SearchService
+    ServiceContainer --&gt; ValidationService
+    ServiceContainer --&gt; ManualEntryService
+    ServiceContainer --&gt; DedupConfigService</code></pre>
 <h2 id="descripcion-de-componentes">Descripción de Componentes<a class="headerlink" href="#descripcion-de-componentes" title="Permanent link">&para;</a></h2>
 <h3 id="domain-layer-core">Domain Layer (Core)<a class="headerlink" href="#domain-layer-core" title="Permanent link">&para;</a></h3>
 <p><strong>Entities (Agregados)</strong></p>
@@ -2903,21 +3108,35 @@
 <li>Manejo explícito de errores en cada etapa</li>
 <li>Composición de operaciones con <code>bind</code> y <code>map</code></li>
 </ul>
+<p><strong>Application Services (Fase 0 Pre-API)</strong></p>
+<p>Extraídos de las páginas GUI en Sprint 23 Fase 0 (I1-I6). Todos retornan <code>Result[ResponseDTO, str]</code>.</p>
+<ul>
+<li><strong>StatisticsService</strong>: Dashboard estadísticas (total docs, status, correcciones, métricas)</li>
+<li><strong>SearchService</strong>: Búsqueda FTS5 + filtros client-side + paginación</li>
+<li><strong>ValidationService</strong>: Guardar correcciones + check entidades recurrentes (GOB-06 audit)</li>
+<li><strong>ManualEntryService</strong>: Crear documentos manualmente + validación campos obligatorios</li>
+<li><strong>DedupConfigService</strong>: Leer/guardar configuración ensemble dedup (pesos, umbrales)</li>
+</ul>
 <p><strong>Service Container</strong></p>
 <ul>
 <li><strong>ServiceContainer</strong>: Dependency Injection container</li>
-<li>Lazy loading de recursos costosos (modelos OCR/NER)</li>
-<li>Singleton pattern para configuraciones</li>
+<li>11 properties lazy (repository, ocr_router, ner_adapter, duplicate_detector, audit_service, 5 services, process_document_use_case)</li>
+<li>Thread-safe con RLock</li>
 <li>Context manager para manejo de recursos</li>
 </ul>
 <p><strong>DTOs (Data Transfer Objects)</strong></p>
-<ul>
-<li><strong>ProcessDocumentRequest</strong>: Request inmutable con file_path y document_type</li>
-<li><strong>ProcessDocumentResponse</strong>: Response completo con métricas y duplicados</li>
-<li><strong>ProcessingMetrics</strong>: Métricas de tiempo por etapa (OCR, NER, dedup)</li>
-<li><strong>ExportExcelRequest/Response</strong>: Exportación masiva a Excel con filtros</li>
-<li><strong>ImportExcelRequest/Response</strong>: Importación masiva desde Excel</li>
-</ul>
+<p><em>DTOs originales (pipeline):</em>
+- <strong>ProcessDocumentRequest/Response</strong>: Pipeline OCR→NER→Dedup
+- <strong>ProcessingMetrics</strong>: Métricas de tiempo por etapa
+- <strong>ExportExcelRequest/Response</strong>: Exportación masiva a Excel
+- <strong>ImportExcelRequest/Response</strong>: Importación masiva desde Excel</p>
+<p><em>DTOs Fase 0 Pre-API (11 frozen, JSON-serializables via <code>dataclasses.asdict()</code>):</em>
+- <strong>StatisticsResponse</strong>: Dashboard stats (10 campos)
+- <strong>SearchDocumentsRequest/Response</strong>: Búsqueda con paginación
+- <strong>ValidateDocumentRequest/Response</strong>: Guardar correcciones
+- <strong>CreateManualDocumentRequest/Response</strong>: Ingreso manual
+- <strong>RecurringCheckRequest/Response</strong>: Entidades recurrentes
+- <strong>DedupConfigResponse/DedupConfigUpdateRequest</strong>: Configuración dedup</p>
 <h3 id="ports-protocolsinterfaces">Ports (Protocols/Interfaces)<a class="headerlink" href="#ports-protocolsinterfaces" title="Permanent link">&para;</a></h3>
 <p>Contratos que define Application, implementa Infrastructure:</p>
 <ul>
@@ -3114,13 +3333,14 @@
 </ul>
 <h2 id="relaciones-clave">Relaciones Clave<a class="headerlink" href="#relaciones-clave" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>ServiceContainer</strong> crea e inyecta todas las dependencias</li>
+<li><strong>ServiceContainer</strong> crea e inyecta todas las dependencias (11 properties lazy)</li>
 <li><strong>ProcessDocumentUseCase</strong> orquesta el pipeline usando Ports</li>
+<li><strong>5 Application Services</strong> (Fase 0) median entre GUI y Repository con Result pattern</li>
 <li><strong>OCRRouter</strong> delega a adapters concretos (Tesseract/PaddleOCR)</li>
 <li><strong>HybridEnsembleDetector</strong> coordina 4 matchers independientes</li>
 <li><strong>SQLiteDocumentRepository</strong> persiste entidades <code>Document</code></li>
 </ol>
-<p><strong>Última actualización</strong>: 2026-03-19 (Sprint 23 completado: DuplicateRenderer Facade+Strategy S23-D1, CompoundSplitter S23-H4, multi-winner ensemble S23-H3)</p>
+<p><strong>Última actualización</strong>: 2026-03-19 (Fase 0 Pre-API: 5 Application Services + 11 DTOs frozen + ServiceContainer 11 properties)</p>
 
 
 

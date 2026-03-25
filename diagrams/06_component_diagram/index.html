@@ -533,6 +533,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API REST (7 Endpoints)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2643,7 +2671,7 @@
 
         AppServices[🔧 Services S23 ✅&lt;br/&gt;─────────────&lt;br/&gt;• ValidationService&lt;br/&gt;• SearchService&lt;br/&gt;• StatisticsService&lt;br/&gt;• ManualEntryService&lt;br/&gt;• DedupConfigService&lt;br/&gt;─────────────&lt;br/&gt;Sin dependencia Streamlit]
 
-        DTOs[📦 DTOs&lt;br/&gt;─────────────&lt;br/&gt;• ProcessDocumentRequest&lt;br/&gt;• ProcessDocumentResponse&lt;br/&gt;• ProcessingMetrics&lt;br/&gt;• ExportExcelRequest/Response&lt;br/&gt;• ImportExcelRequest/Response&lt;br/&gt;• SearchRequest&lt;br/&gt;• DuplicateCandidateDTO]
+        DTOs[📦 DTOs frozen&lt;br/&gt;─────────────&lt;br/&gt;• ProcessDocument Req/Resp&lt;br/&gt;• ProcessingMetrics&lt;br/&gt;• ExportExcel Req/Resp&lt;br/&gt;• ImportExcel Req/Resp&lt;br/&gt;• DuplicateCandidateDTO&lt;br/&gt;─── Fase 0 Pre-API ───&lt;br/&gt;• StatisticsResponse&lt;br/&gt;• SearchDocuments Req/Resp&lt;br/&gt;• ValidateDocument Req/Resp&lt;br/&gt;• CreateManualDocument Req/Resp&lt;br/&gt;• RecurringCheck Req/Resp&lt;br/&gt;• DedupConfig Resp/UpdateReq]
 
         Container[🔧 Service Container&lt;br/&gt;─────────────&lt;br/&gt;• Dependency Injection&lt;br/&gt;• Lazy Loading&lt;br/&gt;• Configuration Management]
     end
@@ -2705,6 +2733,7 @@
     %% Presentation → Application
     GUI --&gt; UseCases
     GUI --&gt; AppServices
+    GUI -.-&gt;|"17 accesos residuales&lt;br/&gt;(legacy, Fase 1+)"| PersistenceModule
     CLI --&gt; UseCases
 
     %% Application internal
@@ -2726,6 +2755,7 @@
     UseCases -.uses.-&gt; NERModule
     UseCases -.uses.-&gt; DedupModule
     UseCases -.uses.-&gt; PersistenceModule
+    AppServices -.uses.-&gt; PersistenceModule
 
     %% Infrastructure → Domain
     OCRModule --&gt; ValueObjects
@@ -2995,6 +3025,13 @@
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">container</span><span class="o">.</span><span class="n">ner_adapter</span> <span class="o">-&gt;</span> <span class="n">SpaCyAdapter</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">container</span><span class="o">.</span><span class="n">duplicate_detector</span> <span class="o">-&gt;</span> <span class="n">HybridEnsembleDetector</span>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">container</span><span class="o">.</span><span class="n">repository</span> <span class="o">-&gt;</span> <span class="n">DocumentRepository</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">container</span><span class="o">.</span><span class="n">audit_service</span> <span class="o">-&gt;</span> <span class="n">AuditService</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># Fase 0 Pre-API services:</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">container</span><span class="o">.</span><span class="n">statistics_service</span> <span class="o">-&gt;</span> <span class="n">StatisticsService</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">container</span><span class="o">.</span><span class="n">search_service</span> <span class="o">-&gt;</span> <span class="n">SearchService</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">container</span><span class="o">.</span><span class="n">validation_service</span> <span class="o">-&gt;</span> <span class="n">ValidationService</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="n">container</span><span class="o">.</span><span class="n">manual_entry_service</span> <span class="o">-&gt;</span> <span class="n">ManualEntryService</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">container</span><span class="o">.</span><span class="n">dedup_config_service</span> <span class="o">-&gt;</span> <span class="n">DedupConfigService</span>
 </span></code></pre></div>
 <h3 id="processdocumentusecase">ProcessDocumentUseCase<a class="headerlink" href="#processdocumentusecase" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">ProcessDocumentRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Result</span><span class="p">[</span><span class="n">ProcessDocumentResponse</span><span class="p">,</span> <span class="n">ProcessingError</span><span class="p">]</span>
@@ -3058,7 +3095,7 @@
 </tr>
 <tr>
 <td>Application Layer</td>
-<td>~500</td>
+<td>~800</td>
 <td>1 (returns)</td>
 <td>Media (5-10)</td>
 </tr>
@@ -3111,13 +3148,22 @@
 <td>Media (5-10)</td>
 </tr>
 <tr>
+<td>GUI Layer</td>
+<td>~4800</td>
+<td>1 (streamlit)</td>
+<td>Alta (17 bypasses legacy)</td>
+</tr>
+<tr>
 <td><strong>TOTAL</strong></td>
-<td><strong>~4500</strong></td>
-<td><strong>12</strong></td>
+<td><strong>~9600</strong></td>
+<td><strong>13</strong></td>
 <td><strong>Media Global</strong></td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>Nota</strong>: GUI Layer tiene 17 accesos residuales directos a <code>PersistenceModule</code> (bypasses legacy). Planificados para eliminación en Fase 1+ (pre-API). Ver <code>.kilo/plans/auditoria-deuda-tecnica.md</code>.</p>
+</blockquote>
 <p><strong>Nota</strong>: NER Module aumentó en líneas pero redujo complejidad ciclomática gracias a Strategy + Pipeline.</p>
 <h2 id="notas-de-implementacion">Notas de Implementación<a class="headerlink" href="#notas-de-implementacion" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3146,7 +3192,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Última actualización</strong>: 2026-03-19 (Sprint 23 completado: +DuplicateRenderer S23-D1, +CompoundSplitter S23-H4, ContextScorer fix S23-H2)</p>
+<p><strong>Última actualización</strong>: 2026-03-24 (Auditoría deuda técnica: 17 accesos residuales GUI→Repo documentados, LOC actualizado)</p>
 
 
 

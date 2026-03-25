@@ -533,6 +533,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API REST (7 Endpoints)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1904,7 +1932,7 @@
     subgraph ApplicationLayer["Application Layer"]
         UC[Use Cases&lt;br/&gt;ProcessDocumentUseCase&lt;br/&gt;ExportExcelUseCase&lt;br/&gt;ImportExcelUseCase]
         Services[Services S23&lt;br/&gt;ValidationService&lt;br/&gt;SearchService&lt;br/&gt;StatisticsService&lt;br/&gt;ManualEntryService&lt;br/&gt;DedupConfigService]
-        DTOs[DTOs&lt;br/&gt;ProcessDocumentRequest&lt;br/&gt;ProcessDocumentResponse]
+        DTOs[DTOs frozen&lt;br/&gt;ProcessDocument Req/Resp&lt;br/&gt;Statistics Resp&lt;br/&gt;SearchDocuments Req/Resp&lt;br/&gt;ValidateDocument Req/Resp&lt;br/&gt;CreateManualDocument Req/Resp&lt;br/&gt;RecurringCheck Req/Resp&lt;br/&gt;DedupConfig Resp/UpdateReq]
         Container[Service Container&lt;br/&gt;Dependency Injection&lt;br/&gt;Thread-safe RLock]
     end
 
@@ -1962,6 +1990,7 @@
 
     GUI --&gt; Container
     GUI --&gt; Services
+    GUI -.-&gt;|"17 accesos residuales&lt;br/&gt;(legacy, Fase 1+)"| Repo
     CLI --&gt; Container
     Container --&gt; UC
     Container --&gt; Services
@@ -1971,6 +2000,8 @@
     UC --&gt; DedupPort
     UC --&gt; RepoPort
 
+    Services --&gt; RepoPort
+    Services --&gt; DTOs
     DTOs --&gt; Entities
     DTOs --&gt; ValueObjects
 
@@ -2059,6 +2090,9 @@
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>            Domain (Core)
 </span></code></pre></div>
 <p><strong>Regla de Oro</strong>: Las capas internas <strong>nunca</strong> conocen las externas. Infrastructure depende de Application, pero no al revés.</p>
+<blockquote>
+<p><strong>Nota</strong>: El diagrama muestra 17 accesos residuales <code>GUI -.-&gt; Repository</code> como flecha discontinua. Son bypasses legacy donde la GUI accede directamente al repositorio sin pasar por Services. Planificados para eliminación en Fase 1+ (pre-API). Ver <code>.kilo/plans/auditoria-deuda-tecnica.md</code> para el desglose por archivo.</p>
+</blockquote>
 <h2 id="principios-aplicados">Principios Aplicados<a class="headerlink" href="#principios-aplicados" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Dependency Inversion Principle (DIP)</strong>: Application depende de abstracciones (Ports), no implementaciones.</li>
@@ -2089,7 +2123,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Última actualización</strong>: 2026-03-18 (Sprint 23: Services layer, 4 VOs, transaction support, thread-safe container, negation detector)</p>
+<p><strong>Última actualización</strong>: 2026-03-24 (Auditoría deuda técnica: 17 accesos residuales GUI→Repo documentados como flecha legacy)</p>
 
 
 

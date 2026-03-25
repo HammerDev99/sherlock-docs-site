@@ -533,6 +533,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API REST (7 Endpoints)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1064,6 +1092,17 @@
     <span class="md-ellipsis">
       
         Docstrings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imports-diferidos-en-gui-adr-s231-19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Imports Diferidos en GUI (ADR — S23.1-19)
       
     </span>
   </a>
@@ -1748,6 +1787,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#imports-diferidos-en-gui-adr-s231-19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Imports Diferidos en GUI (ADR — S23.1-19)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1872,6 +1922,16 @@
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="sd">        Document if found, None otherwise.</span>
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="sd">    &quot;&quot;&quot;</span>
 </span></code></pre></div>
+<h2 id="imports-diferidos-en-gui-adr-s231-19">Imports Diferidos en GUI (ADR — S23.1-19)<a class="headerlink" href="#imports-diferidos-en-gui-adr-s231-19" title="Permanent link">&para;</a></h2>
+<p>Los archivos en <code>interfaces/gui/pages/</code> contienen <strong>imports dentro de metodos</strong> (no en top-level). Esto es una <strong>decision arquitectonica intencional</strong>, no un code smell:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># CORRECTO en paginas GUI — import diferido</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">_render_validation_form</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">sherlock_docs.interfaces.gui.config.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">JUZGADOS_BELLO</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="o">...</span>
+</span></code></pre></div>
+<p><strong>Razon</strong>: Streamlit re-ejecuta el modulo completo en cada interaccion del usuario. Los imports pesados (pandas, json, constants grandes) dentro de metodos evitan carga innecesaria en imports que no se usan en cada render cycle.</p>
+<p><strong>Donde aplica</strong>: Solo en <code>interfaces/gui/pages/</code>. En <code>application/</code>, <code>core/</code>, <code>infrastructure/</code> y <code>persistence/</code> los imports DEBEN ser top-level.</p>
+<p><strong>No "arreglar"</strong>: Mover estos imports a top-level puede causar imports circulares y degradar el tiempo de respuesta de la GUI.</p>
 
 
 
