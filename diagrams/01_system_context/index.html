@@ -765,6 +765,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sistemas-externos" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1795,6 +1806,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sistemas-externos" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1909,7 +1931,11 @@
 
     Usuario --&gt;|&lt;b&gt;CLI&lt;/b&gt;&lt;br/&gt;Procesamiento batch&lt;br/&gt;21 comandos| Sherlock
 
+    Usuario --&gt;|&lt;b&gt;API REST&lt;/b&gt;&lt;br/&gt;22 endpoints FastAPI&lt;br/&gt;JWT auth + Swagger| Sherlock
+
     Admin --&gt;|&lt;b&gt;GUI Streamlit&lt;/b&gt;&lt;br/&gt;Configura umbrales&lt;br/&gt;Revisa logs| Sherlock
+
+    Admin --&gt;|&lt;b&gt;API REST&lt;/b&gt;&lt;br/&gt;Config, stats&lt;br/&gt;Import/Export| Sherlock
 
     Sherlock --&gt;|&lt;b&gt;File I/O&lt;/b&gt;&lt;br/&gt;Lee PDFs para&lt;br/&gt;procesamiento| FS
 
@@ -1935,8 +1961,14 @@
 <h2 id="actores-principales">Actores Principales<a class="headerlink" href="#actores-principales" title="Permanent link">&para;</a></h2>
 <h3 id="usuarios">Usuarios<a class="headerlink" href="#usuarios" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Operador Legal</strong>: Usuario principal que carga documentos PDF, valida entidades extraídas (demandante, demandado, radicado) y revisa alertas de duplicados.</li>
-<li><strong>Administrador</strong>: Configura parámetros del sistema (umbrales de detección, modelos OCR/NER), revisa métricas de rendimiento.</li>
+<li><strong>Operador Legal</strong>: Usuario principal que carga documentos PDF, valida entidades extraídas (demandante, demandado, radicado) y revisa alertas de duplicados. Acceso via GUI Streamlit o API REST.</li>
+<li><strong>Administrador</strong>: Configura parámetros del sistema (umbrales de detección, modelos OCR/NER), revisa métricas de rendimiento. Acceso via GUI, CLI o API REST.</li>
+</ul>
+<h3 id="interfaces">Interfaces<a class="headerlink" href="#interfaces" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>GUI Streamlit</strong>: Interfaz web para operadores (9 páginas).</li>
+<li><strong>CLI</strong>: 21 comandos para procesamiento batch, búsqueda, exportación.</li>
+<li><strong>API REST</strong>: 22 endpoints FastAPI con JWT auth, Swagger UI (<code>/docs</code>), async processing. Score auditoría 9.2/10.</li>
 </ul>
 <h3 id="sistemas-externos">Sistemas Externos<a class="headerlink" href="#sistemas-externos" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1978,7 +2010,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Última actualización</strong>: 2026-03-18 (Sprint 23: 1173 tests, 17/27 SPECs completados)</p>
+<p><strong>Última actualización</strong>: 2026-03-25 (Sprint 25.1: 1402 tests, API REST 22 endpoints, score 9.2/10)</p>
 
 
 

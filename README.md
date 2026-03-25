@@ -2,7 +2,7 @@
 
 Sitio estatico generado automaticamente con MkDocs Material.
 
-**Ultima actualizacion**: 2026-03-10 00:18:31
+**Ultima actualizacion**: 2026-03-25 15:40:29
 
 ## Deploy
 
@@ -13,4 +13,4 @@ docker build -t sherlock-docs-site .
 docker run -p 8080:80 sherlock-docs-site
 `
 
-> Generado por `sync-docs.ps1` desde el repositorio principal de Sherlock-docs.
+> Generado por `scripts/sync_docs.ps1` desde el repositorio principal de Sherlock-docs.

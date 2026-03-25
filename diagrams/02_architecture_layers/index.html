@@ -1924,9 +1924,10 @@
 <p>Las dependencias fluyen <strong>hacia adentro</strong>: Infrastructure → Application → Domain.</p>
 <h2 id="diagrama">Diagrama<a class="headerlink" href="#diagrama" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph TB
-    subgraph InterfacesLayer["Interfaces Layer (UI)"]
+    subgraph InterfacesLayer["Interfaces Layer (UI + API)"]
         GUI[Streamlit GUI&lt;br/&gt;app.py]
         CLI[CLI Interface&lt;br/&gt;cli.py&lt;br/&gt;✅ 21 comandos]
+        API[FastAPI REST&lt;br/&gt;api/main.py&lt;br/&gt;✅ 22 endpoints&lt;br/&gt;JWT + Swagger]
     end
 
     subgraph ApplicationLayer["Application Layer"]
@@ -1990,8 +1991,9 @@
 
     GUI --&gt; Container
     GUI --&gt; Services
-    GUI -.-&gt;|"17 accesos residuales&lt;br/&gt;(legacy, Fase 1+)"| Repo
     CLI --&gt; Container
+    API --&gt; Container
+    API --&gt; Services
     Container --&gt; UC
     Container --&gt; Services
     UC --&gt; DTOs
@@ -2071,10 +2073,11 @@
 </ul>
 <p><strong>Pattern</strong>: Adapter Pattern, cada implementación cumple un Port (protocolo ABC).</p>
 <h3 id="4-interfaces-layer">4. Interfaces Layer<a class="headerlink" href="#4-interfaces-layer" title="Permanent link">&para;</a></h3>
-<p><strong>Responsabilidad</strong>: Interacción con usuarios (GUI, CLI).</p>
+<p><strong>Responsabilidad</strong>: Interacción con usuarios (GUI, CLI, API REST).</p>
 <ul>
 <li><strong>Streamlit GUI</strong> ✅: Interfaz web para operadores (9 páginas implementadas)</li>
 <li><strong>CLI</strong> ✅: Interfaz de línea de comandos con 21 comandos (procesamiento batch, búsqueda, exportación, debugging) en <code>interfaces/cli.py</code></li>
+<li><strong>API REST</strong> ✅: FastAPI con 22 endpoints, JWT auth (HS256, 8h expiry, max 5 refreshes), Swagger UI (<code>/docs</code>), async OCR via TaskManager (ThreadPoolExecutor), exception handler global. Score auditoría 9.2/10. Componentes: <code>main.py</code> (app factory), <code>config.py</code> (ApiSettings), <code>auth.py</code> (JWT), <code>dependencies.py</code> (DI), <code>result_mapper.py</code> (Result→JSON), <code>tasks.py</code> (async), 11 routers en <code>routes/</code>, 8 schemas Pydantic en <code>schemas/</code></li>
 </ul>
 <h3 id="5-ports-protocolos">5. Ports (Protocolos)<a class="headerlink" href="#5-ports-protocolos" title="Permanent link">&para;</a></h3>
 <p><strong>Responsabilidad</strong>: Contratos (interfaces) que define Application, implementa Infrastructure.</p>
@@ -2085,13 +2088,13 @@
 <li><code>DocumentRepository</code>: Contrato para persistencia, segregado en ISP protocols: <code>DocumentReader</code>, <code>DocumentWriter</code>, <code>DocumentSearcher</code>, <code>CorrectionRepository</code>, <code>MetricsRepository</code></li>
 </ul>
 <h2 id="flujo-de-dependencias">Flujo de Dependencias<a class="headerlink" href="#flujo-de-dependencias" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>GUI/CLI → Application → Ports ← Infrastructure
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>              ↓
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>            Domain (Core)
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>GUI/CLI/API → Application → Ports ← Infrastructure
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                  ↓
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                Domain (Core)
 </span></code></pre></div>
 <p><strong>Regla de Oro</strong>: Las capas internas <strong>nunca</strong> conocen las externas. Infrastructure depende de Application, pero no al revés.</p>
 <blockquote>
-<p><strong>Nota</strong>: El diagrama muestra 17 accesos residuales <code>GUI -.-&gt; Repository</code> como flecha discontinua. Son bypasses legacy donde la GUI accede directamente al repositorio sin pasar por Services. Planificados para eliminación en Fase 1+ (pre-API). Ver <code>.kilo/plans/auditoria-deuda-tecnica.md</code> para el desglose por archivo.</p>
+<p><strong>Nota</strong>: Los 16 bypasses legacy GUI→Repository fueron eliminados en Sprint 23.1 (Fase 1.5). La API REST no tiene ningún bypass — todas las operaciones pasan por Services/UseCases del Application Layer.</p>
 </blockquote>
 <h2 id="principios-aplicados">Principios Aplicados<a class="headerlink" href="#principios-aplicados" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2123,7 +2126,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Última actualización</strong>: 2026-03-24 (Auditoría deuda técnica: 17 accesos residuales GUI→Repo documentados como flecha legacy)</p>
+<p><strong>Última actualización</strong>: 2026-03-25 (Sprint 25.1: API REST 22 endpoints, 0 bypasses, score 9.2/10)</p>
 
 
 

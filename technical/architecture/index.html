@@ -1864,9 +1864,9 @@
 
 <h1 id="arquitectura-y-componentes-tecnicos">Arquitectura y Componentes Técnicos<a class="headerlink" href="#arquitectura-y-componentes-tecnicos" title="Permanent link">&para;</a></h1>
 <h2 id="capas-clean-architecture">Capas (Clean Architecture)<a class="headerlink" href="#capas-clean-architecture" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Interfaces (GUI 9 páginas + CLI 21 comandos)
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Interfaces (GUI 9 páginas + CLI 21 comandos + API REST 22 endpoints)
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    ↓
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Application (3 UseCases + 5 Services + 12 DTOs frozen + ServiceContainer DI)
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Application (3 UseCases + 5 Services + 24 DTOs frozen + ServiceContainer DI)
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ↓
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Domain (Document, DocumentType, DocumentStatus, RecommendedAction, ImportStatus, ValueObjects)
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    ↑
@@ -1875,14 +1875,32 @@
 <p><strong>Application Layer detalle</strong>:
 - Use Cases: ProcessDocument, ImportExcel, ExportExcel (pipeline completo)
 - Services (Fase 0): StatisticsService, SearchService, ValidationService, ManualEntryService, DedupConfigService — todos con <code>Result[ResponseDTO, str]</code>
-- DTOs: 12 frozen (<code>@dataclass(frozen=True)</code>) — 5 Request + 6 Response + ProcessingMetrics, JSON-serializables via <code>dataclasses.asdict()</code>
-- ServiceContainer: 11 properties lazy (repository, ocr_router, ner_adapter, duplicate_detector, audit_service + 5 services + process_document_use_case), thread-safe con <code>RLock</code>, 15 tests de DI</p>
-<p><strong>Flujo Application Service (Fase 0 → Fase 1 API)</strong>:
-<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>GUI → container.{service} → service.*_result(RequestDTO) → Result[ResponseDTO, str]
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                                  ↓                              ↓
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                          repository (via DI)           Success(frozen DTO) / Failure(str)
-</span></code></pre></div>
-Este patron es directamente exponible como endpoint FastAPI en Fase 2.</p>
+- DTOs: 24 frozen (<code>@dataclass(frozen=True)</code>) — Request + Response + ProcessingMetrics, JSON-serializables via <code>dataclasses.asdict()</code>
+- ServiceContainer: 14 properties lazy-loaded (repository, ocr_router, ner_adapter, duplicate_detector, audit_service + 5 services + 3 use cases), thread-safe con <code>RLock</code></p>
+<p><strong>API Layer (FastAPI — Sprint 24+25+25.1)</strong>:
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>HTTP Request → FastAPI Router → Depends(get_container, get_current_user)
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    ↓
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Route function → container.{service}.*_result(RequestDTO)
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    ↓
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>result_mapper.result_to_response(Result) → JSONResponse
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    ↓
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    ├── Success → {data: ...} (200/201/202)
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    └── Failure → {error: {code, message}} (400/404/422/500)
+</span></code></pre></div></p>
+<p>Componentes API:
+- <code>main.py</code>: App factory + lifespan (preload models) + exception handler global + router registration
+- <code>config.py</code>: <code>ApiSettings</code> (Pydantic BaseSettings, env prefix <code>SHERLOCK_</code>) — JWT, CORS, upload limits
+- <code>auth.py</code>: JWT encode/decode, credential loading desde YAML, refresh con limite
+- <code>dependencies.py</code>: <code>get_container</code>, <code>get_current_user</code>, <code>get_task_manager</code> (FastAPI Depends)
+- <code>result_mapper.py</code>: <code>Result[T,E]</code> → <code>JSONResponse</code> con clasificacion automatica de error → HTTP status
+- <code>tasks.py</code>: <code>TaskManager</code> (ThreadPoolExecutor + dict de futures + polling)
+- <code>routes/</code>: 11 routers (health, auth, documents, search, process, validate, manual, duplicates, import_export, config_routes, tasks)
+- <code>schemas/</code>: 8 modulos Pydantic (common, auth, documents, health, tasks, validation, duplicates, config)</p>
+<p><strong>Flujo GUI (original)</strong>:
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>GUI → container.{service} → service.*_result(RequestDTO) → Result[ResponseDTO, str]
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>                                   ↓                              ↓
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                           repository (via DI)           Success(frozen DTO) / Failure(str)
+</span></code></pre></div></p>
 <h2 id="patrones-implementados">Patrones implementados<a class="headerlink" href="#patrones-implementados" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1920,11 +1938,19 @@ Este patron es directamente exponible como endpoint FastAPI en Fase 2.</p>
 <td>DI</td>
 <td>ServiceContainer con lazy-loading</td>
 </tr>
+<tr>
+<td>Adapter (API)</td>
+<td>result_mapper — Result[T,E] → JSONResponse</td>
+</tr>
+<tr>
+<td>Middleware</td>
+<td>JWT auth, CORS, global exception handler</td>
+</tr>
 </tbody>
 </table>
 <h2 id="pipeline-de-procesamiento">Pipeline de Procesamiento<a class="headerlink" href="#pipeline-de-procesamiento" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>PDF → Gate Pre-OCR (SHA-256+size) → OCR Híbrido → NER Ensemble
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    → Secciones/Medida Provisional → Dedup Ensemble → BD + FTS5
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>PDF → Gate Pre-OCR (SHA-256+size) → OCR Híbrido → NER Ensemble
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    → Secciones/Medida Provisional → Dedup Ensemble → BD + FTS5
 </span></code></pre></div>
 <h2 id="deteccion-de-duplicados">Detección de Duplicados<a class="headerlink" href="#deteccion-de-duplicados" title="Permanent link">&para;</a></h2>
 <p><strong>Gate pre-OCR</strong> (ProcessDocumentUseCase):
@@ -1937,21 +1963,21 @@ Este patron es directamente exponible como endpoint FastAPI en Fase 2.</p>
 Auto-exclusión: documento no aparece como su propio duplicado.
 Pesos configurables via JSON: <code>data/config/dedup_config.json</code></p>
 <h2 id="extraccion-hibrida-pdf">Extracción Híbrida PDF<a class="headerlink" href="#extraccion-hibrida-pdf" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Paso 1: Texto nativo por página (PyMuPDF)</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># Página con ≥50 chars → usar directo (confidence=0.99, engine=NATIVE)</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Página con &lt;50 chars → marcar para OCR</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># Paso 2: OCR solo para páginas sin texto nativo</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># Alta calidad → Tesseract, fallback PaddleOCR si confidence &lt;70%</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Baja calidad → PaddleOCR directo</span>
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Paso 1: Texto nativo por página (PyMuPDF)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># Página con ≥50 chars → usar directo (confidence=0.99, engine=NATIVE)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Página con &lt;50 chars → marcar para OCR</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Paso 2: OCR solo para páginas sin texto nativo</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># Alta calidad → Tesseract, fallback PaddleOCR si confidence &lt;70%</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Baja calidad → PaddleOCR directo</span>
 </span></code></pre></div>
 <h2 id="cache-tf-idf-critico">Caché TF-IDF (CRÍTICO)<a class="headerlink" href="#cache-tf-idf-critico" title="Permanent link">&para;</a></h2>
 <p>Sin caché: 2-5 min con 10,000 docs. Con caché: &lt;2 seg.</p>
-<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># ✅ Caché incremental</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">cached_matrix</span> <span class="o">=</span> <span class="n">load_from_cache</span><span class="p">(</span><span class="s2">&quot;data/cache/tfidf.pkl&quot;</span><span class="p">)</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">new_vector</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="n">new_doc</span><span class="p">])</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">updated</span> <span class="o">=</span> <span class="n">vstack</span><span class="p">([</span><span class="n">cached_matrix</span><span class="p">,</span> <span class="n">new_vector</span><span class="p">])</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">save_to_cache</span><span class="p">(</span><span class="n">updated</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># ✅ Caché incremental</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">cached_matrix</span> <span class="o">=</span> <span class="n">load_from_cache</span><span class="p">(</span><span class="s2">&quot;data/cache/tfidf.pkl&quot;</span><span class="p">)</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">new_vector</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="n">new_doc</span><span class="p">])</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">updated</span> <span class="o">=</span> <span class="n">vstack</span><span class="p">([</span><span class="n">cached_matrix</span><span class="p">,</span> <span class="n">new_vector</span><span class="p">])</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">save_to_cache</span><span class="p">(</span><span class="n">updated</span><span class="p">)</span>
 </span></code></pre></div>
 <p>Rebuild si &gt;10% documentos nuevos. Test: <code>test_similarity_search_under_2_seconds_with_1000_docs()</code></p>
 <h2 id="ner-ensemble">NER Ensemble<a class="headerlink" href="#ner-ensemble" title="Permanent link">&para;</a></h2>
