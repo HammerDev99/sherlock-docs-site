@@ -1639,10 +1639,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#plannings-27" class="md-nav__link">
+  <a href="#plannings-28" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Plannings (27)
+        Plannings (28)
       
     </span>
   </a>
@@ -1762,6 +1762,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sprint-26-auditoria-integral-api-032-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sprint 26 — Auditoria Integral API (0/32 items)
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1855,10 +1866,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#plannings-27" class="md-nav__link">
+  <a href="#plannings-28" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Plannings (27)
+        Plannings (28)
       
     </span>
   </a>
@@ -1978,6 +1989,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sprint-26-auditoria-integral-api-032-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sprint 26 — Auditoria Integral API (0/32 items)
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2119,8 +2141,9 @@
 <li>✅ 24: API Foundation FastAPI (10/10 SPECs: JWT, 7 endpoints, Swagger)</li>
 <li>✅ 25: API Completa (10/10 SPECs: 15 endpoints adicionales, TaskManager async)</li>
 <li>✅ 25.1: Security hardening + API quality (15/15 FIXs + 5/5 BUGs produccion)</li>
+<li>⏳ 26: Auditoria integral API + Documentacion (0/32 items: 3 criticos + 6 Fase3 + 7 security + 14 quality + 2 docs)</li>
 </ul>
-<h2 id="plannings-27">Plannings (27)<a class="headerlink" href="#plannings-27" title="Permanent link">&para;</a></h2>
+<h2 id="plannings-28">Plannings (28)<a class="headerlink" href="#plannings-28" title="Permanent link">&para;</a></h2>
 <p>01-Buenas practicas, 02-Gaps IA, 03-SpaCy audit, 04/05-E2E, 06-Roadmap,
 07-QA, 08-On-premise, 09-Analisis integral, 10-UX pendiente,
 11-Auditoria integral, 12-Prueba manual, 13-Historial accionante,
@@ -2129,7 +2152,8 @@
 20-GOB-05 auth, 21-Import/Export fixes, 22-Paginacion+CSV,
 23-Contraauditoria SDD, 23.1-Auditoria deuda tecnica,
 24-Analisis API .NET, 24-Fase1 API Foundation,
-25-Fase2 API Completa, 25.1-Security hardening API</p>
+25-Fase2 API Completa, 25.1-Security hardening API,
+26-Auditoria integral API</p>
 <h2 id="produccion">Produccion<a class="headerlink" href="#produccion" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>URL</strong>: https://sherlock.sprintjudicial.com</li>
@@ -2262,6 +2286,17 @@ SEC-API: path traversal, temp cleanup, refresh limit, file size validation.
 </tr>
 </tbody>
 </table>
+<h2 id="sprint-26-auditoria-integral-api-032-items">Sprint 26 — Auditoria Integral API (0/32 items)<a class="headerlink" href="#sprint-26-auditoria-integral-api-032-items" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Referencia: <code>docs/plannings/planning_26_.../00_PLANNING_SPRINT_26.md</code></p>
+</blockquote>
+<p><strong>Auditoria por 4 agentes especializados</strong> (Code Reviewer, Security Auditor, Architect, FastAPI Pro):
+- Fase A: 3 bugs criticos (race condition TaskManager, route conflict)
+- Fase B: 6 hallazgos Fase 3 pendientes (HALL-01..06)
+- Fase C: 7 security hardening (RBAC, rate limiting, headers, CORS)
+- Fase D: 14 quality + architecture (cache, pagination, DRY, response_model, services)
+- Fase E: 2 documentacion (manual API 22 endpoints, build_docs_site)</p>
+<p>Scores auditoria: Arquitectura 8.0, FastAPI 7.8, Seguridad 7.8, Codigo 7.5. Objetivo: &gt;= 9.5/10.</p>
 <h2 id="roadmap-api-fastapi-net">Roadmap API FastAPI + .NET<a class="headerlink" href="#roadmap-api-fastapi-net" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Referencia: <code>docs/plannings/planning_24_.../00_ANALISIS_ARQUITECTONICO_API_NET_SDD.md</code></p>
@@ -2271,13 +2306,13 @@ SEC-API: path traversal, temp cleanup, refresh limit, file size validation.
 <li>Fase 1: Sprint 24 (API Foundation FastAPI) — COMPLETADO (10/10)</li>
 <li>Fase 2: Sprint 25 (API Completa 22 endpoints) — COMPLETADO (10/10)</li>
 <li>Fase 2.1: Sprint 25.1 (Security hardening + quality) — COMPLETADO (20/20)</li>
-<li>Fase 3: 6 hallazgos pendientes (~17 min de trabajo)</li>
-<li>Fase 4: Frontend .NET 8/9 (Blazor/MVC) consumiendo API via OpenAPI — PENDIENTE</li>
+<li>Fase 2.2: Sprint 26 (Auditoria integral + docs) — EN PROGRESO (0/32)</li>
+<li>Fase 3: Frontend .NET 8/9 (Blazor/MVC) consumiendo API via OpenAPI — PENDIENTE</li>
 </ul>
 <h2 id="documentacion-detallada">Documentacion Detallada<a class="headerlink" href="#documentacion-detallada" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>docs/sprints/sprint_NN_FECHA_TEMA/</code> — 25 sprints documentados</li>
-<li><code>docs/plannings/planning_NN_FECHA_TEMA/</code> — 27 plannings documentados</li>
+<li><code>docs/sprints/sprint_NN_FECHA_TEMA/</code> — 26 sprints documentados</li>
+<li><code>docs/plannings/planning_NN_FECHA_TEMA/</code> — 28 plannings documentados</li>
 <li><code>docs/diagrams/</code> — 9 diagramas mermaid + PNG renderizados</li>
 <li><code>docs/governance/</code> — 10 documentos de gobernanza IA</li>
 <li><code>docs/governance/decisions/</code> — 3 decisiones formales de aplazamiento</li>
