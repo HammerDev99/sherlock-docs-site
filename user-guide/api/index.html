@@ -2896,7 +2896,8 @@
 </blockquote>
 <hr />
 <h3 id="2-post-apiv1authlogin-iniciar-sesion">2. <code>POST /api/v1/auth/login</code> — Iniciar sesion<a class="headerlink" href="#2-post-apiv1authlogin-iniciar-sesion" title="Permanent link">&para;</a></h3>
-<p><strong>Autenticacion</strong>: No requerida</p>
+<p><strong>Autenticacion</strong>: No requerida
+<strong>Rate limit</strong>: 5 intentos por minuto por IP (S26 H-02)</p>
 <div class="highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/api/v1/auth/login<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;username&quot;: &quot;admin&quot;, &quot;password&quot;: &quot;password123&quot;}&#39;</span>
@@ -2914,13 +2915,13 @@
 <tr>
 <td><code>username</code></td>
 <td>string</td>
-<td style="text-align: center;">Si</td>
+<td style="text-align: center;">Si (min 1 char)</td>
 <td>Nombre de usuario</td>
 </tr>
 <tr>
 <td><code>password</code></td>
 <td>string</td>
-<td style="text-align: center;">Si</td>
+<td style="text-align: center;">Si (min 1 char)</td>
 <td>Contrasena en texto plano</td>
 </tr>
 </tbody>
@@ -2932,7 +2933,7 @@
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">  </span><span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">28800</span>
 </span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="p">}</span>
 </span></code></pre></div>
-<p><strong>Error (401)</strong>: Credenciales invalidas</p>
+<p><strong>Errores</strong>: 401 (credenciales invalidas), 422 (campos vacios), 429 (rate limit excedido)</p>
 <hr />
 <h3 id="3-post-apiv1authrefresh-renovar-token">3. <code>POST /api/v1/auth/refresh</code> — Renovar token<a class="headerlink" href="#3-post-apiv1authrefresh-renovar-token" title="Permanent link">&para;</a></h3>
 <p>Genera un nuevo JWT con la misma identidad. Maximo 5 refreshes por sesion.</p>
@@ -3368,9 +3369,8 @@
 </span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
 </span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="s1">    &quot;text&quot;: &quot;El accionante interpone accion de tutela contra EPS...&quot;,</span>
-</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="s1">    &quot;document_type&quot;: &quot;tutela&quot;,</span>
-</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="s1">    &quot;threshold&quot;: 0.7</span>
-</span><span id="__span-38-8"><a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a><span class="s1">  }&#39;</span>
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="s1">    &quot;document_type&quot;: &quot;tutela&quot;</span>
+</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a><span class="s1">  }&#39;</span>
 </span></code></pre></div>
 <table>
 <thead>
@@ -3397,15 +3397,11 @@
 <td><code>tutela</code></td>
 <td>Tipo para umbrales</td>
 </tr>
-<tr>
-<td><code>threshold</code></td>
-<td>float</td>
-<td style="text-align: center;">No</td>
-<td><code>null</code></td>
-<td>Umbral personalizado</td>
-</tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>Nota (S26 D-08)</strong>: El campo <code>threshold</code> fue eliminado. Los umbrales se determinan internamente segun <code>document_type</code> y son configurables via <code>PUT /config/dedup</code>.</p>
+</blockquote>
 <p><strong>Respuesta (200)</strong>:</p>
 <div class="highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="p">{</span>
 </span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -3534,6 +3530,7 @@
 <hr />
 <h3 id="19-put-apiv1configdedup-actualizar-config-duplicados">19. <code>PUT /api/v1/config/dedup</code> — Actualizar config duplicados<a class="headerlink" href="#19-put-apiv1configdedup-actualizar-config-duplicados" title="Permanent link">&para;</a></h3>
 <p>Actualiza pesos y umbrales del ensemble. Los 3 pesos deben sumar 1.0.</p>
+<p><strong>Requiere rol admin</strong> (S26 H-01 RBAC)</p>
 <div class="highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>http://localhost:8000/api/v1/config/dedup<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
@@ -3543,7 +3540,7 @@
 </span><span id="__span-45-7"><a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a><span class="s1">    &quot;entity_weight&quot;: 0.35</span>
 </span><span id="__span-45-8"><a id="__codelineno-45-8" name="__codelineno-45-8" href="#__codelineno-45-8"></a><span class="s1">  }&#39;</span>
 </span></code></pre></div>
-<p><strong>Errores</strong>: 422 (pesos no suman 1.0)</p>
+<p><strong>Errores</strong>: 403 (no es admin), 422 (pesos no suman 1.0)</p>
 <hr />
 <h3 id="20-get-apiv1configner-configuracion-ner">20. <code>GET /api/v1/config/ner</code> — Configuracion NER<a class="headerlink" href="#20-get-apiv1configner-configuracion-ner" title="Permanent link">&para;</a></h3>
 <p>Obtiene pesos del extractor NER (ensemble de 5 extractores).</p>
@@ -3560,11 +3557,12 @@
 <hr />
 <h3 id="21-delete-apiv1documentsid-eliminar-documento">21. <code>DELETE /api/v1/documents/{id}</code> — Eliminar documento<a class="headerlink" href="#21-delete-apiv1documentsid-eliminar-documento" title="Permanent link">&para;</a></h3>
 <p>Elimina un documento por su ID.</p>
+<p><strong>Requiere rol admin</strong> (S26 H-01 RBAC)</p>
 <div class="highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>http://localhost:8000/api/v1/documents/abc-123<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">&quot;</span>
 </span></code></pre></div>
 <p><strong>Respuesta (204)</strong>: Sin cuerpo de respuesta</p>
-<p><strong>Errores</strong>: 404 (documento no encontrado)</p>
+<p><strong>Errores</strong>: 403 (no es admin), 404 (documento no encontrado)</p>
 <blockquote>
 <p><strong>Equivalente CLI</strong>: <code>sherlock delete &lt;doc_id&gt;</code></p>
 </blockquote>
@@ -3899,11 +3897,31 @@
 </tr>
 <tr>
 <td>Token refresh</td>
-<td>Max 5 por sesion</td>
+<td>Max 5 por sesion (limitacion conocida H-07: client-side count)</td>
+</tr>
+<tr>
+<td>RBAC</td>
+<td><code>require_admin</code> en DELETE y PUT /config/dedup (S26 H-01)</td>
+</tr>
+<tr>
+<td>Rate limiting</td>
+<td>5 intentos/min por IP en login (S26 H-02)</td>
+</tr>
+<tr>
+<td>Security headers</td>
+<td>X-Content-Type-Options, X-Frame-Options, X-XSS-Protection, Referrer-Policy, Permissions-Policy, HSTS en prod (S26 M-02)</td>
+</tr>
+<tr>
+<td>CORS</td>
+<td>Restrictivo: solo GET/POST/PUT/DELETE/OPTIONS, headers Authorization/Content-Type/Accept (S26 M-03)</td>
+</tr>
+<tr>
+<td>Swagger</td>
+<td>Deshabilitado en produccion (ENVIRONMENT=production) (S26 M-06)</td>
 </tr>
 <tr>
 <td>File upload</td>
-<td>Max 50MB, extension validada, path traversal prevenido</td>
+<td>Max 50MB, extension validada, path traversal prevenido, filename sanitizado (S26 M-08)</td>
 </tr>
 <tr>
 <td>Temp files</td>
@@ -3911,7 +3929,7 @@
 </tr>
 <tr>
 <td>XSS</td>
-<td>Sanitizacion HTML en todos los schemas de entrada</td>
+<td>Sanitizacion HTML + protocolos URI peligrosos + null bytes (S26 HALL-05)</td>
 </tr>
 <tr>
 <td>SQL Injection</td>
@@ -3920,10 +3938,6 @@
 <tr>
 <td>Error leaking</td>
 <td>Global exception handler, sin stack traces al cliente</td>
-</tr>
-<tr>
-<td>CORS</td>
-<td>Configurado por variable de entorno</td>
 </tr>
 <tr>
 <td>Audit trail</td>
@@ -3960,7 +3974,7 @@
 </span><span id="__span-51-12"><a id="__codelineno-51-12" name="__codelineno-51-12" href="#__codelineno-51-12"></a>    +-- routes/validate.py      -&gt; Correcciones NER + recurring
 </span><span id="__span-51-13"><a id="__codelineno-51-13" name="__codelineno-51-13" href="#__codelineno-51-13"></a>    +-- routes/duplicates.py    -&gt; Dedup detect + verify
 </span><span id="__span-51-14"><a id="__codelineno-51-14" name="__codelineno-51-14" href="#__codelineno-51-14"></a>    +-- routes/import_export.py -&gt; Excel import/export
-</span><span id="__span-51-15"><a id="__codelineno-51-15" name="__codelineno-51-15" href="#__codelineno-51-15"></a>    +-- routes/config_routes.py -&gt; Config dedup/NER + delete + stats
+</span><span id="__span-51-15"><a id="__codelineno-51-15" name="__codelineno-51-15" href="#__codelineno-51-15"></a>    +-- routes/config_routes.py -&gt; Config dedup/NER + stats (delete movido a documents S26)
 </span><span id="__span-51-16"><a id="__codelineno-51-16" name="__codelineno-51-16" href="#__codelineno-51-16"></a>    +-- routes/tasks.py         -&gt; Task polling
 </span><span id="__span-51-17"><a id="__codelineno-51-17" name="__codelineno-51-17" href="#__codelineno-51-17"></a>            |
 </span><span id="__span-51-18"><a id="__codelineno-51-18" name="__codelineno-51-18" href="#__codelineno-51-18"></a>            v
@@ -3987,9 +4001,10 @@
 <li>OCR se ejecuta en ThreadPoolExecutor (max 2 workers) por ser CPU-intensive</li>
 </ul>
 <hr />
-<p><strong>Version</strong>: 2.0 — 22 endpoints completos (S24 Foundation + S25 Completa + S25.1 Security Hardening)
+<p><strong>Version</strong>: 2.1 — 22 endpoints completos (S24 Foundation + S25 Completa + S25.1 Security + S26 Audit)
 <strong>Fecha</strong>: 2026-03-25
-<strong>Endpoints activos</strong>: 22 (21 funcionales, 1 parcial HALL-01)</p>
+<strong>Endpoints activos</strong>: 22/22 funcionales (HALL-01 corregido en S26)
+<strong>Cambios S26</strong>: RBAC (H-01), rate limiting (H-02), security headers (M-02), CORS restrictivo (M-03), Swagger condicional (M-06), threshold eliminado de verify (D-08), delete movido a documents router (M-09), datetime ISO 8601 (L-03)</p>
 
 
 

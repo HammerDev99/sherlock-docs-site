@@ -1606,10 +1606,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mvp-100-completado-api-95-2122-endpoints" class="md-nav__link">
+  <a href="#mvp-100-completado-api-95-2122-endpoints-s26-planificado-033" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MVP: 100% Completado | API: 95% (21/22 endpoints)
+        MVP: 100% Completado | API: 95% (21/22 endpoints) | S26: Planificado (0/33)
       
     </span>
   </a>
@@ -1766,10 +1766,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sprint-26-auditoria-integral-api-032-items" class="md-nav__link">
+  <a href="#sprint-26-auditoria-integral-api-033-items-plan-9-commits-listo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sprint 26 — Auditoria Integral API (0/32 items)
+        Sprint 26 — Auditoria Integral API (0/33 items — plan 9 commits listo)
       
     </span>
   </a>
@@ -1833,10 +1833,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mvp-100-completado-api-95-2122-endpoints" class="md-nav__link">
+  <a href="#mvp-100-completado-api-95-2122-endpoints-s26-planificado-033" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MVP: 100% Completado | API: 95% (21/22 endpoints)
+        MVP: 100% Completado | API: 95% (21/22 endpoints) | S26: Planificado (0/33)
       
     </span>
   </a>
@@ -1993,10 +1993,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sprint-26-auditoria-integral-api-032-items" class="md-nav__link">
+  <a href="#sprint-26-auditoria-integral-api-033-items-plan-9-commits-listo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sprint 26 — Auditoria Integral API (0/32 items)
+        Sprint 26 — Auditoria Integral API (0/33 items — plan 9 commits listo)
       
     </span>
   </a>
@@ -2046,7 +2046,7 @@
 
 
 <h1 id="estado-del-proyecto">Estado del Proyecto<a class="headerlink" href="#estado-del-proyecto" title="Permanent link">&para;</a></h1>
-<h2 id="mvp-100-completado-api-95-2122-endpoints">MVP: 100% Completado | API: 95% (21/22 endpoints)<a class="headerlink" href="#mvp-100-completado-api-95-2122-endpoints" title="Permanent link">&para;</a></h2>
+<h2 id="mvp-100-completado-api-95-2122-endpoints-s26-planificado-033">MVP: 100% Completado | API: 95% (21/22 endpoints) | S26: Planificado (0/33)<a class="headerlink" href="#mvp-100-completado-api-95-2122-endpoints-s26-planificado-033" title="Permanent link">&para;</a></h2>
 <h2 id="metricas">Metricas<a class="headerlink" href="#metricas" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2102,7 +2102,7 @@
 </tr>
 <tr>
 <td>API Audit Score</td>
-<td>9.2/10 (era 6.8/10 pre-S25.1)</td>
+<td>8.2/10 ponderado (4+6 agentes: Arch 8.0, FastAPI 7.8, Security 7.8, Code 7.5)</td>
 </tr>
 <tr>
 <td>Diagramas</td>
@@ -2121,8 +2121,12 @@
 <td><strong>0</strong> (16 eliminados en Fase 1.5)</td>
 </tr>
 <tr>
-<td>Pendientes API</td>
-<td>6 hallazgos Fase 3 (2 media, 4 baja)</td>
+<td>Pendientes S26</td>
+<td>33 items (4 criticos + 6 Fase3 + 7 security + 14 quality + 2 docs)</td>
+</tr>
+<tr>
+<td>Deploy API</td>
+<td>Dockerfile [api] + docker-entrypoint-api.sh (uvicorn :8000, 2 workers)</td>
 </tr>
 </tbody>
 </table>
@@ -2170,8 +2174,9 @@
 <li><strong>Async</strong>: <code>TaskManager</code> (ThreadPoolExecutor) para OCR processing, polling via <code>/tasks/{id}</code></li>
 <li><strong>Seguridad API</strong>: path traversal prevention, temp cleanup, file size validation, XSS sanitization, CORS</li>
 <li><strong>Swagger</strong>: <code>/docs</code> (auto-generado por FastAPI)</li>
-<li><strong>Score auditoria</strong>: 9.2/10 (6.8 → 9.2 en S25.1)</li>
-<li><strong>Pendientes Fase 3</strong>: 6 hallazgos (2 media, 4 baja) — ver <code>docs/plannings/planning_25_1_.../00_PLANNING_SPRINT_25_1.md</code></li>
+<li><strong>Score auditoria</strong>: 8.2/10 ponderado (4+6 agentes); era 6.8 pre-S25.1, 9.2 post-S25.1 (1 agente)</li>
+<li><strong>Pendientes S26</strong>: 33 items en plan de 9 commits — ver <code>docs/plannings/planning_26_.../03_PLAN_IMPLEMENTACION_SPRINT_26.md</code></li>
+<li><strong>Deploy API</strong>: Dockerfile con [api] extras, <code>docker-entrypoint-api.sh</code> (uvicorn :8000, 2 workers)</li>
 </ul>
 <h2 id="security-hardening-planning-15-s251">Security Hardening (Planning 15 + S25.1)<a class="headerlink" href="#security-hardening-planning-15-s251" title="Permanent link">&para;</a></h2>
 <p>16/16 SECs remediados + 4 SEC-API. 3 CRITICOS + 3 ALTOS + 9 MEDIOS.
@@ -2286,16 +2291,27 @@ SEC-API: path traversal, temp cleanup, refresh limit, file size validation.
 </tr>
 </tbody>
 </table>
-<h2 id="sprint-26-auditoria-integral-api-032-items">Sprint 26 — Auditoria Integral API (0/32 items)<a class="headerlink" href="#sprint-26-auditoria-integral-api-032-items" title="Permanent link">&para;</a></h2>
+<h2 id="sprint-26-auditoria-integral-api-033-items-plan-9-commits-listo">Sprint 26 — Auditoria Integral API (0/33 items — plan 9 commits listo)<a class="headerlink" href="#sprint-26-auditoria-integral-api-033-items-plan-9-commits-listo" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p>Referencia: <code>docs/plannings/planning_26_.../00_PLANNING_SPRINT_26.md</code></p>
+<p>Planning: <code>docs/plannings/planning_26_.../00_PLANNING_SPRINT_26.md</code>
+Verificacion: <code>docs/plannings/planning_26_.../02_AUDITORIA_VERIFICACION_API.md</code>
+Plan impl: <code>docs/plannings/planning_26_.../03_PLAN_IMPLEMENTACION_SPRINT_26.md</code>
+Prompt sesion: <code>docs/plannings/planning_26_.../04_PROMPT_SESION_IMPLEMENTACION.md</code>
+Deploy API: <code>docs/plannings/planning_26_.../01_DEPLOY_API_SERVICE_VPS.md</code></p>
 </blockquote>
-<p><strong>Auditoria por 4 agentes especializados</strong> (Code Reviewer, Security Auditor, Architect, FastAPI Pro):
-- Fase A: 3 bugs criticos (race condition TaskManager, route conflict)
+<p><strong>Auditoria por 4+6 agentes especializados</strong> (2 rondas):
+- Ronda 1 (4 agentes): Code Reviewer, Security Auditor, Architect, FastAPI Pro
+- Ronda 2 (6 agentes): TDD Guide, FastAPI Pro, Security Auditor, Architect, Doc Auditor, Code Reviewer</p>
+<p><strong>33 items en 5 fases, plan de 9 commits atomicos:</strong>
+- Fase A: 4 bugs criticos (C-01 race condition, C-02 TaskInfo mutable, H-03 route conflict, D-08 threshold ignorado)
 - Fase B: 6 hallazgos Fase 3 pendientes (HALL-01..06)
-- Fase C: 7 security hardening (RBAC, rate limiting, headers, CORS)
-- Fase D: 14 quality + architecture (cache, pagination, DRY, response_model, services)
-- Fase E: 2 documentacion (manual API 22 endpoints, build_docs_site)</p>
+- Fase C: 7 security hardening (RBAC, rate limiting, headers, CORS, Swagger, filename, refresh doc)
+- Fase D: 14 quality + architecture (cache, pagination, DRY, response_model, Annotated, cleanup, polish)
+- Fase E: 2 documentacion (manual API v3, build_docs_site)</p>
+<p><strong>Verificacion confirmada</strong>: 15/15 fixes S25.1 efectivos, 6/6 Fase 3 presentes, docs 99.5% sync.
+<strong>Hallazgo nuevo D-08</strong>: threshold ignorado en POST /duplicates/verify (funcionalidad documentada que no funciona).
+<strong>Tests faltantes</strong>: ~125 identificados (auth.py 0 tests unitarios directos, 13 endpoints sin happy path).
+<strong>Estimado</strong>: ~8h implementacion, 1402 → ~1465 tests, score 8.2 → 9.5+/10.</p>
 <p>Scores auditoria: Arquitectura 8.0, FastAPI 7.8, Seguridad 7.8, Codigo 7.5. Objetivo: &gt;= 9.5/10.</p>
 <h2 id="roadmap-api-fastapi-net">Roadmap API FastAPI + .NET<a class="headerlink" href="#roadmap-api-fastapi-net" title="Permanent link">&para;</a></h2>
 <blockquote>
@@ -2306,7 +2322,8 @@ SEC-API: path traversal, temp cleanup, refresh limit, file size validation.
 <li>Fase 1: Sprint 24 (API Foundation FastAPI) — COMPLETADO (10/10)</li>
 <li>Fase 2: Sprint 25 (API Completa 22 endpoints) — COMPLETADO (10/10)</li>
 <li>Fase 2.1: Sprint 25.1 (Security hardening + quality) — COMPLETADO (20/20)</li>
-<li>Fase 2.2: Sprint 26 (Auditoria integral + docs) — EN PROGRESO (0/32)</li>
+<li>Fase 2.2: Sprint 26 (Auditoria integral + docs) — PLANIFICADO (0/33, 9 commits, 63 tests)</li>
+<li>Fase 2.3: Deploy servicio API en VPS (EasyPanel + Traefik) — PREPARADO (Dockerfile + entrypoint listos)</li>
 <li>Fase 3: Frontend .NET 8/9 (Blazor/MVC) consumiendo API via OpenAPI — PENDIENTE</li>
 </ul>
 <h2 id="documentacion-detallada">Documentacion Detallada<a class="headerlink" href="#documentacion-detallada" title="Permanent link">&para;</a></h2>
