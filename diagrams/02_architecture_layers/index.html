@@ -853,6 +853,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#flujo-de-errores-tipados-sprint-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flujo de Errores Tipados (Sprint 27)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flujo de Errores Tipados (Sprint 27)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apperror-con-errorcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AppError con ErrorCode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propagacion-por-capas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Propagación por capas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-flujo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de flujo completo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#principios-aplicados" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1877,6 +1927,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#flujo-de-errores-tipados-sprint-27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flujo de Errores Tipados (Sprint 27)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flujo de Errores Tipados (Sprint 27)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apperror-con-errorcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AppError con ErrorCode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propagacion-por-capas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Propagación por capas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-flujo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo de flujo completo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#principios-aplicados" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2096,6 +2196,53 @@
 <blockquote>
 <p><strong>Nota</strong>: Los 16 bypasses legacy GUI→Repository fueron eliminados en Sprint 23.1 (Fase 1.5). La API REST no tiene ningún bypass — todas las operaciones pasan por Services/UseCases del Application Layer.</p>
 </blockquote>
+<h2 id="flujo-de-errores-tipados-sprint-27">Flujo de Errores Tipados (Sprint 27)<a class="headerlink" href="#flujo-de-errores-tipados-sprint-27" title="Permanent link">&para;</a></h2>
+<h3 id="apperror-con-errorcode">AppError con ErrorCode<a class="headerlink" href="#apperror-con-errorcode" title="Permanent link">&para;</a></h3>
+<p>A partir del Sprint 27, el sistema utiliza un flujo de errores tipado basado en <code>AppError</code> con <code>ErrorCode</code> que se propaga desde la capa de persistencia hasta la capa API de forma uniforme:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Persistence Layer           Application Layer           API Layer
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>─────────────────          ───────────────────         ──────────────
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>SQLiteRepository            Services / UseCases         result_mapper.py
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>     │                           │                           │
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>     ├─ Result[T, AppError] ───→ ├─ bind/map (ROP) ───────→ ├─ map_result_to_response()
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>     │                           │                           │
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>     │  AppError(                │  Propaga AppError         │  AppError.code.http_status
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>     │    code=ErrorCode.XXX,    │  sin transformar o        │  → HTTP status code directo
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>     │    message=&quot;...&quot;,         │  enriquece con contexto   │
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>     │    details={...}          │                           │  Ej: NOT_FOUND → 404
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>     │  )                        │                           │      VALIDATION_ERROR → 422
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>     │                           │                           │      DUPLICATE → 409
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>                                                             │      INTERNAL_ERROR → 500
+</span></code></pre></div>
+<h3 id="propagacion-por-capas">Propagación por capas<a class="headerlink" href="#propagacion-por-capas" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Persistence → Application</strong>: Los métodos del repositorio (<code>delete()</code>, <code>update_status()</code>, <code>update_document_field()</code>, <code>save_processing_metrics()</code>) retornan <code>Result[T, AppError]</code>. La capa de aplicación usa <code>bind()</code> y <code>map()</code> del patrón ROP para encadenar operaciones sin try/except.</p>
+</li>
+<li>
+<p><strong>Application → API</strong>: Los Services y UseCases retornan <code>Result[T, AppError]</code> a los routers. No se transforman las excepciones — el error fluye como valor.</p>
+</li>
+<li>
+<p><strong>API → HTTP Response</strong>: <code>result_mapper.py</code> convierte el resultado:</p>
+</li>
+<li><strong>AppError (preferido)</strong>: Lee <code>AppError.code.http_status</code> para obtener el código HTTP directamente. El <code>ErrorCode</code> enum define el mapeo (ej: <code>ErrorCode.NOT_FOUND</code> → 404, <code>ErrorCode.VALIDATION_ERROR</code> → 422).</li>
+<li><strong>String errors (legacy)</strong>: Para compatibilidad con código anterior que retorna <code>Failure("mensaje string")</code>, el mapper aplica heurísticas de clasificación (busca patrones como "not found", "invalid", etc.) para determinar el HTTP status code.</li>
+</ol>
+<h3 id="ejemplo-de-flujo-completo">Ejemplo de flujo completo<a class="headerlink" href="#ejemplo-de-flujo-completo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Persistence (retorna Result)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Result</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">AppError</span><span class="p">]:</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="o">...</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="k">return</span> <span class="n">Failure</span><span class="p">(</span><span class="n">AppError</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="n">ErrorCode</span><span class="o">.</span><span class="n">NOT_FOUND</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Documento </span><span class="si">{</span><span class="n">doc_id</span><span class="si">}</span><span class="s2"> no encontrado&quot;</span><span class="p">))</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># Application (propaga Result)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">delete_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Result</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">AppError</span><span class="p">]:</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">repository</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">doc_id</span><span class="p">)</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># API Router (usa result_mapper)</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="nd">@router</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">{doc_id}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">delete_document</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">container</span><span class="o">.</span><span class="n">repository</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">doc_id</span><span class="p">)</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="k">return</span> <span class="n">map_result_to_response</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># → 404 {&quot;error&quot;: &quot;Documento X no encontrado&quot;}</span>
+</span></code></pre></div>
 <h2 id="principios-aplicados">Principios Aplicados<a class="headerlink" href="#principios-aplicados" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Dependency Inversion Principle (DIP)</strong>: Application depende de abstracciones (Ports), no implementaciones.</li>
@@ -2126,7 +2273,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Última actualización</strong>: 2026-03-25 (Sprint 25.1: API REST 22 endpoints, 0 bypasses, score 9.2/10)</p>
+<p><strong>Última actualización</strong>: 2026-03-26 (Sprint 27: flujo errores tipados AppError+ErrorCode, Result[T, AppError] en persistencia, 1503 tests)</p>
 
 
 

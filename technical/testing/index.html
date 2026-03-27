@@ -1133,6 +1133,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#integration-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration Tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tests CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#metricas-actuales" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1777,6 +1799,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#integration-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration Tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tests CLI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#metricas-actuales" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1870,9 +1914,23 @@
 <h2 id="pre-commit-quality-gate-obligatorio">Pre-commit (quality gate obligatorio)<a class="headerlink" href="#pre-commit-quality-gate-obligatorio" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ruff<span class="w"> </span>check<span class="w"> </span>src/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mypy<span class="w"> </span>src/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pytest<span class="w"> </span>tests/unit/<span class="w"> </span>-x
 </span></code></pre></div>
+<h2 id="integration-tests">Integration Tests<a class="headerlink" href="#integration-tests" title="Permanent link">&para;</a></h2>
+<p><strong>Ubicación</strong>: <code>tests/integration/</code></p>
+<p>Tests cross-layer que verifican la integración real entre capas (API → Application → Persistence):</p>
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pytest<span class="w"> </span>tests/integration/<span class="w"> </span>-v<span class="w"> </span>-m<span class="w"> </span>integration<span class="w">    </span><span class="c1"># Ejecutar solo integration</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>pytest<span class="w"> </span>tests/integration/<span class="w"> </span>-vvs<span class="w"> </span>--pdb<span class="w">           </span><span class="c1"># Debug interactivo</span>
+</span></code></pre></div>
+<p><strong>Fixtures</strong> (<code>tests/integration/conftest.py</code>):
+- <code>real_container</code>: ServiceContainer con BD SQLite en memoria (sin mocks)
+- <code>real_client</code>: TestClient de FastAPI conectado al container real
+- <code>seeded_db</code>: BD con datos de prueba pre-insertados
+- Fixture de auth con JWT real para endpoints protegidos</p>
+<p><strong>Cobertura</strong>: 9+ tests cross-layer verificando flujos completos (create → read → update → delete).</p>
+<h2 id="tests-cli">Tests CLI<a class="headerlink" href="#tests-cli" title="Permanent link">&para;</a></h2>
+<p>El CLI cuenta con <strong>53+ tests</strong> en <code>tests/unit/interfaces/test_cli.py</code>, cubriendo los 21 comandos disponibles incluyendo paths de éxito, error y validación de argumentos.</p>
 <h2 id="metricas-actuales">Metricas actuales<a class="headerlink" href="#metricas-actuales" title="Permanent link">&para;</a></h2>
 <ul>
-<li>1402 tests pasando (unit + e2e + security + API)</li>
+<li>1569 tests pasando (unit + integration + e2e + security + API)</li>
 <li>
 <blockquote>
 <p>85% coverage</p>
@@ -1886,20 +1944,20 @@
 </ul>
 <h2 id="tests-api-fastapi-testclient">Tests API (FastAPI TestClient)<a class="headerlink" href="#tests-api-fastapi-testclient" title="Permanent link">&para;</a></h2>
 <p>Pattern para tests API:
-<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Fixture con auth desactivado y mocks</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">client</span><span class="p">(</span><span class="n">mock_container</span><span class="p">,</span> <span class="n">test_settings</span><span class="p">,</span> <span class="n">task_manager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TestClient</span><span class="p">:</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">app</span> <span class="o">=</span> <span class="n">create_app</span><span class="p">()</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">app</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">container</span> <span class="o">=</span> <span class="n">mock_container</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">app</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="n">test_settings</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">app</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">task_manager</span> <span class="o">=</span> <span class="n">task_manager</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s2">&quot;...dependencies.get_settings&quot;</span><span class="p">,</span> <span class="n">return_value</span><span class="o">=</span><span class="n">test_settings</span><span class="p">):</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="k">yield</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">raise_server_exceptions</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># Test usa client fixture</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_endpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/api/v1/health&quot;</span><span class="p">)</span>
-</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Fixture con auth desactivado y mocks</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">client</span><span class="p">(</span><span class="n">mock_container</span><span class="p">,</span> <span class="n">test_settings</span><span class="p">,</span> <span class="n">task_manager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TestClient</span><span class="p">:</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">app</span> <span class="o">=</span> <span class="n">create_app</span><span class="p">()</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">app</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">container</span> <span class="o">=</span> <span class="n">mock_container</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">app</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="n">test_settings</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">app</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">task_manager</span> <span class="o">=</span> <span class="n">task_manager</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s2">&quot;...dependencies.get_settings&quot;</span><span class="p">,</span> <span class="n">return_value</span><span class="o">=</span><span class="n">test_settings</span><span class="p">):</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        <span class="k">yield</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">raise_server_exceptions</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1"># Test usa client fixture</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_endpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/api/v1/health&quot;</span><span class="p">)</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
 </span></code></pre></div></p>
 <p><strong>Nota</strong>: ServiceContainer tests usan <code>type(svc).__name__ == "ClassName"</code> en vez de <code>isinstance()</code> para evitar problemas de import path en pytest.</p>
 <h2 id="desglose-tests-application">Desglose tests application/<a class="headerlink" href="#desglose-tests-application" title="Permanent link">&para;</a></h2>

@@ -703,6 +703,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#errores-de-dominio-tipados-coreerrorspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Errores de Dominio Tipados (core/errors.py)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#patrones-implementados" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1755,6 +1766,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#errores-de-dominio-tipados-coreerrorspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Errores de Dominio Tipados (core/errors.py)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#patrones-implementados" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1874,7 +1896,7 @@
 </span></code></pre></div>
 <p><strong>Application Layer detalle</strong>:
 - Use Cases: ProcessDocument, ImportExcel, ExportExcel (pipeline completo)
-- Services (Fase 0): StatisticsService, SearchService, ValidationService, ManualEntryService, DedupConfigService — todos con <code>Result[ResponseDTO, str]</code>
+- Services: StatisticsService, SearchService, ValidationService, ManualEntryService, DedupConfigService — todos con <code>Result[ResponseDTO, AppError]</code> (migrados desde <code>Result[T, str]</code> en Sprint 27.2)
 - DTOs: 24 frozen (<code>@dataclass(frozen=True)</code>) — Request + Response + ProcessingMetrics, JSON-serializables via <code>dataclasses.asdict()</code>
 - ServiceContainer: 14 properties lazy-loaded (repository, ocr_router, ner_adapter, duplicate_detector, audit_service + 5 services + 3 use cases), thread-safe con <code>RLock</code></p>
 <p><strong>API Layer (FastAPI — Sprint 24+25+25.1)</strong>:
@@ -1901,6 +1923,29 @@
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>                                   ↓                              ↓
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                           repository (via DI)           Success(frozen DTO) / Failure(str)
 </span></code></pre></div></p>
+<h2 id="errores-de-dominio-tipados-coreerrorspy">Errores de Dominio Tipados (<code>core/errors.py</code>)<a class="headerlink" href="#errores-de-dominio-tipados-coreerrorspy" title="Permanent link">&para;</a></h2>
+<p><code>AppError</code> es el error de dominio tipado que reemplaza los strings planos en <code>Failure(str)</code>:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">AppError</span><span class="p">:</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">code</span><span class="p">:</span> <span class="n">ErrorCode</span>          <span class="c1"># Enum: NOT_FOUND, VALIDATION, CONFLICT, INTERNAL, ...</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>             <span class="c1"># Mensaje legible para logs/usuario</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">details</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span>     <span class="c1"># Contexto adicional opcional</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="nd">@property</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">http_status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>  <span class="c1"># Mapeo directo a HTTP status code</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="o">...</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">message</span>   <span class="c1"># Backward compat: str(AppError) == str antiguo</span>
+</span></code></pre></div>
+<p><strong>ErrorCode</strong> (enum): <code>NOT_FOUND</code> (404), <code>VALIDATION</code> (422), <code>CONFLICT</code> (409), <code>INTERNAL</code> (500), <code>UNAUTHORIZED</code> (401), <code>FORBIDDEN</code> (403).</p>
+<p><strong>Migración completada</strong>: Todos los servicios de application/ y persistence/ migraron de <code>Result[T, str]</code> a <code>Result[T, AppError]</code>. El <code>__str__</code> de <code>AppError</code> retorna <code>message</code> para backward compatibility con código que hacía <code>str(failure)</code>.</p>
+<p><strong>Persistence layer</strong> — operaciones que ahora retornan <code>Result[T, AppError]</code>:
+- <code>delete(doc_id)</code> → <code>Result[bool, AppError]</code>
+- <code>update_status(doc_id, status)</code> → <code>Result[bool, AppError]</code>
+- <code>update_document_field(doc_id, field, value)</code> → <code>Result[bool, AppError]</code>
+- <code>save_processing_metrics(doc_id, metrics)</code> → <code>Result[bool, AppError]</code></p>
+<p>Esto cierra la brecha donde persistence lanzaba excepciones o retornaba booleanos sin contexto de error tipado.</p>
 <h2 id="patrones-implementados">Patrones implementados<a class="headerlink" href="#patrones-implementados" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1920,7 +1965,7 @@
 </tr>
 <tr>
 <td>ROP</td>
-<td>returns.Result en use cases + 5 application services</td>
+<td>returns.Result en use cases + 5 application services + persistence (Result[T, AppError])</td>
 </tr>
 <tr>
 <td>Strategy</td>
@@ -1949,8 +1994,8 @@
 </tbody>
 </table>
 <h2 id="pipeline-de-procesamiento">Pipeline de Procesamiento<a class="headerlink" href="#pipeline-de-procesamiento" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>PDF → Gate Pre-OCR (SHA-256+size) → OCR Híbrido → NER Ensemble
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    → Secciones/Medida Provisional → Dedup Ensemble → BD + FTS5
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>PDF → Gate Pre-OCR (SHA-256+size) → OCR Híbrido → NER Ensemble
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    → Secciones/Medida Provisional → Dedup Ensemble → BD + FTS5
 </span></code></pre></div>
 <h2 id="deteccion-de-duplicados">Detección de Duplicados<a class="headerlink" href="#deteccion-de-duplicados" title="Permanent link">&para;</a></h2>
 <p><strong>Gate pre-OCR</strong> (ProcessDocumentUseCase):
@@ -1963,21 +2008,21 @@
 Auto-exclusión: documento no aparece como su propio duplicado.
 Pesos configurables via JSON: <code>data/config/dedup_config.json</code></p>
 <h2 id="extraccion-hibrida-pdf">Extracción Híbrida PDF<a class="headerlink" href="#extraccion-hibrida-pdf" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Paso 1: Texto nativo por página (PyMuPDF)</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># Página con ≥50 chars → usar directo (confidence=0.99, engine=NATIVE)</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Página con &lt;50 chars → marcar para OCR</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Paso 2: OCR solo para páginas sin texto nativo</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># Alta calidad → Tesseract, fallback PaddleOCR si confidence &lt;70%</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Baja calidad → PaddleOCR directo</span>
+<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Paso 1: Texto nativo por página (PyMuPDF)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># Página con ≥50 chars → usar directo (confidence=0.99, engine=NATIVE)</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># Página con &lt;50 chars → marcar para OCR</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Paso 2: OCR solo para páginas sin texto nativo</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># Alta calidad → Tesseract, fallback PaddleOCR si confidence &lt;70%</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Baja calidad → PaddleOCR directo</span>
 </span></code></pre></div>
 <h2 id="cache-tf-idf-critico">Caché TF-IDF (CRÍTICO)<a class="headerlink" href="#cache-tf-idf-critico" title="Permanent link">&para;</a></h2>
 <p>Sin caché: 2-5 min con 10,000 docs. Con caché: &lt;2 seg.</p>
-<div class="highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># ✅ Caché incremental</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">cached_matrix</span> <span class="o">=</span> <span class="n">load_from_cache</span><span class="p">(</span><span class="s2">&quot;data/cache/tfidf.pkl&quot;</span><span class="p">)</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">new_vector</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="n">new_doc</span><span class="p">])</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">updated</span> <span class="o">=</span> <span class="n">vstack</span><span class="p">([</span><span class="n">cached_matrix</span><span class="p">,</span> <span class="n">new_vector</span><span class="p">])</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">save_to_cache</span><span class="p">(</span><span class="n">updated</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># ✅ Caché incremental</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">cached_matrix</span> <span class="o">=</span> <span class="n">load_from_cache</span><span class="p">(</span><span class="s2">&quot;data/cache/tfidf.pkl&quot;</span><span class="p">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">new_vector</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="n">new_doc</span><span class="p">])</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">updated</span> <span class="o">=</span> <span class="n">vstack</span><span class="p">([</span><span class="n">cached_matrix</span><span class="p">,</span> <span class="n">new_vector</span><span class="p">])</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">save_to_cache</span><span class="p">(</span><span class="n">updated</span><span class="p">)</span>
 </span></code></pre></div>
 <p>Rebuild si &gt;10% documentos nuevos. Test: <code>test_similarity_search_under_2_seconds_with_1000_docs()</code></p>
 <h2 id="ner-ensemble">NER Ensemble<a class="headerlink" href="#ner-ensemble" title="Permanent link">&para;</a></h2>

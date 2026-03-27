@@ -2802,8 +2802,11 @@
     UseCases -.uses.-&gt; OCRModule
     UseCases -.uses.-&gt; NERModule
     UseCases -.uses.-&gt; DedupModule
-    UseCases -.uses.-&gt; PersistenceModule
-    AppServices -.uses.-&gt; PersistenceModule
+    UseCases -."Result[T, AppError]".-&gt; PersistenceModule
+    AppServices -."Result[T, AppError]".-&gt; PersistenceModule
+
+    %% Document composition → Value Objects (Sprint 27)
+    Entities -."delegates to".-&gt; ValueObjects
 
     %% Infrastructure → Domain
     OCRModule --&gt; ValueObjects
@@ -2944,10 +2947,18 @@
 - <code>Document</code>: Documento legal con metadatos
 - <code>DocumentType</code>: Enum de tipos (TUTELA, HABEAS_CORPUS)
 - <code>DocumentStatus</code>: Enum de estados (PENDING, PROCESSING, PROCESSED, VALIDATED, ERROR)</p>
+<p><strong>Composición de Document (Sprint 27)</strong>:
+La entidad <code>Document</code> delega sus datos estructurados a Value Objects tipados en lugar de almacenar diccionarios planos:
+- <code>Document.ner_fields</code> → <code>NERFields</code>: Campos NER extraídos (accionante, demandado, radicado, juzgado, etc.)
+- <code>Document.csj_metadata</code> → <code>CSJMetadata</code>: Metadatos del Consejo Superior de la Judicatura
+- <code>Document.provisional_info</code> → <code>ProvisionalInfo</code>: Información de medida provisional (detectada, tipo, descripción)
+- <code>Document.sections_info</code> → <code>SectionsInfo</code>: Secciones detectadas del documento (hechos, pretensiones, etc.)</p>
+<p>Esta composición reemplaza el acceso directo a diccionarios <code>dict[str, Any]</code>, aportando type safety y validación en frontera.</p>
 <p><strong>Características</strong>:
 - Identidad única (UUID)
 - Validaciones de negocio
-- Inmutabilidad preferida</p>
+- Inmutabilidad preferida
+- Composición con Value Objects tipados (frozen dataclasses)</p>
 <h4 id="value-objects">Value Objects<a class="headerlink" href="#value-objects" title="Permanent link">&para;</a></h4>
 <p><strong>Responsabilidad</strong>: Objetos sin identidad, comparables por valor.</p>
 <p><strong>Value Objects</strong>:
@@ -3044,6 +3055,13 @@
   - <code>FTS5Search</code>: Búsqueda full-text
   - <code>MigrationManager</code>: Migraciones de esquema
   - <code>ConnectionPool</code>: Pool de conexiones (futuro)</p>
+<p><strong>Métodos con Result types (Sprint 27)</strong>:
+Los siguientes métodos de persistencia ahora retornan <code>Result[T, AppError]</code> en lugar de lanzar excepciones o retornar valores desnudos:
+- <code>delete(doc_id)</code> → <code>Result[None, AppError]</code>
+- <code>update_status(doc_id, status)</code> → <code>Result[None, AppError]</code>
+- <code>update_document_field(doc_id, field, value)</code> → <code>Result[None, AppError]</code>
+- <code>save_processing_metrics(metrics)</code> → <code>Result[None, AppError]</code></p>
+<p>Esto permite que la capa de aplicación maneje errores con Railway-Oriented Programming (bind/map) sin try/except anidados.</p>
 <p><strong>Dependencias externas</strong>: sqlite3 (stdlib), FTS5 extension</p>
 <h3 id="5-cross-cutting-concerns">5. Cross-Cutting Concerns<a class="headerlink" href="#5-cross-cutting-concerns" title="Permanent link">&para;</a></h3>
 <h4 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h4>
@@ -3291,7 +3309,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Última actualización</strong>: 2026-03-25 (Sprint 25.1: API REST 22 endpoints, 0 bypasses, score 9.2/10, 1402 tests)</p>
+<p><strong>Última actualización</strong>: 2026-03-26 (Sprint 27: composición Document→VOs, Result[T, AppError] en persistencia, 1503 tests)</p>
 
 
 
