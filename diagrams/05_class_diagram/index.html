@@ -3120,7 +3120,7 @@
 <p><strong>Service Container</strong></p>
 <ul>
 <li><strong>ServiceContainer</strong>: Dependency Injection container</li>
-<li>11 properties lazy (repository, ocr_router, ner_adapter, duplicate_detector, audit_service, 5 services, process_document_use_case)</li>
+<li>14 properties lazy (repository, ocr_router, ner_adapter, duplicate_detector, audit_service, 5 services, process_document_use_case, active_learning, export_excel, import_excel)</li>
 <li>Thread-safe con RLock</li>
 <li>Context manager para manejo de recursos</li>
 </ul>
@@ -3333,14 +3333,14 @@
 </ul>
 <h2 id="relaciones-clave">Relaciones Clave<a class="headerlink" href="#relaciones-clave" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>ServiceContainer</strong> crea e inyecta todas las dependencias (11 properties lazy)</li>
+<li><strong>ServiceContainer</strong> crea e inyecta todas las dependencias (14 properties lazy)</li>
 <li><strong>ProcessDocumentUseCase</strong> orquesta el pipeline usando Ports</li>
 <li><strong>5 Application Services</strong> (Fase 0) median entre GUI y Repository con Result pattern</li>
 <li><strong>OCRRouter</strong> delega a adapters concretos (Tesseract/PaddleOCR)</li>
 <li><strong>HybridEnsembleDetector</strong> coordina 4 matchers independientes</li>
 <li><strong>SQLiteDocumentRepository</strong> persiste entidades <code>Document</code></li>
 </ol>
-<p><strong>Última actualización</strong>: 2026-03-19 (Fase 0 Pre-API: 5 Application Services + 11 DTOs frozen + ServiceContainer 11 properties)</p>
+<p><strong>Última actualización</strong>: 2026-03-27 (Sprint 28: ServiceContainer 14 properties, 1707 tests, AppError/ErrorCode en core)</p>
 
 
 

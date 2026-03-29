@@ -1166,6 +1166,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tests-sprint-28-nuevos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tests Sprint 28 (nuevos)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tests-api-fastapi-testclient" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1832,6 +1843,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tests-sprint-28-nuevos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tests Sprint 28 (nuevos)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tests-api-fastapi-testclient" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1927,21 +1949,55 @@
 - Fixture de auth con JWT real para endpoints protegidos</p>
 <p><strong>Cobertura</strong>: 9+ tests cross-layer verificando flujos completos (create → read → update → delete).</p>
 <h2 id="tests-cli">Tests CLI<a class="headerlink" href="#tests-cli" title="Permanent link">&para;</a></h2>
-<p>El CLI cuenta con <strong>53+ tests</strong> en <code>tests/unit/interfaces/test_cli.py</code>, cubriendo los 21 comandos disponibles incluyendo paths de éxito, error y validación de argumentos.</p>
+<p>El CLI cuenta con <strong>68+ tests</strong> en <code>tests/unit/interfaces/test_cli.py</code>, cubriendo los 20 comandos disponibles incluyendo paths de éxito, error y validación de argumentos.</p>
 <h2 id="metricas-actuales">Metricas actuales<a class="headerlink" href="#metricas-actuales" title="Permanent link">&para;</a></h2>
 <ul>
-<li>1569 tests pasando (unit + integration + e2e + security + API)</li>
-<li>
-<blockquote>
-<p>85% coverage</p>
-</blockquote>
-</li>
+<li>1707 tests pasando (unit + integration + e2e + security + API)</li>
+<li>87.77% coverage (CI gate: 88%, excluyendo GUI)</li>
+<li>16 integration tests (9 API vertical slices + 7 pipeline)</li>
 <li>19 tests de seguridad base + 33 tests API security (S25.1)</li>
 <li>E2E con playwright (29/32 estables)</li>
 <li>41 tests Fase 0 (Result pattern, frozen DTOs, JSON serialization)</li>
 <li>15 tests ServiceContainer Fase 0 (lazy loading, DI, thread safety)</li>
-<li>70 tests API total (19 S24 + 18 S25 + 33 S25.1)</li>
+<li>84 tests API total (19 S24 + 18 S25 + 33 S25.1 + 14 S28)</li>
 </ul>
+<h2 id="tests-sprint-28-nuevos">Tests Sprint 28 (nuevos)<a class="headerlink" href="#tests-sprint-28-nuevos" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th style="text-align: center;">Tests</th>
+<th>Cobertura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tests/integration/test_pipeline_integration.py</code></td>
+<td style="text-align: center;">7</td>
+<td>Pipeline OCR→NER→Dedup→Persist con mocks</td>
+</tr>
+<tr>
+<td><code>tests/unit/interfaces/test_cli.py</code> (expandido)</td>
+<td style="text-align: center;">+15</td>
+<td>cmd_process, cmd_extract_acta, cmd_audit_report, cmd_health, cmd_stats_daily</td>
+</tr>
+<tr>
+<td><code>tests/unit/persistence/test_sqlite_repository.py</code> (expandido)</td>
+<td style="text-align: center;">+19</td>
+<td>Range queries, transactions, find_by_field, context manager</td>
+</tr>
+<tr>
+<td><code>tests/unit/interfaces/api/test_api_sprint28.py</code></td>
+<td style="text-align: center;">14</td>
+<td>Duplicates, import_export, auth refresh, config routes</td>
+</tr>
+<tr>
+<td><code>tests/unit/test_coverage_sprint28.py</code></td>
+<td style="text-align: center;">90</td>
+<td>ServiceContainer, active_learning, auth JWT, sanitizers, statistics, dedup_config, main.py</td>
+</tr>
+</tbody>
+</table>
 <h2 id="tests-api-fastapi-testclient">Tests API (FastAPI TestClient)<a class="headerlink" href="#tests-api-fastapi-testclient" title="Permanent link">&para;</a></h2>
 <p>Pattern para tests API:
 <div class="highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Fixture con auth desactivado y mocks</span>

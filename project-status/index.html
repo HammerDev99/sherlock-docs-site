@@ -1636,13 +1636,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Sprints (23 + 23.1 + 24 + 25 + 25.1 + 26 + 27 + 27.2 completados)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sprint-28-detalle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sprint 28 — Detalle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#plannings-30" class="md-nav__link">
+  <a href="#plannings-31" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Plannings (30)
+        Plannings (31)
       
     </span>
   </a>
@@ -1885,13 +1902,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Sprints (23 + 23.1 + 24 + 25 + 25.1 + 26 + 27 + 27.2 completados)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sprint-28-detalle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sprint 28 — Detalle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#plannings-30" class="md-nav__link">
+  <a href="#plannings-31" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Plannings (30)
+        Plannings (31)
       
     </span>
   </a>
@@ -2102,11 +2136,11 @@
 <tbody>
 <tr>
 <td>Tests</td>
-<td>1569 (1442 S26 + 86 S27 + 41 S27.2)</td>
+<td>1707 (1569 S27.2 + 138 S28 verificados por CI)</td>
 </tr>
 <tr>
 <td>CLI</td>
-<td>21 comandos</td>
+<td>20 comandos</td>
 </tr>
 <tr>
 <td>GUI</td>
@@ -2118,7 +2152,7 @@
 </tr>
 <tr>
 <td>Coverage</td>
-<td>83% (excluyendo GUI, CI bloqueante)</td>
+<td>87.77% (excluyendo GUI, CI gate: 87%)</td>
 </tr>
 <tr>
 <td>Calidad</td>
@@ -2192,8 +2226,14 @@
 <li>✅ 26: Auditoria integral API + Deploy (32/32: RBAC, rate limit, security headers, entrypoint unificado, deploy VPS)</li>
 <li>✅ 27: Deuda tecnica (9/9 SPECs: mypy 0 errores, Result pattern, VOs)</li>
 <li>✅ 27.2: Brechas de calidad (BRECHA-1..3 + BUG-EXCEL: AppError, persistence Result, coverage 83%)</li>
+<li>🔄 28: Estabilizacion + coverage 87% (10/11 SPECs: +138 tests, 87.77% coverage, gate CI 87%, BRECHA-4 WONTFIX)</li>
 </ul>
-<h2 id="plannings-30">Plannings (30)<a class="headerlink" href="#plannings-30" title="Permanent link">&para;</a></h2>
+<h3 id="sprint-28-detalle">Sprint 28 — Detalle<a class="headerlink" href="#sprint-28-detalle" title="Permanent link">&para;</a></h3>
+<p><strong>Estado</strong>: EN PROGRESO (90%) — 10/11 SPECs completados
+<strong>Implementado</strong>: SPEC-S28-A1..A4 (logging, type:ignore, f-strings, docs 21→20), SPEC-S28-B1..B4 (pipeline tests, CLI tests, persistence tests, API tests) + 90 tests extra, SPEC-S28-C1 (gate 88%), SPEC-S28-C2 (agent_docs actualizado)
+<strong>Pendiente</strong>: SPEC-S28-C3 (auditoria CDAID 8 puntos) + diagramas</p>
+<p><strong>Decision BRECHA-4 (WONTFIX)</strong>: Document VOs Fase 2 cancelada. Justificacion: 42 archivos / 129 tests afectados, beneficio usuario CERO, VOs como computed properties (Fase 1) ya dan 80% del beneficio DDD. Evaluado por agente senior-architect, aprobado por humano.</p>
+<h2 id="plannings-31">Plannings (31)<a class="headerlink" href="#plannings-31" title="Permanent link">&para;</a></h2>
 <p>01-Buenas practicas, 02-Gaps IA, 03-SpaCy audit, 04/05-E2E, 06-Roadmap,
 07-QA, 08-On-premise, 09-Analisis integral, 10-UX pendiente,
 11-Auditoria integral, 12-Prueba manual, 13-Historial accionante,
@@ -2203,7 +2243,8 @@
 23-Contraauditoria SDD, 23.1-Auditoria deuda tecnica,
 24-Analisis API .NET, 24-Fase1 API Foundation,
 25-Fase2 API Completa, 25.1-Security hardening API,
-26-Auditoria integral API, 27-Auditoria calidad codigo (9.1/10)</p>
+26-Auditoria integral API, 27-Auditoria calidad codigo (9.1/10),
+28-Estabilizacion + coverage 90%</p>
 <h2 id="produccion">Produccion<a class="headerlink" href="#produccion" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>URL</strong>: https://sherlock.sprintjudicial.com</li>
@@ -2418,14 +2459,14 @@ Tests: 1402 → 1442+. Deploy API produccion: <code>https://api.sherlock.sprintj
 <li>Fase 1: Sprint 24 (API Foundation FastAPI) — COMPLETADO (10/10)</li>
 <li>Fase 2: Sprint 25 (API Completa 22 endpoints) — COMPLETADO (10/10)</li>
 <li>Fase 2.1: Sprint 25.1 (Security hardening + quality) — COMPLETADO (20/20)</li>
-<li>Fase 2.2: Sprint 26 (Auditoria integral + docs) — PLANIFICADO (0/33, 9 commits, 63 tests)</li>
-<li>Fase 2.3: Deploy servicio API en VPS (EasyPanel + Traefik) — PREPARADO (Dockerfile + entrypoint listos)</li>
+<li>Fase 2.2: Sprint 26 (Auditoria integral + docs) — COMPLETADO (32/32)</li>
+<li>Fase 2.3: Deploy servicio API en VPS (EasyPanel + Traefik) — COMPLETADO (produccion live: api.sherlock.sprintjudicial.com)</li>
 <li>Fase 3: Frontend .NET 8/9 (Blazor/MVC) consumiendo API via OpenAPI — PENDIENTE</li>
 </ul>
 <h2 id="documentacion-detallada">Documentacion Detallada<a class="headerlink" href="#documentacion-detallada" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>docs/sprints/sprint_NN_FECHA_TEMA/</code> — 26 sprints documentados</li>
-<li><code>docs/plannings/planning_NN_FECHA_TEMA/</code> — 28 plannings documentados</li>
+<li><code>docs/sprints/sprint_NN_FECHA_TEMA/</code> — 28 sprints documentados</li>
+<li><code>docs/plannings/planning_NN_FECHA_TEMA/</code> — 31 plannings documentados</li>
 <li><code>docs/diagrams/</code> — 9 diagramas mermaid + PNG renderizados</li>
 <li><code>docs/governance/</code> — 10 documentos de gobernanza IA</li>
 <li><code>docs/governance/decisions/</code> — 3 decisiones formales de aplazamiento</li>

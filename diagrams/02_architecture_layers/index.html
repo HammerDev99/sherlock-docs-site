@@ -2026,7 +2026,7 @@
 <pre class="mermaid"><code>graph TB
     subgraph InterfacesLayer["Interfaces Layer (UI + API)"]
         GUI[Streamlit GUI&lt;br/&gt;app.py]
-        CLI[CLI Interface&lt;br/&gt;cli.py&lt;br/&gt;✅ 21 comandos]
+        CLI[CLI Interface&lt;br/&gt;cli.py&lt;br/&gt;✅ 20 comandos]
         API[FastAPI REST&lt;br/&gt;api/main.py&lt;br/&gt;✅ 22 endpoints&lt;br/&gt;JWT + Swagger]
     end
 
@@ -2034,12 +2034,13 @@
         UC[Use Cases&lt;br/&gt;ProcessDocumentUseCase&lt;br/&gt;ExportExcelUseCase&lt;br/&gt;ImportExcelUseCase]
         Services[Services S23&lt;br/&gt;ValidationService&lt;br/&gt;SearchService&lt;br/&gt;StatisticsService&lt;br/&gt;ManualEntryService&lt;br/&gt;DedupConfigService]
         DTOs[DTOs frozen&lt;br/&gt;ProcessDocument Req/Resp&lt;br/&gt;Statistics Resp&lt;br/&gt;SearchDocuments Req/Resp&lt;br/&gt;ValidateDocument Req/Resp&lt;br/&gt;CreateManualDocument Req/Resp&lt;br/&gt;RecurringCheck Req/Resp&lt;br/&gt;DedupConfig Resp/UpdateReq]
-        Container[Service Container&lt;br/&gt;Dependency Injection&lt;br/&gt;Thread-safe RLock]
+        Container[Service Container&lt;br/&gt;14 properties lazy-loaded&lt;br/&gt;Dependency Injection&lt;br/&gt;Thread-safe RLock]
     end
 
     subgraph DomainLayer["Domain Layer (Core)"]
         Entities[Entities&lt;br/&gt;Document&lt;br/&gt;DocumentType&lt;br/&gt;DocumentStatus]
         ValueObjects[Value Objects&lt;br/&gt;EntityResult&lt;br/&gt;OCRResult&lt;br/&gt;DuplicateCandidate&lt;br/&gt;NERFields&lt;br/&gt;CSJMetadata&lt;br/&gt;ProvisionalInfo&lt;br/&gt;SectionsInfo]
+        Errors[core/errors.py&lt;br/&gt;AppError + ErrorCode&lt;br/&gt;Tipado de errores S27]
     end
 
     subgraph InfrastructureLayer["Infrastructure Layer (Adapters)"]
@@ -2106,6 +2107,7 @@
     Services --&gt; DTOs
     DTOs --&gt; Entities
     DTOs --&gt; ValueObjects
+    UC --&gt; Errors
 
     OCRPort -.implements.-&gt; OCRRouter
     OCRRouter --&gt; Tesseract
@@ -2149,6 +2151,7 @@
 <ul>
 <li><strong>Entities</strong>: <code>Document</code>, <code>DocumentType</code>, <code>DocumentStatus</code></li>
 <li><strong>Value Objects</strong>: <code>EntityResult</code>, <code>OCRResult</code>, <code>DuplicateCandidate</code>, <code>NERFields</code>, <code>CSJMetadata</code>, <code>ProvisionalInfo</code>, <code>SectionsInfo</code> (Sprint 23: 4 nuevos frozen VOs)</li>
+<li><strong>Errors</strong> (Sprint 27): <code>core/errors.py</code> — <code>AppError</code> dataclass + <code>ErrorCode</code> enum con mapeo a HTTP status codes. Base del flujo de errores tipados Result[T, AppError]</li>
 <li><strong>Reglas de negocio</strong>: Validaciones de estado, invariantes del dominio</li>
 </ul>
 <p><strong>Característica clave</strong>: Cero dependencias a frameworks o bibliotecas externas.</p>
@@ -2158,7 +2161,7 @@
 <li><strong>Use Cases</strong>: <code>ProcessDocumentUseCase</code> (pipeline OCR -&gt; NER -&gt; Dedup -&gt; Persist), <code>ExportExcelUseCase</code>, <code>ImportExcelUseCase</code></li>
 <li><strong>Services</strong> (Sprint 23): <code>ValidationService</code>, <code>SearchService</code>, <code>StatisticsService</code>, <code>ManualEntryService</code>, <code>DedupConfigService</code> — lógica extraída de GUI, sin dependencia Streamlit</li>
 <li><strong>DTOs</strong>: Objetos inmutables para transferencia entre capas</li>
-<li><strong>Service Container</strong>: Inyección de dependencias, lazy loading, thread-safe con RLock</li>
+<li><strong>Service Container</strong>: Inyección de dependencias, 14 properties lazy-loaded, thread-safe con RLock</li>
 </ul>
 <p><strong>Pattern</strong>: Railway-Oriented Programming con <code>returns.Result</code> para manejo de errores.</p>
 <h3 id="3-infrastructure-layer-adapters">3. Infrastructure Layer (Adapters)<a class="headerlink" href="#3-infrastructure-layer-adapters" title="Permanent link">&para;</a></h3>
@@ -2176,7 +2179,7 @@
 <p><strong>Responsabilidad</strong>: Interacción con usuarios (GUI, CLI, API REST).</p>
 <ul>
 <li><strong>Streamlit GUI</strong> ✅: Interfaz web para operadores (9 páginas implementadas)</li>
-<li><strong>CLI</strong> ✅: Interfaz de línea de comandos con 21 comandos (procesamiento batch, búsqueda, exportación, debugging) en <code>interfaces/cli.py</code></li>
+<li><strong>CLI</strong> ✅: Interfaz de línea de comandos con 20 comandos (procesamiento batch, búsqueda, exportación, debugging) en <code>interfaces/cli.py</code></li>
 <li><strong>API REST</strong> ✅: FastAPI con 22 endpoints, JWT auth (HS256, 8h expiry, max 5 refreshes), Swagger UI (<code>/docs</code>), async OCR via TaskManager (ThreadPoolExecutor), exception handler global. Score auditoría 9.2/10. Componentes: <code>main.py</code> (app factory), <code>config.py</code> (ApiSettings), <code>auth.py</code> (JWT), <code>dependencies.py</code> (DI), <code>result_mapper.py</code> (Result→JSON), <code>tasks.py</code> (async), 11 routers en <code>routes/</code>, 8 schemas Pydantic en <code>schemas/</code></li>
 </ul>
 <h3 id="5-ports-protocolos">5. Ports (Protocolos)<a class="headerlink" href="#5-ports-protocolos" title="Permanent link">&para;</a></h3>
@@ -2273,7 +2276,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Última actualización</strong>: 2026-03-26 (Sprint 27: flujo errores tipados AppError+ErrorCode, Result[T, AppError] en persistencia, 1503 tests)</p>
+<p><strong>Última actualización</strong>: 2026-03-27 (Sprint 28: flujo errores tipados AppError+ErrorCode, Result[T, AppError] en persistencia, 1707 tests, 87.77% coverage gate 88%, tests/integration/ 16 tests cross-layer)</p>
 
 
 

@@ -2,126 +2,126 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/project-status/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/diagrams/01_system_context/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/diagrams/02_architecture_layers/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/diagrams/03_processing_flow/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/diagrams/04_duplicate_detection/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/diagrams/05_class_diagram/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/diagrams/06_component_diagram/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/diagrams/07_database_schema/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/diagrams/08_gui_navigation/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/diagrams/09_ner_pipeline/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/governance/data-governance/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/governance/data-retention/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/governance/etica-ia/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/governance/evaluacion-impacto/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/governance/incident-response/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/governance/model-card/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/governance/politica-datos/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/governance/decisions/dashboard/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/governance/decisions/ner-bias/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/governance/decisions/sqlcipher/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/technical/antipatterns/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/technical/architecture/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/technical/code-conventions/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/technical/logging/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/technical/testing/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/technical/troubleshooting/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/technical/workflow/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/user-guide/api/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/user-guide/cli/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
     <url>
          <loc>https://docs.sherlock.sprintjudicial.com/user-guide/manual/</loc>
-         <lastmod>2026-03-27</lastmod>
+         <lastmod>2026-03-28</lastmod>
     </url>
 </urlset>
