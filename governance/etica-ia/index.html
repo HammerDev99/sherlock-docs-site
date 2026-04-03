@@ -1330,10 +1330,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11-principios-conpes-3975-marco-etico-ia-colombia" class="md-nav__link">
+  <a href="#11-principios-conpes-4144-politica-nacional-de-ia-2025-reemplaza-conpes-3975" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1 Principios CONPES 3975 (Marco Etico IA Colombia)
+        1.1 Principios CONPES 4144 (Politica Nacional de IA 2025, reemplaza CONPES 3975)
       
     </span>
   </a>
@@ -2038,10 +2038,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11-principios-conpes-3975-marco-etico-ia-colombia" class="md-nav__link">
+  <a href="#11-principios-conpes-4144-politica-nacional-de-ia-2025-reemplaza-conpes-3975" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1 Principios CONPES 3975 (Marco Etico IA Colombia)
+        1.1 Principios CONPES 4144 (Politica Nacional de IA 2025, reemplaza CONPES 3975)
       
     </span>
   </a>
@@ -2427,17 +2427,20 @@
 <p><strong>Sistema</strong>: Sherlock-docs v1.0
 <strong>Entidad</strong>: Centro de Servicios Judiciales de Bello, Antioquia — Rama Judicial
 <strong>Fecha de elaboracion</strong>: 2026-03-06
-<strong>Marco normativo</strong>: CONPES 3975 (2019), Acuerdo PCSJA24-12243, Ley 1581 de 2012, Guia MinTIC/PNUD
+<strong>Ultima actualizacion</strong>: 2026-04-02
+<strong>Marco normativo</strong>: CONPES 4144 (2025, reemplaza CONPES 3975), Acuerdo PCSJA24-12243, Sentencia T-323-24, Ley 1581/2012, Ley 2502/2025, Guia MinTIC/PNUD, Directrices UNESCO
 <strong>Documentos relacionados</strong>: MODEL_CARD.md (GOB-03), EVALUACION_IMPACTO_IA.md (GOB-02), POLITICA_TRATAMIENTO_DATOS.md (GOB-04)
-<strong>Version</strong>: 1.0 (Borrador tecnico — requiere revision juridica)</p>
+<strong>Version</strong>: 2.0 (Actualizada con normativa 2025 — requiere revision juridica)</p>
 <hr />
 <h2 id="1-declaracion-de-principios">1. Declaracion de Principios<a class="headerlink" href="#1-declaracion-de-principios" title="Permanent link">&para;</a></h2>
 <p>Sherlock-docs incorpora componentes de inteligencia artificial (OCR, NLP, ML) con el proposito exclusivo de <strong>asistir</strong> a los funcionarios del CSJ de Bello en el registro de documentos judiciales. El sistema se rige por los siguientes principios:</p>
-<h3 id="11-principios-conpes-3975-marco-etico-ia-colombia">1.1 Principios CONPES 3975 (Marco Etico IA Colombia)<a class="headerlink" href="#11-principios-conpes-3975-marco-etico-ia-colombia" title="Permanent link">&para;</a></h3>
+<h3 id="11-principios-conpes-4144-politica-nacional-de-ia-2025-reemplaza-conpes-3975">1.1 Principios CONPES 4144 (Politica Nacional de IA 2025, reemplaza CONPES 3975)<a class="headerlink" href="#11-principios-conpes-4144-politica-nacional-de-ia-2025-reemplaza-conpes-3975" title="Permanent link">&para;</a></h3>
+<p>El CONPES 4144 (14 febrero 2025) supera al CONPES 3975 (2019) evolucionando de un marco
+exploratorio a una exigencia concreta de gobernanza algoritmica y adopcion responsable.</p>
 <table>
 <thead>
 <tr>
-<th>Principio CONPES</th>
+<th>Principio</th>
 <th>Aplicacion en Sherlock-docs</th>
 </tr>
 </thead>
@@ -2466,8 +2469,20 @@
 <td><strong>Privacidad</strong></td>
 <td>Cumplimiento Ley 1581/2012; sin transferencia a terceros; sin APIs externas</td>
 </tr>
+<tr>
+<td><strong>Gobernanza algoritmica</strong></td>
+<td>16/16 GOBs implementados, 10 documentos de gobernanza, EIAI con matriz de riesgos</td>
+</tr>
+<tr>
+<td><strong>Talento digital</strong></td>
+<td>Manual de usuario (GOB-08), capacitacion formal planificada (GOB-15)</td>
+</tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>Nota historica</strong>: CONPES 3975 (2019) fue la base original de este marco etico.
+CONPES 4144 (2025) lo refuerza con requisitos de gobernanza algoritmica y gestion de riesgos.</p>
+</blockquote>
 <h3 id="12-principios-pcsja24-12243-acuerdo-rama-judicial">1.2 Principios PCSJA24-12243 (Acuerdo Rama Judicial)<a class="headerlink" href="#12-principios-pcsja24-12243-acuerdo-rama-judicial" title="Permanent link">&para;</a></h3>
 <p>El Acuerdo PCSJA24-12243 establece condiciones para el uso de herramientas de IA en la administracion de justicia. Sherlock-docs cumple:</p>
 <ul>
@@ -2788,9 +2803,9 @@
 <td>Validacion humana + GOB-12 planificado</td>
 </tr>
 <tr>
-<td>Sin autenticacion (SEC-05/GOB-05)</td>
-<td>No se identifica al operador por credenciales</td>
-<td>Red interna restringida; GOB-05 planificado</td>
+<td>Sin autenticacion de doble factor</td>
+<td>Solo contrasena simple</td>
+<td>GOB-05 implementado (bcrypt + JWT cookie)</td>
 </tr>
 <tr>
 <td>Sin embeddings semanticos en dedup</td>
@@ -2812,43 +2827,63 @@
 <th>Compromiso</th>
 <th>Referencia</th>
 <th>Plazo estimado</th>
+<th>Estado</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Implementar autenticacion de usuarios</td>
 <td>GOB-05 / SEC-05</td>
-<td>Corto plazo (pre-piloto)</td>
+<td>Corto plazo</td>
+<td>Completado</td>
+</tr>
+<tr>
+<td>Manual de usuario para operadores</td>
+<td>GOB-08</td>
+<td>Corto plazo</td>
+<td>Completado</td>
 </tr>
 <tr>
 <td>Evaluacion formal de sesgo con corpus diverso</td>
 <td>GOB-12</td>
 <td>Mediano plazo (post-piloto)</td>
-</tr>
-<tr>
-<td>Manual de usuario para operadores</td>
-<td>GOB-08</td>
-<td>Mediano plazo</td>
+<td>Analisis documentado</td>
 </tr>
 <tr>
 <td>Benchmark trimestral de F1 NER contra documentos reales</td>
 <td>Model Card sec. 7</td>
 <td>Recurrente (trimestral)</td>
+<td>Pendiente</td>
 </tr>
 <tr>
 <td>Revision anual de este marco etico</td>
 <td>—</td>
 <td>Recurrente (anual)</td>
+<td>Pendiente</td>
+</tr>
+<tr>
+<td>Alinear con CONPES 4144 (gobernanza algoritmica)</td>
+<td>CONPES 4144</td>
+<td>Corto plazo</td>
+<td>Completado (v2.0)</td>
+</tr>
+<tr>
+<td>Monitorear PL 042/043 (marco legal integral IA)</td>
+<td>MinCiencias</td>
+<td>Continuo</td>
+<td>En tramite legislativo</td>
 </tr>
 <tr>
 <td>Evaluar re-entrenamiento de SpaCy con corpus judicial</td>
 <td>Fase 2 precision</td>
 <td>Largo plazo</td>
+<td>Pendiente</td>
 </tr>
 <tr>
 <td>Implementar Active Learning con correcciones del operador</td>
 <td>Fase 2 precision</td>
 <td>Largo plazo</td>
+<td>Pendiente</td>
 </tr>
 </tbody>
 </table>
@@ -2890,8 +2925,8 @@
 <p><strong>Nota</strong>: Este documento es un borrador tecnico que debe ser revisado y aprobado por el area juridica del CSJ de Bello antes de su adopcion formal. Los compromisos de mejora estan sujetos a disponibilidad de recursos y priorizacion institucional.</p>
 </blockquote>
 <hr />
-<p><em>Referencia: CONPES 3975 (2019), Acuerdo PCSJA24-12243, Ley 1581 de 2012, Guia MinTIC/PNUD</em>
-<em>Version: 1.0 — 2026-03-06</em></p>
+<p><em>Referencia: CONPES 4144 (2025), CONPES 3975 (2019), Acuerdo PCSJA24-12243, Sentencia T-323-24, Ley 1581/2012, Ley 2502/2025, Guia MinTIC/PNUD, Directrices UNESCO</em>
+<em>Version: 2.0 — 2026-04-02 (actualizada con normativa 2025)</em></p>
 
 
 
