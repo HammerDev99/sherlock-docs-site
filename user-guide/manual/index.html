@@ -2908,14 +2908,14 @@
 
 <h1 id="manual-de-usuario-sherlock-docs-v10">Manual de Usuario — Sherlock-docs v1.0<a class="headerlink" href="#manual-de-usuario-sherlock-docs-v10" title="Permanent link">&para;</a></h1>
 <p><strong>Sistema</strong>: Sherlock-docs v1.0
-<strong>Entidad</strong>: Centro de Servicios Judiciales de Bello, Antioquia — Rama Judicial
+<strong>Entidad</strong>: [entidad responsable], Antioquia — Rama Judicial
 <strong>Fecha</strong>: 2026-03-06
 <strong>Ultima actualizacion</strong>: 2026-04-02
 <strong>Clasificacion</strong>: GOB-08 — Manual de Usuario
 <strong>Marco normativo</strong>: Acuerdo PCSJA24-12243, CONPES 4144 (2025), Sentencia T-323-24</p>
 <hr />
 <h2 id="1-introduccion">1. Introduccion<a class="headerlink" href="#1-introduccion" title="Permanent link">&para;</a></h2>
-<p>Sherlock-docs es el sistema de gestion documental del Centro de Servicios Judiciales (CSJ) de Bello para el registro de acciones de tutela, habeas corpus e incidentes de desacato.</p>
+<p>Sherlock-docs es el sistema de gestion documental del [entidad responsable] para el registro de acciones de tutela, habeas corpus e incidentes de desacato.</p>
 <p>El sistema digitaliza documentos fisicos, extrae automaticamente datos clave (accionante, accionado, radicado, cedula, correo) y detecta documentos duplicados. Todo el procesamiento ocurre en el servidor local de la entidad — ningun dato sale a internet ni a servicios externos.</p>
 <h3 id="principio-fundamental">Principio fundamental<a class="headerlink" href="#principio-fundamental" title="Permanent link">&para;</a></h3>
 <p><strong>La inteligencia artificial asiste, no decide.</strong> Sherlock-docs extrae datos del documento para agilizar el registro, pero es responsabilidad del funcionario verificar y corregir cada campo antes de guardar. El sistema no toma decisiones judiciales ni administrativas (Acuerdo PCSJA24-12243, Art. 9-10).</p>
@@ -3081,7 +3081,7 @@
 <p><strong>Datos del Proceso</strong>:
 - Secuencia/Numero de Acta (*obligatorio) — numero de 7 digitos aproximadamente
 - Radicado — formato CSJ de 23 digitos
-- Juzgado — seleccione de la lista de 22 juzgados de Bello, o elija "Otro..." para escribir uno diferente</p>
+- Juzgado — seleccione de la lista predefinida de juzgados, o elija "Otro..." para escribir uno diferente</p>
 <p><strong>Observaciones</strong>: Campo de texto libre para notas adicionales.</p>
 <p><strong>Campos adicionales (CSJ)</strong>: Haga clic en este desplegable para ver Direccion del Accionante, Direccion del Accionado y Etiquetas.</p>
 <p>Cuando modifique un campo, el sistema mostrara el valor original debajo para referencia, y un contador de campos modificados. Los campos marcados con * son obligatorios.</p>
@@ -3106,7 +3106,7 @@
 </ol>
 <p>Los campos que se pueden auto-rellenar son:
 - Secuencia/Numero de Acta
-- Juzgado (se normaliza al nombre oficial de los juzgados de Bello)
+- Juzgado (se normaliza al nombre oficial de los juzgados)
 - Radicado</p>
 <p>Ademas, se muestran como informacion adicional: demandante, demandado, clase de proceso y fecha de reparto.</p>
 <p><strong>Nota</strong>: El acta debe ser un PDF legible. Si la extraccion falla, se mostrara un aviso y podra ingresar los datos manualmente.</p>
@@ -3264,7 +3264,7 @@ Se recomienda comunicar al accionante, la coordinacion y el juzgado mencionado.<
 <li>Pesos del ensemble (MinHash, TF-IDF, Entity)</li>
 <li>Opciones avanzadas: short-circuit, boost por coincidencia de ambas entidades, maximo de candidatos</li>
 </ul>
-<p><strong>Nota</strong>: No modifique estos valores a menos que el administrador lo indique. Los valores por defecto estan calibrados para el volumen del CSJ de Bello.</p>
+<p><strong>Nota</strong>: No modifique estos valores a menos que el administrador lo indique. Los valores por defecto estan calibrados para el volumen del [entidad responsable].</p>
 <hr />
 <h2 id="7-deteccion-de-secciones-y-medida-provisional">7. Deteccion de Secciones y Medida Provisional<a class="headerlink" href="#7-deteccion-de-secciones-y-medida-provisional" title="Permanent link">&para;</a></h2>
 <p>El sistema detecta automaticamente dos secciones clave en el documento:</p>
@@ -3293,7 +3293,7 @@ Se recomienda comunicar al accionante, la coordinacion y el juzgado mencionado.<
 <p><strong>Datos del Proceso</strong>:
 - Secuencia/Numero de Acta (*obligatorio)
 - Radicado
-- Juzgado (lista predefinida de Bello o "Otro...")
+- Juzgado (lista predefinida o "Otro...")
 - Fecha del Documento
 - Observaciones
 - Etiquetas</p>
@@ -3560,7 +3560,7 @@ Verifique que esta escribiendo el usuario y contrasena correctamente (distingue 
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      &copy; 2026 CSJ Bello &mdash; Sherlock-docs v1.0
+      &copy; 2026 [entidad] &mdash; Sherlock-docs v1.0
     </div>
   
   

@@ -2425,7 +2425,7 @@
 
 <h1 id="marco-etico-para-el-uso-de-inteligencia-artificial-sherlock-docs-v10">Marco Etico para el Uso de Inteligencia Artificial — Sherlock-docs v1.0<a class="headerlink" href="#marco-etico-para-el-uso-de-inteligencia-artificial-sherlock-docs-v10" title="Permanent link">&para;</a></h1>
 <p><strong>Sistema</strong>: Sherlock-docs v1.0
-<strong>Entidad</strong>: Centro de Servicios Judiciales de Bello, Antioquia — Rama Judicial
+<strong>Entidad</strong>: [entidad responsable], Antioquia — Rama Judicial
 <strong>Fecha de elaboracion</strong>: 2026-03-06
 <strong>Ultima actualizacion</strong>: 2026-04-02
 <strong>Marco normativo</strong>: CONPES 4144 (2025, reemplaza CONPES 3975), Acuerdo PCSJA24-12243, Sentencia T-323-24, Ley 1581/2012, Ley 2502/2025, Guia MinTIC/PNUD, Directrices UNESCO
@@ -2433,7 +2433,7 @@
 <strong>Version</strong>: 2.0 (Actualizada con normativa 2025 — requiere revision juridica)</p>
 <hr />
 <h2 id="1-declaracion-de-principios">1. Declaracion de Principios<a class="headerlink" href="#1-declaracion-de-principios" title="Permanent link">&para;</a></h2>
-<p>Sherlock-docs incorpora componentes de inteligencia artificial (OCR, NLP, ML) con el proposito exclusivo de <strong>asistir</strong> a los funcionarios del CSJ de Bello en el registro de documentos judiciales. El sistema se rige por los siguientes principios:</p>
+<p>Sherlock-docs incorpora componentes de inteligencia artificial (OCR, NLP, ML) con el proposito exclusivo de <strong>asistir</strong> a los funcionarios del [entidad responsable] en el registro de documentos judiciales. El sistema se rige por los siguientes principios:</p>
 <h3 id="11-principios-conpes-4144-politica-nacional-de-ia-2025-reemplaza-conpes-3975">1.1 Principios CONPES 4144 (Politica Nacional de IA 2025, reemplaza CONPES 3975)<a class="headerlink" href="#11-principios-conpes-4144-politica-nacional-de-ia-2025-reemplaza-conpes-3975" title="Permanent link">&para;</a></h3>
 <p>El CONPES 4144 (14 febrero 2025) supera al CONPES 3975 (2019) evolucionando de un marco
 exploratorio a una exigencia concreta de gobernanza algoritmica y adopcion responsable.</p>
@@ -2623,7 +2623,7 @@ CONPES 4144 (2025) lo refuerza con requisitos de gobernanza algoritmica y gestio
 <ul>
 <li><strong>SpaCy <code>es_core_news_lg</code></strong> fue entrenado con corpus de texto periodistico espanol (AnCora + Wikipedia), no con texto judicial colombiano</li>
 <li>Nombres indigenas, afrocolombianos o de estructura poco comun podrian tener menor tasa de reconocimiento</li>
-<li>El modelo no ha sido re-entrenado con corpus judicial del CSJ de Bello</li>
+<li>El modelo no ha sido re-entrenado con corpus judicial del [entidad responsable]</li>
 <li>El F1 de 74% en demandante refleja esta limitacion</li>
 </ul>
 <h3 id="43-evaluacion-formal-pendiente-gob-12">4.3 Evaluacion formal pendiente (GOB-12)<a class="headerlink" href="#43-evaluacion-formal-pendiente-gob-12" title="Permanent link">&para;</a></h3>
@@ -2759,7 +2759,7 @@ CONPES 4144 (2025) lo refuerza con requisitos de gobernanza algoritmica y gestio
 <h3 id="71-usos-permitidos">7.1 Usos permitidos<a class="headerlink" href="#71-usos-permitidos" title="Permanent link">&para;</a></h3>
 <p>El sistema esta autorizado exclusivamente para:</p>
 <ul>
-<li><strong>Registro documental</strong>: Digitalizar y registrar acciones de tutela, habeas corpus e incidentes de desacato recibidos en el CSJ de Bello</li>
+<li><strong>Registro documental</strong>: Digitalizar y registrar acciones de tutela, habeas corpus e incidentes de desacato recibidos en el [entidad responsable]</li>
 <li><strong>Busqueda de documentos</strong>: Consultar documentos procesados por texto completo (FTS5), cedula, correo, radicado, juzgado u otros campos</li>
 <li><strong>Deteccion de duplicados</strong>: Identificar documentos potencialmente duplicados para evitar doble radicacion</li>
 <li><strong>Estadisticas operativas</strong>: Consultar metricas de productividad (documentos procesados, tiempos, distribuciones por juzgado)</li>
@@ -2772,7 +2772,7 @@ CONPES 4144 (2025) lo refuerza con requisitos de gobernanza algoritmica y gestio
 <li><strong>Perfilamiento de ciudadanos</strong>: El sistema no puede usarse para clasificar, puntuar, evaluar riesgos ni construir perfiles de accionantes, accionados o cualquier persona</li>
 <li><strong>Generacion de textos judiciales</strong>: El sistema no genera respuestas, providencias, autos ni ningun tipo de texto judicial. Solo extrae informacion existente en los documentos</li>
 <li><strong>Transferencia no autorizada de datos</strong>: Los datos procesados no pueden ser exportados, copiados ni transferidos a sistemas externos, plataformas en la nube o terceros sin autorizacion expresa del responsable del tratamiento</li>
-<li><strong>Uso fuera del ambito del CSJ de Bello</strong>: La implementacion esta disenada y calibrada para el CSJ de Bello. Su uso en otras entidades requiere evaluacion de impacto previa</li>
+<li><strong>Uso fuera del ambito del [entidad responsable]</strong>: La implementacion esta disenada y calibrada para el [entidad responsable]. Su uso en otras entidades requiere evaluacion de impacto previa</li>
 <li><strong>Vigilancia o monitoreo de funcionarios</strong>: Las metricas de productividad tienen fin operativo, no disciplinario</li>
 </ul>
 <hr />
@@ -2888,7 +2888,7 @@ CONPES 4144 (2025) lo refuerza con requisitos de gobernanza algoritmica y gestio
 </tbody>
 </table>
 <h3 id="83-mecanismo-de-reporte-de-incidentes-eticos">8.3 Mecanismo de reporte de incidentes eticos<a class="headerlink" href="#83-mecanismo-de-reporte-de-incidentes-eticos" title="Permanent link">&para;</a></h3>
-<p>Si un funcionario o ciudadano identifica un comportamiento etico cuestionable del sistema (discriminacion, error sistematico, uso indebido), debera reportarlo al Coordinador del CSJ de Bello, quien evaluara la situacion y, de ser necesario, escalara al area juridica de la entidad y al equipo de desarrollo.</p>
+<p>Si un funcionario o ciudadano identifica un comportamiento etico cuestionable del sistema (discriminacion, error sistematico, uso indebido), debera reportarlo al coordinador de la entidad responsable, quien evaluara la situacion y, de ser necesario, escalara al area juridica de la entidad y al equipo de desarrollo.</p>
 <hr />
 <h2 id="aprobaciones">Aprobaciones<a class="headerlink" href="#aprobaciones" title="Permanent link">&para;</a></h2>
 <table>
@@ -2908,7 +2908,7 @@ CONPES 4144 (2025) lo refuerza con requisitos de gobernanza algoritmica y gestio
 <td><strong><em>_</em></strong></td>
 </tr>
 <tr>
-<td>Coordinador CSJ Bello</td>
+<td>Coordinación de la entidad</td>
 <td><strong><em>_</em></strong><strong><em>_</em></strong>___</td>
 <td><strong><em>_</em></strong></td>
 <td><strong><em>_</em></strong></td>
@@ -2922,7 +2922,7 @@ CONPES 4144 (2025) lo refuerza con requisitos de gobernanza algoritmica y gestio
 </tbody>
 </table>
 <blockquote>
-<p><strong>Nota</strong>: Este documento es un borrador tecnico que debe ser revisado y aprobado por el area juridica del CSJ de Bello antes de su adopcion formal. Los compromisos de mejora estan sujetos a disponibilidad de recursos y priorizacion institucional.</p>
+<p><strong>Nota</strong>: Este documento es un borrador tecnico que debe ser revisado y aprobado por el area juridica del [entidad responsable] antes de su adopcion formal. Los compromisos de mejora estan sujetos a disponibilidad de recursos y priorizacion institucional.</p>
 </blockquote>
 <hr />
 <p><em>Referencia: CONPES 4144 (2025), CONPES 3975 (2019), Acuerdo PCSJA24-12243, Sentencia T-323-24, Ley 1581/2012, Ley 2502/2025, Guia MinTIC/PNUD, Directrices UNESCO</em>
@@ -2962,7 +2962,7 @@ CONPES 4144 (2025) lo refuerza con requisitos de gobernanza algoritmica y gestio
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      &copy; 2026 CSJ Bello &mdash; Sherlock-docs v1.0
+      &copy; 2026 [entidad] &mdash; Sherlock-docs v1.0
     </div>
   
   
